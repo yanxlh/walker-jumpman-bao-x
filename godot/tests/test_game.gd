@@ -125,14 +125,72 @@ func run() -> void:
 	game.player.position = Vector2(415,432)
 	await steps(1)
 	check("fall-boundary", game.state == Game.State.DYING, {"state":game.state})
+	# --- Pick a Line extension (bao-x) ---------------------------------------
+	# The collider and tuning were deliberately not touched by the character
+	# rewrite; these two checks are the proof, not a claim.
+	await fresh()
+	var shapes: Array[Node] = []
+	for child in game.player.get_children():
+		if child is CollisionShape2D or child is CollisionPolygon2D:
+			shapes.append(child)
+	var collider: CollisionShape2D = shapes[0] if shapes.size() == 1 and shapes[0] is CollisionShape2D else null
+	check("character-collider-unchanged", collider != null and collider.shape is RectangleShape2D and collider.shape.size == Vector2(18,28) and collider.position == Vector2(0,-14), {"shape_count":shapes.size(), "size":str(collider.shape.size) if collider else "n/a", "offset":str(collider.position) if collider else "n/a"})
+	check("beam-adds-no-collision-body", shapes.size() == 1, {"collision_children":shapes.size(), "note":"light wedge is draw-only"})
+	var tune = game.player.tuning
+	check("tuning-unchanged", tune.speed == 160.0 and tune.jump_velocity == -320.0 and tune.gravity == 960.0 and tune.coyote_ticks == 6 and tune.buffer_ticks == 6, {"speed":tune.speed,"jump_velocity":tune.jump_velocity,"gravity":tune.gravity})
+
+	# The low road is a roofed corridor: walkable end to end, but no headroom to
+	# jump. That is the cost of taking it, so it must actually be traversable.
+	await fresh()
+	game.player.reset_at(Vector2(965, 320))
+	await steps(3)
+	game.player.test_axis = 1.0
+	var jumps_at_entry: int = game.player.jumps
+	for i in range(420):
+		await steps(1)
+		if game.player.position.x >= 1388.0 or game.state != Game.State.PLAYING:
+			break
+	check("low-corridor-walkable-no-jump", game.player.position.x >= 1388.0 and game.player.jumps == jumps_at_entry and game.state == Game.State.PLAYING, {"x":snappedf(game.player.position.x,0.01),"jumps":game.player.jumps,"state":game.state})
+
+	# Finish actually moved: the old flag position must no longer win.
+	await fresh()
+	game.player.position = Vector2(916, 318)
+	await steps(3)
+	check("old-finish-position-no-longer-wins", game.state == Game.State.PLAYING, {"state":game.state,"old_finish_x":916})
+	game.player.position = Vector2(1700, 318)
+	await steps(3)
+	check("relocated-finish-triggers", game.state == Game.State.COMPLETE, {"state":game.state,"finish_x":game.level.finish[0]})
+
+	# HUD progress bar was hard-coded to /852 and saturated at the old finish.
+	await fresh()
+	game.player.position = Vector2(916, 318)
+	await steps(1)
+	var mid: float = game.hud.progress_ratio()
+	game.player.position = Vector2(float(game.level.finish[0]), 318)
+	await steps(1)
+	check("hud-progress-tracks-relocated-finish", mid < 0.9 and is_equal_approx(game.hud.progress_ratio(), 1.0), {"ratio_at_old_finish_x":snappedf(mid,0.001),"ratio_at_new_finish":snappedf(game.hud.progress_ratio(),0.001)})
+	# -------------------------------------------------------------------------
+
 	await fresh()
 	var route = Route.new()
 	var route_ticks := 0
+	# Budget deliberately left at the starter's 900 despite the level growing
+	# from 960 to 1760 px. CHANGE-BRIEF P4 predicted an overrun; measured cost is
+	# 618 ticks, so the original ceiling stands and no assertion was loosened.
 	while game.state == Game.State.PLAYING and route_ticks < 900:
 		route.step(game.player)
 		await steps(1)
 		route_ticks += 1
-	check("complete-real-route", game.state == Game.State.COMPLETE and game.deaths == 0, {"state":game.state,"deaths":game.deaths,"ticks":route_ticks,"position":str(game.player.position),"jump_marks_used":route.next_jump})
+	check("complete-real-route", game.state == Game.State.COMPLETE and game.deaths == 0, {"branch":route.branch,"state":game.state,"deaths":game.deaths,"ticks":route_ticks,"position":str(game.player.position),"jump_marks_used":route.next_jump})
+
+	await fresh()
+	var high_route = Route.new("high")
+	var high_ticks := 0
+	while game.state == Game.State.PLAYING and high_ticks < 900:
+		high_route.step(game.player)
+		await steps(1)
+		high_ticks += 1
+	check("complete-high-road-route", game.state == Game.State.COMPLETE and game.deaths == 0, {"branch":high_route.branch,"state":game.state,"deaths":game.deaths,"ticks":high_ticks,"position":str(game.player.position),"jump_marks_used":high_route.next_jump})
 	game.start_session()
 	game.start_session()
 	check("replay-idempotent", game.state == Game.State.PLAYING and game.deaths == 0 and game.player.jumps == 0, {"state":game.state,"deaths":game.deaths,"jumps":game.player.jumps})

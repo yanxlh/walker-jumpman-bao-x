@@ -1,11 +1,11 @@
 {
-  "id": "first-steps",
-  "title": "First Steps",
-  "scope": "Control/retry slice, not the proposed full three-zone course",
-  "width": 960,
+  "id": "first-steps-pick-a-line",
+  "title": "First Steps / Pick a Line",
+  "scope": "Starter control/retry slice (x<=960, unmodified) plus the Pick a Line fork extension (x>960)",
+  "width": 1760,
   "fall_y": 430,
   "spawn": [64, 320],
-  "solids": [[0, 320, 448, 64], [512, 320, 224, 64], [784, 320, 176, 64], [160, 304, 48, 16], [576, 288, 48, 32]],
-  "hazards": [[320, 304, 24, 16]],
-  "finish": [916, 264, 24, 56]
+  "solids": [[0, 320, 448, 64], [512, 320, 224, 64], [784, 320, 176, 64], [160, 304, 48, 16], [576, 288, 48, 32], [956, 320, 436, 64], [1448, 320, 312, 64], [1008, 272, 80, 12], [1152, 272, 64, 12], [1264, 248, 88, 12]],
+  "hazards": [[320, 304, 24, 16], [1568, 304, 24, 16]],
+  "finish": [1696, 264, 24, 56]
 }
