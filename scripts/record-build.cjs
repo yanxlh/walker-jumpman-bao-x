@@ -23,14 +23,14 @@ const selected = [latest('mechanics'),latest('keyboard')];
 const results = selected.map(name=>({file:'evidence/'+name,...JSON.parse(fs.readFileSync(path.join(evidence,name),'utf8'))}));
 if(results.some(r=>r.failures!==0)) throw Error('Latest report failed; cannot mark build ready');
 const record = {
-  project:'walker-jumpman', build_id:hash(JSON.stringify(sorted)),
+  project:'walker-jumpman-bao-x', starter:'nikbearbrown/walker-jumpman', build_id:hash(JSON.stringify(sorted)),
   created_at:new Date().toISOString(),
   engine:'4.7.2.stable.official.ed1daf0bf', renderer:'Compatibility',
-  scope:'First Steps local control/retry slice', source_sha256:sorted,
+  scope:'First Steps control/retry slice (starter, unmodified) plus the Pick a Line fork extension', source_sha256:sorted,
   tests:results.map(r=>({file:r.file,checks:r.results.length,failures:r.failures})),
   machine_checks_passed:results.reduce((n,r)=>n+r.results.length,0),
   human_playtest_sessions:0, exported:false, game_published:false,
-  screenshots:['01-menu','02-failure','03-jump','04-complete'].map(n=>({file:'evidence/screens/'+n+'.png',sha256:hash(fs.readFileSync(path.join(evidence,'screens',n+'.png')))}))
+  screenshots:fs.readdirSync(path.join(evidence,'screens')).filter(n=>n.endsWith('.png')).sort().map(n=>({file:'evidence/screens/'+n,sha256:hash(fs.readFileSync(path.join(evidence,'screens',n)))}))
 };
 fs.writeFileSync(path.join(evidence,'build-manifest.json'), JSON.stringify(record,null,2)+'\n');
 console.log(JSON.stringify({build_id:record.build_id,source_files:Object.keys(sorted).length,checks:record.machine_checks_passed,tests:record.tests},null,2));

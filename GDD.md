@@ -6,7 +6,7 @@
 
 **Runtime update, September 10:** Bear subsequently requested a simple level. The separate [First Steps build report](BUILD-REPORT.md) records the implemented control/retry slice and actual tests. Historical “not built/not run” statements below describe this full design draft; they do not override that later evidence. Full-MVP acceptance and human design/playtest signatures remain open.
 
-[Game brief](GAME-BRIEF.md) · [Design status](DESIGN-STATUS.json) · [Design package](README.md) · [Zelda workflow](../../docs/zelda-gdd-workflow.md)
+[Game brief](GAME-BRIEF.md) · [Design status](DESIGN-STATUS.json) · [Design package](STARTER-README.md) · [Zelda workflow](../../docs/zelda-gdd-workflow.md)
 
 ## 1. Metadata and decision status
 

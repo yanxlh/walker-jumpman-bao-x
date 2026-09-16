@@ -2,7 +2,7 @@
 
 Version: 0.2.0 · September 10, 2026 · **Draft for human review**
 
-**Build update:** the subsequently authorized [First Steps prototype](README.md) is now playable. It implements the small movement/jump/hazard/retry/finish slice; the larger design below remains proposed. See [actual results](BUILD-REPORT.md).
+**Build update:** the subsequently authorized [First Steps prototype](STARTER-README.md) is now playable. It implements the small movement/jump/hazard/retry/finish slice; the larger design below remains proposed. See [actual results](BUILD-REPORT.md).
 
 The project name is **walker-jumpman**, following Bear's requirement that every new game project starts with `walker-`. This is Walker's first small Godot platformer, not a claim to reproduce another commercial game. The detailed specification is [GDD.md](GDD.md); approval and implementation state are in [DESIGN-STATUS.json](DESIGN-STATUS.json).
 

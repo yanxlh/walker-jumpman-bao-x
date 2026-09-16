@@ -1,0 +1,232 @@
+# FRICTIONAL — honest log
+
+walker-jumpman-bao-x · Bao Xing · CSYE 7270
+
+**How to read this.** Entries are in the order they happened. Each says what was tried,
+what was expected, what actually happened, and what changed as a result. Where a
+decision was mine and where it was Claude's is marked explicitly. Sections marked
+**[TO BE COMPLETED BY BAO]** are mine to write after I play the build; Claude organised
+the log and wrote up the sessions it ran, but it must not invent my experience.
+
+---
+
+## Entry 0 — Deciding what to build
+
+**Human (me).** Claude offered three character concepts and three level-extension
+shapes. I picked the lamp-head courier over a shelled beetle and a cloaked wanderer,
+and the high/low fork over a descending drop and a spike ladder.
+
+Why the courier: Claude flagged that the beetle's squat body would leave visible empty
+space in the top of a 28 px-tall collider, which is the "misleading visual/collision
+mismatch" the rubric penalises, and that the cloak's flare would extend past the
+collider on the trailing side. The lamp reads as top-heavy, which *fills* the tall box
+rather than fighting it.
+
+Why the fork: it was the only one of the three that poses a decision rather than a
+skill check.
+
+**Rejected:** Claude's first instinct was to present a written spec document and a
+separate implementation plan before touching code. I told it to execute. The change
+brief covers the same ground and the assignment already supplies the spec.
+
+---
+
+## Entry 1 — The starter does not run as downloaded
+
+**Expected:** unzip, open in Godot, play.
+
+**What happened:** `walker-jumpman.command` failed. The zip unpacks with
+`project.godot` at the repo root and every document in a nested `walker-jumpman-main/`
+subfolder, but the launcher execs `--path "$DIR/godot"`, `scripts/record-build.cjs`
+walks `root/godot`, and `test_game.gd` writes to `res://../evidence`. Three separate
+tools all assume a `godot/` + `evidence/` sibling layout that the download does not have.
+
+**Response:** restored the layout those tools already expect, and committed it as
+commit 1 with the file contents byte-identical, so the restructure is visible and
+separable from my actual changes.
+
+**Learned:** the starter's own BUILD-REPORT was written against a working layout. The
+distribution, not the project, is what is broken. Worth checking before assuming the
+code is at fault.
+
+---
+
+## Entry 2 — Baseline first
+
+**Human decision (me).** Run the starter's own 34 checks *before* editing anything.
+Claude proposed going straight to the character rewrite.
+
+**Result:** 25 mechanics + 9 keyboard, 0 failures, route 325 ticks — matching the
+starter's published BUILD-REPORT exactly. Archived to `evidence/baseline/`.
+
+**Why it mattered later:** when I had 33 checks passing at the end, I could say the 25
+original ones were still passing *unmodified* rather than hoping so.
+
+---
+
+## Entry 3 — Freezing predictions before building
+
+I wrote six predicted failure cases into `CHANGE-BRIEF.md` before any source edit.
+Final score: **two right, two wrong, one partly right, one correctly a non-issue.**
+
+The honest part: the single biggest problem in the whole build — the roofing conflict
+in Entry 4 — **was not on my list at all.** Writing predictions did not let me foresee
+it. What it did do was stop me quietly rewriting history afterwards, because P1 and P4
+are on the record as wrong.
+
+---
+
+## Entry 4 — The level design I picked is geometrically impossible
+
+**This is the entry that actually taught me something.**
+
+**Expected:** the fork Claude and I agreed on — narrow high ledges directly above a
+spiked low road, so a missed landing drops you into the gauntlet. I hand-computed the
+landing windows and they looked fine.
+
+**What happened:** `probe_reach.gd`, a sweep of real takeoff positions through real
+physics, returned:
+
+```
+L1 -> over HZ1      UNREACHABLE
+L1 -> over HZ2      UNREACHABLE
+L1 -> M (56px gap)  UNREACHABLE
+walk-under B and C  BLOCKED at 1116.6
+```
+
+Every low-road jump was impossible and the walk-through died on spikes.
+
+**Diagnosis.** A jumping player's feet reach y ≈ 264 and their **head reaches y ≈ 236**.
+The ledges sat at y = 272–284. You cannot jump anywhere underneath them. And the two
+constraints are irreconcilable: high-road hops must be ≤ 107 px apart to be jumpable,
+while a low-road jump arc needs ≥ 107 px of *unroofed* corridor. Stacked parallel roads
+that both require jumping cannot exist at this tuning. The design was not mistuned; it
+was impossible.
+
+**What I changed.** Not the jump. The assignment forbids buffing jump strength to
+rescue geometry, and it would have been the wrong fix anyway. Instead the roofed
+stretch became the low road's actual cost — a corridor you can walk but cannot jump in
+— and the last ledge was raised to y = 248 so the longer drop buys more horizontal
+reach on the way down. Re-probed: all seven jumps reachable, corridor clear.
+
+**Human vs AI.** Claude wrote the probe and diagnosed the head-height cause. The call
+to keep the fork concept and re-cut the geometry around the constraint, rather than
+abandon the fork or touch `tuning.gd`, was mine.
+
+**Learned:** I would have shipped an unplayable level. My arithmetic was not wrong
+about the jump arc; it was wrong about what else was in the way. Measuring the thing
+you are standing under matters as much as measuring the thing you are jumping to.
+
+---
+
+## Entry 5 — Three tries at the fork entry
+
+Even after the redesign the numbers kept fighting each other:
+
+| Attempt | floor → B | low-road entry |
+|---|---:|---|
+| B at x=1024 | 24 px window | 16 px of landing floor before B's shadow |
+| B widened to x=1008 | 40 px | collapsed to a 4 px window |
+| Entry gap removed, floor made continuous | **70 px** | trivial — you just keep running |
+
+**Response:** dropped the 32 px entry gap entirely and butted the new floor against the
+original platform. The fork became "hop up, or keep running," which is a cleaner read
+anyway. The original section still was not edited — the new slab starts at x=956 and
+overlaps the starter's platform by 4 px.
+
+**Consequence I accepted rather than fixed:** from the corridor floor the window back up
+onto ledge B is 4 px, i.e. once you are on the low road you are committed. I kept it
+because it turns a missed landing into a legible demotion instead of a retry-spam loop.
+But I want to be clear in `TEST-REPORT.md` §9 that this was a *consequence I noticed*,
+not an intention I started with.
+
+---
+
+## Entry 6 — The prediction that paid off
+
+P5 said the finish pole would render correctly *by accident* and I would be tempted to
+call it fixed. That is exactly what would have happened: I kept the relocated finish at
+the same y-range as the original, so the hard-coded
+`draw_line(..., 320, ..., 250)` looked right at the new x.
+
+Forcing a deliberately wrong fixture — `finish = [1640, 208, 24, 112]`, hazard height 48
+— proved the data-driven rewrite actually works
+(`evidence/screens/13-p5-datadriven-fixture.png`). Fixture reverted.
+
+**Learned:** "it looks right" and "it is right" came apart here, and only an
+adversarial fixture told them apart.
+
+---
+
+## Entry 7 — A fix that made things worse
+
+Looking at `screens/11-low-corridor.png` I saw the label "LOW / NO ROOM TO JUMP" sitting
+in the player's walking line, with the courier drawn on top of it.
+
+Moved it down to the floor slab at y = 348. Re-captured: **gone entirely.** The HUD
+footer is a `CanvasLayer` covering y 335–360 and was drawn over it.
+
+Second attempt worked, and changed my mind about the problem: the information belongs
+at the *decision point*, not in the corridor. The fork sign now states both costs
+before you commit, with a small marker at y = 333 on the dark slab.
+
+**Learned:** I moved the label twice before asking what it was for. The first move
+treated it as a collision problem; it was an information-placement problem.
+
+---
+
+## Entry 8 — Where I did not take Claude's output
+
+- **Raising the tick budget.** Claude raised the route ceiling from 900 to 1200 when
+  extending the route, citing P4. Measurement showed 618 ticks. I had it revert to 900:
+  an untouched ceiling that still passes is stronger evidence than a raised one.
+- **The character sheet captures.** Claude's first pass spawned the poses at x=300,
+  which is on the starter's spike cluster at x=320. All four "character" frames were
+  death screens with the pose hidden behind the retry card. Caught by looking at the
+  images.
+- **The spec-document detour.** Rejected, see Entry 0.
+
+---
+
+## Entry 9 — What is still not done
+
+- **No human has played this build.** `TEST-REPORT.md` §7 is empty and stays empty
+  until I play it. This is the biggest hole in the submission.
+- **The Brutalist `godot-waikthrough` skill is not installed** on this machine — not in
+  `~/.claude/skills`, not in the plugin cache. The film cannot be rendered with the
+  required workflow until I obtain the course-provided version. The beat sheet, script
+  and evidence are staged in `film/`.
+- **Open question I have not resolved:** the high road saves no time (both branches run
+  618 ticks, because jumps do not change horizontal speed). Is a fork whose branches
+  cost the same still a real decision? I think yes — it trades precision against nerve
+  — but I would rather a playtester told me than assume it.
+
+---
+
+## [TO BE COMPLETED BY BAO] — my own playthrough
+
+*Write after playing. Retries taken, what confused me, whether the fork read as a
+choice, and anything I changed as a result. If something worked immediately, say so.*
+
+---
+
+## Human / AI contribution summary
+
+| | Mine | Claude's |
+|---|---|---|
+| Character concept | chose lamp-head courier from three options; rejected beetle on collider-fit grounds | drew the option set, wrote the `_draw()` vector geometry |
+| Level concept | chose the fork; chose to keep it after the probe rather than abandon it or touch tuning | proposed the option set, cut the revised coordinates |
+| Diagnosis | — | wrote `probe_reach.gd`, identified the head-height/roofing cause |
+| Baseline discipline | required a pre-edit baseline run | ran it, archived it |
+| Tick budget | required the revert to 900 | had raised it to 1200 |
+| Capture bugs | spotted the death-frame character sheet | wrote and fixed the capture script |
+| Label placement | called the second fix (move to the decision point) | made both edits |
+| Predictions | frozen before build, scored honestly afterwards | wrote them up |
+| Documents | decided what must stay unfilled | drafted the prose |
+
+**Accepted** from Claude: the probe methodology, the `_draw()` geometry, the data-driven
+rewrite of `session.gd`/`hud.gd`, the eight added checks.
+**Modified:** the fork geometry (three iterations), the label placement, the capture
+spawn positions.
+**Rejected:** the spec-document detour, the raised tick budget, the first two label
+positions.

@@ -1,61 +1,102 @@
 {
-  "project": "walker-jumpman",
-  "build_id": "1f03828eef29e170b5132a831c43201a7b11978d2c2087fa15bd948d0f44488d",
-  "created_at": "2026-09-10T22:39:09.411Z",
+  "project": "walker-jumpman-bao-x",
+  "starter": "nikbearbrown/walker-jumpman",
+  "build_id": "9b9850959283f4f370764c493961264faaa1525d9d55a09d1b6071409b6f2016",
+  "created_at": "2026-09-16T19:36:46.854Z",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "renderer": "Compatibility",
-  "scope": "First Steps local control/retry slice",
+  "scope": "First Steps control/retry slice (starter, unmodified) plus the Pick a Line fork extension",
   "source_sha256": {
-    "godot/.gitignore": "531d0d253cec1addb97b2cb2d144b6589ff934513eb9c9b8cf882cb49e4c0c32",
-    "godot/features/player/player.gd": "cb79bad716078657d25a0c15b2a03ddfa75b934497f3382418ca99004f992f96",
+    "godot/features/player/player.gd": "cf923480b1fc5050167beea07782af56c96cab59e1538f9b29f78bddbc6775b6",
     "godot/features/player/player.gd.uid": "be96c2e71cbd69482fa0d107dfb1500a0054d2b963e9ba312e265bef985f0454",
     "godot/features/player/tuning.gd": "7a09e96ef11bfa3e1e3b00849e84ed15b453a2e2780b9c94c90c376aea62aa37",
     "godot/features/player/tuning.gd.uid": "9411c240407f1c4afbb5e85649ef3215765190421bc3621a7457e065e036751a",
     "godot/game/main.tscn": "017da6e141ad6f6199a9219208483c82cacd257210dbaa6b1184a27157a63a2f",
-    "godot/game/session.gd": "4b4fc42f56416806b8ad64c6c9da938165fb2f8c5b78bc2169ba68a2bf161276",
+    "godot/game/session.gd": "027d83d6c8e88c18bff75035c1f5046cb4ac6c35f32ec7262fb2e2d49210dd7e",
     "godot/game/session.gd.uid": "cbd9b4dc192752918a54c94b364b7891028856b6de6a4391d924522985ffeb77",
-    "godot/levels/first_steps.json": "33b9b5c8dd0f0eaf162feed7533dd0d7774dd1e6cd9c9b6f353a849473a23d20",
-    "godot/project.godot": "4296d7e5e84ef36a7147c211a78b78eaca38252401fd38abb6b2d9460a1ac840",
-    "godot/tests/capture_game.gd": "5bc82d2360e3758fd8d2f187ee15ddef0cc9afb6da0a7f3b4f37d660d8cff79f",
-    "godot/tests/route_driver.gd": "21996742044648210c75c6ca56f45f9e2264a45b5d09f8fe214055c047476cb3",
-    "godot/tests/test_game.gd": "f41b7299da7cb1003653851749b25f464e48d0e26096e91015a270f83ae26cf4",
+    "godot/levels/first_steps.json": "5ea45cd8b12c1dfcfdd836f049e29690b11b25429f6e6d375d3b51b1bba0cec0",
+    "godot/project.godot": "18b80fb608279ceda4a94c998aea4ec6f5bb8d79c1969a9a6c4ac7a1552e47cf",
+    "godot/tests/capture_game.gd": "85c2b9918266e13d3a15dcfaa4dae84adcf9876cbb67cc309bcd552177ac02cf",
+    "godot/tests/capture_game.gd.uid": "60af73a3bc1bbf2fb747f628c6b19d474e5d8ec63086693d7a3662c343635625",
+    "godot/tests/probe_reach.gd": "b148b610b841ed5b21c15581661e9d662e74c95e714c0bd9b5d6a3c8cc3d47d3",
+    "godot/tests/route_driver.gd": "7e9e56682bcbd82f5e8b31256f93c5b08060681fc110b82a8bc309daaee10bbf",
+    "godot/tests/route_driver.gd.uid": "6e51ae14383d23db51a043c2455ae9a4b9b972304db25c9422dbe41d698af41b",
+    "godot/tests/test_game.gd": "b82babd8613e88c9b90d6a313f0b0989d8645af0d2f38be6e4ac48c17fd66c87",
+    "godot/tests/test_game.gd.uid": "57933fea45074e0597f2fb3f474e69944d6198c1f432274187c9a10bee0c31dc",
     "godot/tests/test_keyboard.gd": "39b5d37039cee469aa6a87ab45acc852d1c55a7ebcebca5ec328d9d71413c6c9",
-    "godot/ui/hud.gd": "6cdf5b19f3b4684e8375c9db2c595031f76e862ccaa015098d4eb97ea2805e55",
+    "godot/tests/test_keyboard.gd.uid": "6ea68e4d1bb1c113e9454aca6e4dc08c148cbcf6eeefb5b301c289dcc718f25e",
+    "godot/ui/hud.gd": "c6c3337d8fe5df906faf7716dadc651eb80285d9562452d33286e0f9beef0b9e",
     "godot/ui/hud.gd.uid": "d2eaf3c885a55bcd31e9b2f36d3a5355f10105da426e96a9685434da00b28330",
     "walker-jumpman.command": "4adbb8884b6c05bdba97f2b4919e97e7e351a0bd2446ac7e05d6d8b250041c79"
   },
   "tests": [
     {
-      "file": "evidence/mechanics-1789079935.62795.json",
-      "checks": 25,
+      "file": "evidence/mechanics-1789587403.2361.json",
+      "checks": 33,
       "failures": 0
     },
     {
-      "file": "evidence/keyboard-1789079926.01266.json",
+      "file": "evidence/keyboard-1789587406.16112.json",
       "checks": 9,
       "failures": 0
     }
   ],
-  "machine_checks_passed": 34,
+  "machine_checks_passed": 42,
   "human_playtest_sessions": 0,
   "exported": false,
   "game_published": false,
   "screenshots": [
     {
       "file": "evidence/screens/01-menu.png",
-      "sha256": "c05b5b81c05fa03e6eec9422f2867e7a0fd7b09704436290a5fcf27f5a5d972a"
+      "sha256": "56f2c4aa8530fc792bea99a7c611707d97edade8f4d4ba8e5ecbf774e25fbe5a"
     },
     {
       "file": "evidence/screens/02-failure.png",
-      "sha256": "4807fda15f88216d458246c3724a3d0f5f100bf73bcee647782f1f018157c1b7"
+      "sha256": "ad272dc76335c0cc2711dbd6eaeda9049ebe85ac6d2f1e43418accbfe38b8db2"
     },
     {
       "file": "evidence/screens/03-jump.png",
-      "sha256": "6c48b444cda58509e92154a9364c03d21258087a0e57b7a85f0e5fda9c2bcfa2"
+      "sha256": "6128f9a47dc7ff928f4834db05d697823dbd0b291cf2d4077767ba72bfb8c6fe"
     },
     {
       "file": "evidence/screens/04-complete.png",
-      "sha256": "e10a8849fb0db21da92b6a7a771182dd3534d7b5a08e4c03e4275819df169701"
+      "sha256": "f639f426759b1c9600cc0c16e00b15fda31165478f301e913ea88adac36f5389"
+    },
+    {
+      "file": "evidence/screens/05-char-idle-right.png",
+      "sha256": "236768cd888c10d5cb95acecd85deb292c891c15ff031a7f8359f10f559626d7"
+    },
+    {
+      "file": "evidence/screens/06-char-run-right.png",
+      "sha256": "9d2ab4ed66bc10cdf32aa35e562555f12096a51ae8512fa85762be18532d3579"
+    },
+    {
+      "file": "evidence/screens/07-char-run-left.png",
+      "sha256": "252301c3d02522c0d3633a378342162b7178251962a51222f65b21c5a5de4aa8"
+    },
+    {
+      "file": "evidence/screens/08-char-jump-right.png",
+      "sha256": "e29897202d3de44fb0cfd8198c96af67c362067796c9b8e0eb68192bf71d72b4"
+    },
+    {
+      "file": "evidence/screens/09-fork-decision.png",
+      "sha256": "7b0d37d43c8624e12093936b301add588f7233d456c864463f346ed45fd25082"
+    },
+    {
+      "file": "evidence/screens/10-high-road-ledges.png",
+      "sha256": "0a44574c2c7065ed9718502848ae2d8914cb7032a12a1f4766c1f42d3e90eaa7"
+    },
+    {
+      "file": "evidence/screens/11-low-corridor.png",
+      "sha256": "c0108b27012d2fdfc7b3d296e77d72901d0e19875da186654076d99b0091b8ed"
+    },
+    {
+      "file": "evidence/screens/12-finish-relocated.png",
+      "sha256": "b6750d2d5453016d1d2c22a26477a762aca8f79b2e451b9ee281b476c320dc4f"
+    },
+    {
+      "file": "evidence/screens/13-p5-datadriven-fixture.png",
+      "sha256": "fae89b273f3558ab4055d77dce38be6f73125805e0b7a8f4417c2fdb095d6ac6"
     }
   ]
 }

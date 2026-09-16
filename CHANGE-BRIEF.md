@@ -224,4 +224,58 @@ standalone application, multiplayer. Not attempted, not claimed.
 *(Appended after implementation. Original predictions above are unedited.)*
 
 <!-- REVISIONS-START -->
+
+### R1 — 2026-09-16 · The proposed geometry in §2 was impossible. Replaced.
+
+The layout drawn in §2 does not work and was never shipped. `tests/probe_reach.gd`
+returned `UNREACHABLE` for all three low-road jumps and `BLOCKED at 1116.6` for the
+walk-through.
+
+Cause: a jumping player's feet reach y ≈ 264 and their **head reaches y ≈ 236**, while
+the high ledges sat at y = 272–284. You cannot jump anywhere beneath them. High-road
+hops must be ≤ 107 px apart to be jumpable; a low-road jump arc needs ≥ 107 px of
+*unroofed* corridor. Stacked roads that both require jumping cannot coexist at this
+tuning.
+
+**This failure mode is not among P1–P6. I did not predict it.**
+
+Shipped layout instead — the roof became the low road's cost:
+
+| Element | Rect |
+|---|---|
+| low floor `L1` | `[956, 320, 436, 64]` (butts against the original platform; no entry gap) |
+| ledge `B` | `[1008, 272, 80, 12]` |
+| ledge `C` | `[1152, 272, 64, 12]` |
+| ledge `D` | `[1264, 248, 88, 12]` (raised: the longer drop buys horizontal reach) |
+| gap | 1392 – 1448 (56 px) |
+| merge `M` | `[1448, 320, 312, 64]` |
+| hazard | `[1568, 304, 24, 16]` — moved to open sky after the merge |
+| finish | `[1696, 264, 24, 56]` · width 1760 |
+
+`tuning.gd` was not touched. Asserted by the `tuning-unchanged` check.
+
+### R2 — 2026-09-16 · Fork entry reworked three times
+
+`B` at x=1024 gave a 24 px entry window; widening it to x=1008 gave 40 px but collapsed
+the low-road landing zone to 4 px. Removing the 32 px entry gap and making the floor
+continuous gave **70 px**. Consequence accepted, not designed: from the corridor floor
+the window back up onto `B` is 4 px, so the high road is entry-committed.
+
+### R3 — 2026-09-16 · Tick budget reverted
+
+P4 predicted the route would exceed 900 ticks. It was briefly raised to 1200, then
+reverted to the starter's **900** after measuring 618. No ceiling was loosened.
+
+### R4 — 2026-09-16 · Corridor label moved twice
+
+Original placement at y = 314 sat in the player's walking line. Moving it to y = 348
+hid it under the HUD footer (`CanvasLayer`, y 335–360). Final fix states both costs on
+the fork sign at the decision point, with a marker at y = 333 on the floor slab.
+
+### Prediction scoring
+
+P1 wrong (too pessimistic, 70 px measured) · P2 partly right · **P3 correct** ·
+P4 wrong · **P5 correct and the most useful** · P6 wrong, as expected.
+Full detail in `TEST-REPORT.md` §6.
+
 <!-- REVISIONS-END -->

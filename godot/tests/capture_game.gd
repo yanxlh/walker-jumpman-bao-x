@@ -88,7 +88,8 @@ func run() -> void:
 		for i in range(900):
 			r.step(game.player)
 			await step()
-			if game.player.position.x >= shot[1] or game.state != Game.State.PLAYING:
+			# Wait for a grounded frame so landmark shots show a landing, not a blur.
+			if (game.player.position.x >= shot[1] and game.player.is_on_floor()) or game.state != Game.State.PLAYING:
 				break
 		game.set_physics_process(false)
 		game.player.set_physics_process(false)

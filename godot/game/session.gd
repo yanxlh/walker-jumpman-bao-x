@@ -218,8 +218,13 @@ func _draw() -> void:
 	draw_string(font, Vector2(33, 273), "Read the landing. Then jump.", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, ink)
 	draw_string(font, Vector2(474, 227), "02 / MIND THE GAP", HORIZONTAL_ALIGNMENT_LEFT, -1, 15, ink)
 	draw_string(font, Vector2(838, 214), "03 / PICK A LINE", HORIZONTAL_ALIGNMENT_LEFT, -1, 15, ink)
-	draw_string(font, Vector2(838, 236), "Up for the ledges. Across for the floor.", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, ink)
+	# Both costs are stated at the decision point. An earlier revision printed
+	# "NO ROOM TO JUMP" inside the corridor at y=314, where the courier walked
+	# straight through the text; moving it to y=348 hid it under the HUD footer
+	# (y 335..360). Telling the player before they commit is the actual fix.
+	draw_string(font, Vector2(838, 236), "UP: three tight landings.", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, ink)
+	draw_string(font, Vector2(838, 256), "ACROSS: no headroom, one committed gap.", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, ink)
 	draw_string(font, Vector2(1012, 224), "HIGH / TIGHT LANDINGS", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, Color("287c68"))
-	draw_string(font, Vector2(1100, 314), "LOW / NO ROOM TO JUMP", HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Color("8a7f72"))
+	draw_string(font, Vector2(1100, 333), "LOW / NO HEADROOM", HORIZONTAL_ALIGNMENT_LEFT, -1, 11, Color("6d818c"))
 	draw_string(font, Vector2(1470, 250), "ONE LAST SPIKE", HORIZONTAL_ALIGNMENT_LEFT, -1, 13, ink)
 	draw_string(font, Vector2(1612, 225), "FINISH", HORIZONTAL_ALIGNMENT_LEFT, -1, 15, ink)
