@@ -278,4 +278,43 @@ P1 wrong (too pessimistic, 70 px measured) · P2 partly right · **P3 correct** 
 P4 wrong · **P5 correct and the most useful** · P6 wrong, as expected.
 Full detail in `TEST-REPORT.md` §6.
 
+### R5 — 2026-09-17 · Spring trap and reward coin added (scope change, requested after freeze)
+
+Requested by Bao after playing the build. **These were not in the frozen predictions
+above and are not retrofitted into them.**
+
+**Spring trap** replaces the static final spike. It sits at `[1568, 304, 24, 16]` and
+launches to `raised_y = 240` in 0.18 s, holds 2.6 s, falls in 0.45 s.
+
+The arming rule is plain geometry against the player's own collider box — no trigger
+Area2D and nothing drawn on the floor. The zone is `[1558, 244, 38, 40]`, i.e. directly
+over the spike and **inside the jump band only**:
+
+- standing, the player occupies y 292–320, so the zone at y 244–284 is unreachable
+- airborne, the player reaches y 236–264, which intersects it
+
+Consequence: **walking never arms it; leaving the ground beside it always does.** Jump
+across and the spike rises into your own arc. The solution is to bait it from the safe
+side and walk underneath, where the raised spike (y 240–256) leaves 36 px of headroom.
+
+Measured bait window: **x 1550–1558, 10 px.** Standing at x ≥ 1560 already touches the
+grounded spike. Tuned in three passes at Bao's direction — trigger moved from 104 px
+before the spike to directly above it, then the window halved from 20 px to 10 px.
+
+**Reward coin** at `(1320, 206)`, above ledge D (top y = 248), the highest surface in
+the game. Standing on D the body occupies y 220–248, so the coin needs a jump; and
+because D is high-road-only, **the coin is the high road's payoff**. This directly
+addresses limitation #3 in the first TEST-REPORT, which noted the high road cost the
+same 618 ticks as the low road and therefore offered no reward.
+
+Route cost rose 618 → **671 ticks** on both branches; the extra 53 ticks are the bait
+stop. Still under the starter's original 900-tick ceiling, which remains unchanged.
+
+### R6 — 2026-09-17 · Presentation fixes found by looking at captures
+
+- `FINISH` label overlapped the trap sign; moved above the flag.
+- Trap sign text ran into the raised spike; shortened and moved left.
+- Guide rail under the spike removed at Bao's request — the trap now has no floor
+  marking and no rail, so the sign is the only tell.
+
 <!-- REVISIONS-END -->

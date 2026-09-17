@@ -1,0 +1,339 @@
+{
+  "created_at": "2026-09-17T21:53:30",
+  "engine": "4.7.2-stable (official)",
+  "failures": 0,
+  "results": [
+    {
+      "id": "launch-grounded",
+      "observed": {
+        "engine": "4.7.2-stable (official)",
+        "position": "(64.0, 320.0)"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "speed-cap",
+      "observed": {
+        "velocity_x": 160.0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "neutral-stop",
+      "observed": {
+        "velocity_x": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "simultaneous-directions",
+      "observed": {
+        "velocity_x": 0.0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "left-wall",
+      "observed": {
+        "x": 10.0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "fixed-jump-and-no-double",
+      "observed": {
+        "jumps": 1,
+        "rise_px": 56.07470703125
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "held-jump-no-bounce",
+      "observed": {
+        "jumps": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "coyote-5",
+      "observed": {
+        "age": 5,
+        "jumps": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "coyote-6",
+      "observed": {
+        "age": 6,
+        "jumps": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "coyote-7",
+      "observed": {
+        "age": 7,
+        "jumps": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "buffer-5",
+      "observed": {
+        "age": 5,
+        "jumps": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "buffer-6",
+      "observed": {
+        "age": 6,
+        "jumps": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "buffer-7",
+      "observed": {
+        "age": 7,
+        "jumps": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "low-ceiling",
+      "observed": {
+        "jumps": 1,
+        "minimum_feet_y": 300.000274658203
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "pause-freezes",
+      "observed": {
+        "elapsed": 0.133333333333333,
+        "position": "(64.0, 295.9253)"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "focus-loss-pauses",
+      "observed": {
+        "state": 2
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "actual-spike-collision",
+      "observed": {
+        "deaths": 1,
+        "state": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "duplicate-death-ignored",
+      "observed": {
+        "deaths": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "respawn",
+      "observed": {
+        "position": "(64.0, 320.0)",
+        "state": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "manual-restart-not-death",
+      "observed": {
+        "deaths": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "twenty-retries",
+      "observed": {
+        "deaths": 21,
+        "max_retry_ticks": 34
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "death-before-finish",
+      "observed": {
+        "state": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "fall-boundary",
+      "observed": {
+        "state": 3
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "character-collider-unchanged",
+      "observed": {
+        "offset": "(0.0, -14.0)",
+        "shape_count": 1,
+        "size": "(18.0, 28.0)"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "beam-adds-no-collision-body",
+      "observed": {
+        "collision_children": 1,
+        "note": "light wedge is draw-only"
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "tuning-unchanged",
+      "observed": {
+        "gravity": 960.0,
+        "jump_velocity": -320.0,
+        "speed": 160.0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "low-corridor-walkable-no-jump",
+      "observed": {
+        "jumps": 0,
+        "state": 1,
+        "x": 1388.3
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "old-finish-position-no-longer-wins",
+      "observed": {
+        "old_finish_x": 916,
+        "state": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "relocated-finish-triggers",
+      "observed": {
+        "finish_x": 1696.0,
+        "state": 4
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "hud-progress-tracks-relocated-finish",
+      "observed": {
+        "ratio_at_new_finish": 1.0,
+        "ratio_at_old_finish_x": 0.522
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "trap-not-armed-by-walking",
+      "observed": {
+        "phase": "down",
+        "state": 1,
+        "x": 1551.29
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "spring-trap-bait-then-walk-under",
+      "observed": {
+        "baited": true,
+        "spike_top_reached": 240.0,
+        "state": 1,
+        "x": 1641.24
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "spring-trap-actually-rises",
+      "observed": {
+        "raised_y": 240.0,
+        "spike_top_reached": 240.0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "spring-trap-punishes-the-jump",
+      "observed": {
+        "death_reason": "It goes up when you do",
+        "state": 3,
+        "x": 1566.62,
+        "y": 265.52
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "coin-not-collectable-on-foot",
+      "observed": {
+        "coins_taken": 0,
+        "x": 1346.62
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "coin-collected-by-jumping",
+      "observed": {
+        "coins_taken": 1,
+        "jumped": true,
+        "state": 1
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "retry-rearms-trap-and-coin",
+      "observed": {
+        "coins_taken": 0,
+        "phase": "down",
+        "spike_y": 304.0
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "complete-real-route",
+      "observed": {
+        "branch": "low",
+        "coins_taken": 0,
+        "deaths": 0,
+        "jump_marks_used": 6,
+        "position": "(1693.497, 319.9253)",
+        "state": 4,
+        "ticks": 671
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "complete-high-road-route",
+      "observed": {
+        "branch": "high",
+        "coins_taken": 1,
+        "deaths": 0,
+        "jump_marks_used": 9,
+        "position": "(1693.499, 319.9253)",
+        "state": 4,
+        "ticks": 671
+      },
+      "status": "PASS"
+    },
+    {
+      "id": "replay-idempotent",
+      "observed": {
+        "deaths": 0,
+        "jumps": 0,
+        "state": 1
+      },
+      "status": "PASS"
+    }
+  ],
+  "scope": "First Steps slice; not full GDD acceptance or human playtesting"
+}

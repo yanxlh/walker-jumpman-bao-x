@@ -91,6 +91,40 @@ func walk_under(from_x: float, to_x: float) -> void:
 		"walk-under B and C", game.player.position.x, to_x, game.player.jumps,
 		"BLOCKED at %.1f" % stuck_at if stuck_at > 0 else "clear"])
 
+## Stand at x, jump straight up, report (armed, survived).
+func bait_sweep(lo: float, hi: float) -> void:
+	var good: Array[float] = []
+	var died: Array[float] = []
+	var x := lo
+	while x <= hi:
+		await fresh()
+		game.player.reset_at(Vector2(x, 320))
+		await steps(4)
+		if game.state != Game.State.PLAYING:
+			died.append(x)
+			x += 2.0
+			continue
+		game.player.test_axis = 0.0
+		game.player.test_jump_pressed = true
+		var armed := false
+		for i in range(70):
+			await steps(1)
+			if game.rising[0].phase != "down":
+				armed = true
+			if game.state != Game.State.PLAYING:
+				break
+		if game.state != Game.State.PLAYING:
+			died.append(x)
+		elif armed:
+			good.append(x)
+		x += 2.0
+	if good.is_empty():
+		print("%-26s NO SAFE BAIT SPOT" % "bait-from-standing")
+	else:
+		print("%-26s bait window %.0f..%.0f = %.0f px wide (spike at 1568)" % ["bait-from-standing", good[0], good[-1], good[-1] - good[0] + 2.0])
+	if not died.is_empty():
+		print("%-26s lethal standing spots from %.0f" % ["", died[0]])
+
 func run() -> void:
 	print("\n=== REACHABILITY PROBE: Pick a Line (revision 2) ===")
 	print("engine ", Engine.get_version_info().string)
@@ -107,6 +141,11 @@ func run() -> void:
 	await sweep("L1 -> M  (56px gap)", Vector2(1300, 320), 1356, 1392, 320, 1448, 1760)
 	# Shared final obstacle on M: spikes at 1568..1592, open sky
 	await sweep("M -> over HZ3", Vector2(1460, 320), 1500, 1566, 320, 1592, 1760)
+
+	# --- SPRING TRAP ---
+	# Sweep every standing position and hop straight up: report which spots arm
+	# the trap from the safe side. That span is the bait window a human needs.
+	await bait_sweep(1490, 1566)
 
 	# --- CORRIDOR ---
 	# The low road must be able to WALK the full roofed corridor 992 -> 1392.

@@ -35,6 +35,9 @@ func _draw() -> void:
 	draw_rect(Rect2(22,63,596*progress_ratio(),3), Color("287c68"))
 	draw_rect(Rect2(0,335,640,25), Color("f6f3ec"))
 	text_at("No lives. Just another try.", Vector2(22,353), 13)
+	var total: int = game.coins.size()
+	if total > 0:
+		text_at("COIN %d/%d" % [game.coins_taken, total], Vector2(352,353), 13, Color("a8841c") if game.coins_taken < total else Color("287c68"))
 	text_at("RETRIES %02d     %04.1fs" % [game.deaths, game.elapsed], Vector2(440,353), 13)
 	if game.state == game.State.PLAYING:
 		return
@@ -55,7 +58,7 @@ func _draw() -> void:
 		button = "ENTER  /  RESUME"
 	elif game.state == game.State.COMPLETE:
 		title = "Course complete."
-		detail = "%.1f seconds   /   %d retries" % [game.last_finish_time, game.deaths]
+		detail = "%.1f seconds   /   %d retries   /   coin %d of %d" % [game.last_finish_time, game.deaths, game.coins_taken, game.coins.size()]
 		button = "ENTER  /  PLAY AGAIN"
 	centered(title, 143, 24)
 	centered(detail, 177, 12)

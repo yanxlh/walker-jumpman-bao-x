@@ -171,6 +171,82 @@ func run() -> void:
 	check("hud-progress-tracks-relocated-finish", mid < 0.9 and is_equal_approx(game.hud.progress_ratio(), 1.0), {"ratio_at_old_finish_x":snappedf(mid,0.001),"ratio_at_new_finish":snappedf(game.hud.progress_ratio(),0.001)})
 	# -------------------------------------------------------------------------
 
+	# --- Spring trap + reward coin -------------------------------------------
+	# Walking must never arm it: the zone sits above standing head height.
+	await fresh()
+	game.player.reset_at(Vector2(1480, 320))
+	await steps(3)
+	game.player.test_axis = 1.0
+	for i in range(60):
+		await steps(1)
+		if game.player.position.x >= 1550.0 or game.state != Game.State.PLAYING:
+			break
+	check("trap-not-armed-by-walking", game.rising[0].phase == "down" and game.state == Game.State.PLAYING, {"phase":game.rising[0].phase,"x":snappedf(game.player.position.x,0.01),"state":game.state})
+
+	# Bait it from the safe side, then walk under while it is up.
+	await fresh()
+	game.player.reset_at(Vector2(1480, 320))
+	await steps(3)
+	var bait_route = Route.new()
+	# Spawned mid-level, so retire the earlier jump marks; otherwise the driver
+	# fires all of them on the spot and launches itself into the trap.
+	bait_route.next_jump = bait_route.jump_marks.size()
+	var trap_peak_y: float = 320.0
+	for i in range(300):
+		bait_route.step(game.player)
+		await steps(1)
+		trap_peak_y = minf(trap_peak_y, game.rising[0].y)
+		if game.player.position.x >= 1640.0 or game.state != Game.State.PLAYING:
+			break
+	check("spring-trap-bait-then-walk-under", game.player.position.x >= 1640.0 and game.state == Game.State.PLAYING, {"x":snappedf(game.player.position.x,0.01),"state":game.state,"spike_top_reached":trap_peak_y,"baited":bait_route.baited})
+	check("spring-trap-actually-rises", trap_peak_y <= float(game.level.rising_hazards[0].raised_y) + 0.5, {"spike_top_reached":trap_peak_y,"raised_y":game.level.rising_hazards[0].raised_y})
+
+	# Jumping across it arms it into the jump band and kills.
+	await fresh()
+	game.player.reset_at(Vector2(1450, 320))
+	await steps(3)
+	game.player.test_axis = 1.0
+	var trap_jumped := false
+	for i in range(240):
+		if not trap_jumped and game.player.position.x >= 1520.0 and game.player.is_on_floor():
+			game.player.test_jump_pressed = true
+			trap_jumped = true
+		await steps(1)
+		if game.state != Game.State.PLAYING or game.player.position.x >= 1660.0:
+			break
+	check("spring-trap-punishes-the-jump", game.state == Game.State.DYING and trap_jumped, {"state":game.state,"death_reason":game.death_reason,"x":snappedf(game.player.position.x,0.01),"y":snappedf(game.player.position.y,0.01)})
+
+	# Coin sits above ledge D, the highest surface. Walking it must not collect.
+	await fresh()
+	game.player.reset_at(Vector2(1270, 248))
+	await steps(3)
+	game.player.test_axis = 1.0
+	for i in range(60):
+		await steps(1)
+		if game.player.position.x >= 1345.0 or game.state != Game.State.PLAYING:
+			break
+	check("coin-not-collectable-on-foot", game.coins_taken == 0 and game.player.position.x >= 1345.0, {"coins_taken":game.coins_taken,"x":snappedf(game.player.position.x,0.01)})
+
+	await fresh()
+	game.player.reset_at(Vector2(1270, 248))
+	await steps(3)
+	game.player.test_axis = 1.0
+	var coin_jumped := false
+	for i in range(120):
+		if not coin_jumped and game.player.position.x >= 1290.0 and game.player.is_on_floor():
+			game.player.test_jump_pressed = true
+			coin_jumped = true
+		await steps(1)
+		if game.coins_taken > 0 or game.state != Game.State.PLAYING:
+			break
+	check("coin-collected-by-jumping", game.coins_taken == 1, {"coins_taken":game.coins_taken,"state":game.state,"jumped":coin_jumped})
+
+	# A retry must re-arm the trap and restore the coin.
+	game.resolve_contacts(true, false)
+	await steps(40)
+	check("retry-rearms-trap-and-coin", game.coins_taken == 0 and game.rising[0].phase == "down" and is_equal_approx(game.rising[0].y, float(game.level.rising_hazards[0].rect[1])), {"coins_taken":game.coins_taken,"phase":game.rising[0].phase,"spike_y":game.rising[0].y})
+	# -------------------------------------------------------------------------
+
 	await fresh()
 	var route = Route.new()
 	var route_ticks := 0
@@ -181,8 +257,10 @@ func run() -> void:
 		route.step(game.player)
 		await steps(1)
 		route_ticks += 1
-	check("complete-real-route", game.state == Game.State.COMPLETE and game.deaths == 0, {"branch":route.branch,"state":game.state,"deaths":game.deaths,"ticks":route_ticks,"position":str(game.player.position),"jump_marks_used":route.next_jump})
+	check("complete-real-route", game.state == Game.State.COMPLETE and game.deaths == 0 and game.coins_taken == 0, {"branch":route.branch,"state":game.state,"deaths":game.deaths,"ticks":route_ticks,"position":str(game.player.position),"jump_marks_used":route.next_jump,"coins_taken":game.coins_taken})
 
+	# The coin is the high road's payoff: unreachable from the low floor, so the
+	# two route checks above and below assert 0 and 1 respectively.
 	await fresh()
 	var high_route = Route.new("high")
 	var high_ticks := 0
@@ -190,7 +268,7 @@ func run() -> void:
 		high_route.step(game.player)
 		await steps(1)
 		high_ticks += 1
-	check("complete-high-road-route", game.state == Game.State.COMPLETE and game.deaths == 0, {"branch":high_route.branch,"state":game.state,"deaths":game.deaths,"ticks":high_ticks,"position":str(game.player.position),"jump_marks_used":high_route.next_jump})
+	check("complete-high-road-route", game.state == Game.State.COMPLETE and game.deaths == 0 and game.coins_taken == 1, {"branch":high_route.branch,"state":game.state,"deaths":game.deaths,"ticks":high_ticks,"position":str(game.player.position),"jump_marks_used":high_route.next_jump,"coins_taken":game.coins_taken})
 	game.start_session()
 	game.start_session()
 	check("replay-idempotent", game.state == Game.State.PLAYING and game.deaths == 0 and game.player.jumps == 0, {"state":game.state,"deaths":game.deaths,"jumps":game.player.jumps})

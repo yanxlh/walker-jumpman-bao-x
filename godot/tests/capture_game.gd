@@ -96,7 +96,73 @@ func run() -> void:
 		await capture(shot[0])
 		game.set_physics_process(true)
 		game.player.set_physics_process(true)
-	print("VISUAL EVIDENCE: 12 rendered viewport captures written")
+	# Spring trap, driven by the real bait sequence: stop beside it, hop to arm
+	# it, walk under. Nothing is teleported into position.
+	for trap in [["14-trap-baited", "up"], ["15-trap-walk-under", "under"]]:
+		game.state = Game.State.MENU
+		game.start_session()
+		game.player.test_control = true
+		game.player.reset_at(Vector2(1470, 320))
+		for i in range(4): await step()
+		var br = Route.new()
+		br.next_jump = br.jump_marks.size()
+		for i in range(300):
+			br.step(game.player)
+			await step()
+			if game.state != Game.State.PLAYING:
+				break
+			if trap[1] == "up" and br.baited and game.rising[0].phase == "up" and game.player.is_on_floor():
+				break
+			if trap[1] == "under" and game.player.position.x >= 1576.0:
+				break
+		game.set_physics_process(false)
+		game.player.set_physics_process(false)
+		await capture(trap[0])
+		game.set_physics_process(true)
+		game.player.set_physics_process(true)
+
+	# The punished naive play: run straight at it and jump across.
+	game.state = Game.State.MENU
+	game.start_session()
+	game.player.test_control = true
+	game.player.reset_at(Vector2(1450, 320))
+	for i in range(4): await step()
+	game.player.test_axis = 1.0
+	var naive := false
+	for i in range(240):
+		if not naive and game.player.position.x >= 1520.0 and game.player.is_on_floor():
+			game.player.test_jump_pressed = true
+			naive = true
+		await step()
+		if game.state != Game.State.PLAYING:
+			break
+	game.set_physics_process(false)
+	game.player.set_physics_process(false)
+	await capture("16-trap-punishes-jump")
+	game.set_physics_process(true)
+	game.player.set_physics_process(true)
+
+	# Reward coin on ledge D -- the highest surface, high road only.
+	game.state = Game.State.MENU
+	game.start_session()
+	game.player.test_control = true
+	game.player.reset_at(Vector2(1270, 248))
+	for i in range(4): await step()
+	game.player.test_axis = 1.0
+	var coin_fired := false
+	for i in range(120):
+		if not coin_fired and game.player.position.x >= 1290.0 and game.player.is_on_floor():
+			game.player.test_jump_pressed = true
+			coin_fired = true
+		await step()
+		if game.player.position.x >= 1316.0 or game.state != Game.State.PLAYING:
+			break
+	game.set_physics_process(false)
+	game.player.set_physics_process(false)
+	await capture("17-coin-on-high-ledge")
+	game.set_physics_process(true)
+	game.player.set_physics_process(true)
+	print("VISUAL EVIDENCE: 16 rendered viewport captures written")
 	game.queue_free()
 	await process_frame
 	quit()
