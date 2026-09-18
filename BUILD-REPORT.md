@@ -1,3 +1,10 @@
+> **STARTER DOCUMENT — not Bao Xing's work.** This file ships with
+> [nikbearbrown/walker-jumpman](https://github.com/nikbearbrown/walker-jumpman) and is kept
+> **unedited** at commit `0852e7f`. It describes the STARTER's design and the STARTER's
+> results, not this extension. For what I built and measured, read
+> [`README.md`](README.md), [`CHANGE-BRIEF.md`](CHANGE-BRIEF.md) and
+> [`TEST-REPORT.md`](TEST-REPORT.md).
+
 # First Steps — playable slice
 
 Built September 10, 2026 under Bear's request: **“Build a simple level for walker-jumpman.”** This is the small control/retry prototype, not the full three-zone, twenty-cherry GDD or a public game release.

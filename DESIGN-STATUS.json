@@ -1,4 +1,5 @@
 {
+  "_NOTE": "STARTER FILE, unedited from nikbearbrown/walker-jumpman @ 0852e7f. Describes the STARTER's approval state, not this extension's. Bao Xing's state is in README.md, CHANGE-BRIEF.md and TEST-REPORT.md.",
   "schema_version": 1,
   "project_id": "walker-jumpman",
   "project_name": "walker-jumpman",
@@ -56,8 +57,18 @@
     "scope": "Automated mechanics and synthetic keyboard checks plus actual rendered-viewport inspection, not human playtesting",
     "human_sessions": 0,
     "results": [
-      {"file": "evidence/mechanics-1789078842.10165.json", "scope": "First-slice mechanics", "checks": 25, "failures": 0},
-      {"file": "evidence/keyboard-1789078680.84209.json", "scope": "Synthetic keyboard events", "checks": 9, "failures": 0}
+      {
+        "file": "evidence/mechanics-1789078842.10165.json",
+        "scope": "First-slice mechanics",
+        "checks": 25,
+        "failures": 0
+      },
+      {
+        "file": "evidence/keyboard-1789078680.84209.json",
+        "scope": "Synthetic keyboard events",
+        "checks": 9,
+        "failures": 0
+      }
     ]
   },
   "export": {

@@ -1,3 +1,10 @@
+> **STARTER DOCUMENT — not Bao Xing's work.** This file ships with
+> [nikbearbrown/walker-jumpman](https://github.com/nikbearbrown/walker-jumpman) and is kept
+> **unedited** at commit `0852e7f`. It describes the STARTER's design and the STARTER's
+> results, not this extension. For what I built and measured, read
+> [`README.md`](README.md), [`CHANGE-BRIEF.md`](CHANGE-BRIEF.md) and
+> [`TEST-REPORT.md`](TEST-REPORT.md).
+
 # walker-jumpman — Game brief
 
 Version: 0.2.0 · September 10, 2026 · **Draft for human review**
