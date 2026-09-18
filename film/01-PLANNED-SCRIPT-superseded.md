@@ -1,3 +1,8 @@
+> **SUPERSEDED — planning artefact, not the delivered film.**
+> Written before the Brutalist skill was available. The film that shipped is documented in
+> `../youtube/claude-liam-walker-jumpman-bao-x-walkthrough/`. See `film/README.md`.
+> Placeholders like `<<…>>` below were never resolved because this version was not rendered.
+
 # Narration script — walker-jumpman-bao-x
 
 **STAGED, NOT RENDERED.** Numbers marked `<<…>>` must be re-read from the actual run at
