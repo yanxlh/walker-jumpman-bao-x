@@ -192,14 +192,54 @@ treated it as a collision problem; it was an information-placement problem.
 
 - **No human has played this build.** `TEST-REPORT.md` §7 is empty and stays empty
   until I play it. This is the biggest hole in the submission.
-- **The Brutalist `godot-waikthrough` skill is not installed** on this machine — not in
-  `~/.claude/skills`, not in the plugin cache. The film cannot be rendered with the
-  required workflow until I obtain the course-provided version. The beat sheet, script
-  and evidence are staged in `film/`.
+- **The Brutalist skill is now installed** — vendored from
+  `github.com/nikbearbrown/brutalist.art` to `~/brutalist.art` and symlinked into
+  `~/.claude/skills`. Its render toolchain is not: `ffmpeg`, `kokoro-onnx`, `mutagen`,
+  `manim`, `faster-whisper`, the Remotion `node_modules` and the Kokoro voice model are
+  all still missing, so nothing has been rendered.
 - **Open question I have not resolved:** the high road saves no time (both branches run
   618 ticks, because jumps do not change horizontal speed). Is a fork whose branches
   cost the same still a real decision? I think yes — it trades precision against nerve
   — but I would rather a playtester told me than assume it.
+
+---
+
+## Entry 10 — 2026-09-17 · I played it, and asked for two changes
+
+I ran the build and asked for a reward to chase and for the last spike to become a
+trap rather than an obstacle. Both were scope additions **after** the change brief was
+frozen, so they are recorded as CHANGE-BRIEF R5, not folded into the predictions.
+
+What took iteration was the trap's arming rule, and all three corrections were mine:
+
+1. Claude's first version armed from x = 1464, **104 px before the spike.** It sprang
+   while I was nowhere near it, which read as a random event rather than a trap.
+   Told it to put the detection directly above the spike.
+2. It also drew a yellow pressure plate on the floor. I did not want a plate — the
+   arming should be a position match against the character, with no floor marking.
+3. The rebuilt zone gave a measured 20 px bait window. Too generous; told it to halve
+   it. Final window is **10 px (x 1550–1558)**, bounded on the right by the fact that
+   standing at 1560 already puts you inside the grounded spike.
+4. Finally I had the guide rail under the spike removed, so the trap has no tell at all
+   except the sign.
+
+**What I learned from the numbers.** The reason this trap works at all is a coincidence
+of the starter's tuning I had not appreciated: standing, the player occupies y 292–320;
+at the top of a jump, y 236–264. Those two bands do not overlap. So a zone placed at
+y 244–284 is *provably* unreachable on foot and *provably* reachable in the air —
+walking can never arm it and jumping always will. That is not a tuned threshold, it is
+geometry, which is why I asked for the arming test to be a plain rectangle intersection
+against the collider box rather than an Area2D.
+
+**A bug worth recording.** Wiring the coin reproduced the exact defect the starter's
+BUILD-REPORT describes for deaths: re-enabling `monitoring` on respawn replays the
+pre-reset overlap, so the coin got re-collected one frame after a retry had restored
+it. The fix was to put the pickup behind the starter's existing `contact_settle_ticks`
+gate. I had read that comment days earlier and still walked into the same trap.
+
+**Still open:** I have not verified that a 10 px bait window is findable by someone who
+has not read the code. I asked for it to be that tight; I have not yet proved it is
+fair. That belongs in the playthrough section below, unfilled.
 
 ---
 
@@ -223,10 +263,13 @@ choice, and anything I changed as a result. If something worked immediately, say
 | Label placement | called the second fix (move to the decision point) | made both edits |
 | Predictions | frozen before build, scored honestly afterwards | wrote them up |
 | Documents | decided what must stay unfilled | drafted the prose |
+| Spring trap | required detection above the spike, no plate, no rail, and the window halved to 10 px | implemented the state machine and the geometry test |
+| Reward coin | placed it on the highest ledge so the high road finally pays | implemented pickup, HUD counter, retry reset |
 
 **Accepted** from Claude: the probe methodology, the `_draw()` geometry, the data-driven
 rewrite of `session.gd`/`hud.gd`, the eight added checks.
 **Modified:** the fork geometry (three iterations), the label placement, the capture
 spawn positions.
 **Rejected:** the spec-document detour, the raised tick budget, the first two label
-positions.
+positions, the trap's original 104 px-early trigger, the floor pressure plate, the
+20 px bait window, and the spike guide rail.

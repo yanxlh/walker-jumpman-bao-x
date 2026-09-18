@@ -1,8 +1,8 @@
 {
   "project": "walker-jumpman-bao-x",
   "starter": "nikbearbrown/walker-jumpman",
-  "build_id": "9b9850959283f4f370764c493961264faaa1525d9d55a09d1b6071409b6f2016",
-  "created_at": "2026-09-16T19:36:46.854Z",
+  "build_id": "585b05e7f6d9d55673973778ba8a269c7c68d3021de1484374e170e42f3d9cd6",
+  "created_at": "2026-09-18T16:01:22.543Z",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "renderer": "Compatibility",
   "scope": "First Steps control/retry slice (starter, unmodified) plus the Pick a Line fork extension",
@@ -12,55 +12,55 @@
     "godot/features/player/tuning.gd": "7a09e96ef11bfa3e1e3b00849e84ed15b453a2e2780b9c94c90c376aea62aa37",
     "godot/features/player/tuning.gd.uid": "9411c240407f1c4afbb5e85649ef3215765190421bc3621a7457e065e036751a",
     "godot/game/main.tscn": "017da6e141ad6f6199a9219208483c82cacd257210dbaa6b1184a27157a63a2f",
-    "godot/game/session.gd": "027d83d6c8e88c18bff75035c1f5046cb4ac6c35f32ec7262fb2e2d49210dd7e",
+    "godot/game/session.gd": "4a0eb48a4658d30a91ae24781d7e44b1288ec4a886b29f2307f1e9b9a4a45508",
     "godot/game/session.gd.uid": "cbd9b4dc192752918a54c94b364b7891028856b6de6a4391d924522985ffeb77",
-    "godot/levels/first_steps.json": "5ea45cd8b12c1dfcfdd836f049e29690b11b25429f6e6d375d3b51b1bba0cec0",
+    "godot/levels/first_steps.json": "949eb1e238878f263741193503b28aacd2d8b1671c9f5aa044419e20675207b1",
     "godot/project.godot": "18b80fb608279ceda4a94c998aea4ec6f5bb8d79c1969a9a6c4ac7a1552e47cf",
-    "godot/tests/capture_game.gd": "85c2b9918266e13d3a15dcfaa4dae84adcf9876cbb67cc309bcd552177ac02cf",
+    "godot/tests/capture_game.gd": "f8cb6a694688416fcead42c19f2fed8ca7679f0b747862dd674e2fe232d7eee5",
     "godot/tests/capture_game.gd.uid": "60af73a3bc1bbf2fb747f628c6b19d474e5d8ec63086693d7a3662c343635625",
-    "godot/tests/probe_reach.gd": "b148b610b841ed5b21c15581661e9d662e74c95e714c0bd9b5d6a3c8cc3d47d3",
-    "godot/tests/route_driver.gd": "7e9e56682bcbd82f5e8b31256f93c5b08060681fc110b82a8bc309daaee10bbf",
+    "godot/tests/probe_reach.gd": "d5141fa4f996b31218ba6fb1f7fffa5fcbdd729db381305ad0eba420bb7fc047",
+    "godot/tests/route_driver.gd": "956fb5f1e80f38cfb959911b2c607815720ac2efa9d4729f1a00e477490423fb",
     "godot/tests/route_driver.gd.uid": "6e51ae14383d23db51a043c2455ae9a4b9b972304db25c9422dbe41d698af41b",
-    "godot/tests/test_game.gd": "b82babd8613e88c9b90d6a313f0b0989d8645af0d2f38be6e4ac48c17fd66c87",
+    "godot/tests/test_game.gd": "db423c2799e90d95f29d9525b90313a013c9b12e6f9e955f08758fd5c1f72019",
     "godot/tests/test_game.gd.uid": "57933fea45074e0597f2fb3f474e69944d6198c1f432274187c9a10bee0c31dc",
     "godot/tests/test_keyboard.gd": "39b5d37039cee469aa6a87ab45acc852d1c55a7ebcebca5ec328d9d71413c6c9",
     "godot/tests/test_keyboard.gd.uid": "6ea68e4d1bb1c113e9454aca6e4dc08c148cbcf6eeefb5b301c289dcc718f25e",
-    "godot/ui/hud.gd": "c6c3337d8fe5df906faf7716dadc651eb80285d9562452d33286e0f9beef0b9e",
+    "godot/ui/hud.gd": "77ea10c7514d26bac3161e79d009a3d3ccde79ed4db8714bbd2697c073eb1db4",
     "godot/ui/hud.gd.uid": "d2eaf3c885a55bcd31e9b2f36d3a5355f10105da426e96a9685434da00b28330",
     "walker-jumpman.command": "4adbb8884b6c05bdba97f2b4919e97e7e351a0bd2446ac7e05d6d8b250041c79"
   },
   "tests": [
     {
-      "file": "evidence/mechanics-1789587403.2361.json",
-      "checks": 33,
+      "file": "evidence/mechanics-1789747268.94509.json",
+      "checks": 40,
       "failures": 0
     },
     {
-      "file": "evidence/keyboard-1789587406.16112.json",
+      "file": "evidence/keyboard-1789747270.10336.json",
       "checks": 9,
       "failures": 0
     }
   ],
-  "machine_checks_passed": 42,
+  "machine_checks_passed": 49,
   "human_playtest_sessions": 0,
   "exported": false,
   "game_published": false,
   "screenshots": [
     {
       "file": "evidence/screens/01-menu.png",
-      "sha256": "56f2c4aa8530fc792bea99a7c611707d97edade8f4d4ba8e5ecbf774e25fbe5a"
+      "sha256": "87ad31a56151173aec6b1d2f88fea1246ab99227d3710b54c1ef4ab1405a381f"
     },
     {
       "file": "evidence/screens/02-failure.png",
-      "sha256": "ad272dc76335c0cc2711dbd6eaeda9049ebe85ac6d2f1e43418accbfe38b8db2"
+      "sha256": "1dacccec05a5c7867e1721d56b2badb301842175d1fcb6d978988f007e6484a1"
     },
     {
       "file": "evidence/screens/03-jump.png",
-      "sha256": "6128f9a47dc7ff928f4834db05d697823dbd0b291cf2d4077767ba72bfb8c6fe"
+      "sha256": "042e7d15d6b91c1df2da2310f1b7e67021dc920e77401601321089cdfce9a0eb"
     },
     {
       "file": "evidence/screens/04-complete.png",
-      "sha256": "f639f426759b1c9600cc0c16e00b15fda31165478f301e913ea88adac36f5389"
+      "sha256": "0894291839fc5cdbd463bc5b16a9e59583e37859dc52abd0a1f6730c860f8782"
     },
     {
       "file": "evidence/screens/05-char-idle-right.png",
@@ -68,11 +68,11 @@
     },
     {
       "file": "evidence/screens/06-char-run-right.png",
-      "sha256": "9d2ab4ed66bc10cdf32aa35e562555f12096a51ae8512fa85762be18532d3579"
+      "sha256": "d30046f6d6f09d705069fc95515e48819e25e34e2f86306435b8bc8ed92bd0ec"
     },
     {
       "file": "evidence/screens/07-char-run-left.png",
-      "sha256": "252301c3d02522c0d3633a378342162b7178251962a51222f65b21c5a5de4aa8"
+      "sha256": "2cdbfcb6ed26bc03a260f86d04aa4b2d8f963010d01fe82cbf0ffb80d1dc6258"
     },
     {
       "file": "evidence/screens/08-char-jump-right.png",
@@ -80,23 +80,39 @@
     },
     {
       "file": "evidence/screens/09-fork-decision.png",
-      "sha256": "7b0d37d43c8624e12093936b301add588f7233d456c864463f346ed45fd25082"
+      "sha256": "9a5757eb4518a00358f6420615ad64a6420eb3e7d0a0fd7661a0a63b1c6bf3bb"
     },
     {
       "file": "evidence/screens/10-high-road-ledges.png",
-      "sha256": "0a44574c2c7065ed9718502848ae2d8914cb7032a12a1f4766c1f42d3e90eaa7"
+      "sha256": "53913c497526e2a86110014268a64cc9ea3913b2dafb252e9bbd02d52adc7d0e"
     },
     {
       "file": "evidence/screens/11-low-corridor.png",
-      "sha256": "c0108b27012d2fdfc7b3d296e77d72901d0e19875da186654076d99b0091b8ed"
+      "sha256": "7566881919a42853ed56c56d84268aa571a77894483eae6fbf98e513e1b8c32c"
     },
     {
       "file": "evidence/screens/12-finish-relocated.png",
-      "sha256": "b6750d2d5453016d1d2c22a26477a762aca8f79b2e451b9ee281b476c320dc4f"
+      "sha256": "336311d09ea989b23f522bc183c898869b29a2ab2aa38ddc340a6ebeaa93fd51"
     },
     {
       "file": "evidence/screens/13-p5-datadriven-fixture.png",
       "sha256": "fae89b273f3558ab4055d77dce38be6f73125805e0b7a8f4417c2fdb095d6ac6"
+    },
+    {
+      "file": "evidence/screens/14-trap-baited.png",
+      "sha256": "d0a2d3696f14f65f29249f569cbcee72ec230038a445e1bccb7aa9abed84e28e"
+    },
+    {
+      "file": "evidence/screens/15-trap-walk-under.png",
+      "sha256": "e836680e9eff0c86d8c589847da4a6a32494772ba95912f87cf3d3cc596240d8"
+    },
+    {
+      "file": "evidence/screens/16-trap-punishes-jump.png",
+      "sha256": "6b2aca978045e1db80f4b31816631b79d66352429a8cf6789523ba8af78b91c1"
+    },
+    {
+      "file": "evidence/screens/17-coin-on-high-ledge.png",
+      "sha256": "10910b0bf64647f0a9d1ea67216f256026ae08076426d2d1d493d5563806c1b6"
     }
   ]
 }

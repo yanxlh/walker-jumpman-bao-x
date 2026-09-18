@@ -23,12 +23,12 @@ BUILD-REPORT.md, confirming the baseline is trustworthy.
 
 | Suite | Checks | Failures |
 |---|---:|---:|
-| `test_game.gd` | **33** | **0** |
+| `test_game.gd` | **40** | **0** |
 | `test_keyboard.gd` | **9** | **0** |
-| Total | **42** | **0** |
+| Total | **49** | **0** |
 
 **All 25 starter checks still pass with their assertions unmodified.** Nothing was
-deleted, relaxed, or rewritten. The 8 added checks are listed in §4.
+deleted, relaxed, or rewritten. The 15 added checks are listed in §4.
 
 Reproduce:
 
@@ -66,7 +66,23 @@ node scripts/record-build.cjs
 | `old-finish-position-no-longer-wins` | x=916 no longer completes the level | state stayed PLAYING |
 | `relocated-finish-triggers` | x=1700 completes | state COMPLETE |
 | `hud-progress-tracks-relocated-finish` | progress bar derives from level data | `0.522` at old finish x, `1.0` at new finish |
-| `complete-high-road-route` | the high branch also reaches the finish | COMPLETE, 0 deaths, 618 ticks, 10 jumps |
+| `complete-high-road-route` | the high branch also reaches the finish | COMPLETE, 0 deaths, 671 ticks, 9 jumps, **coin 1** |
+
+Added later with the spring trap and coin (CHANGE-BRIEF R5):
+
+| ID | Asserts | Observed |
+|---|---|---|
+| `trap-not-armed-by-walking` | walking past never arms the trap | phase `down` at x=1551 |
+| `spring-trap-bait-then-walk-under` | bait from the safe side, then walk under | reached x=1641, still PLAYING |
+| `spring-trap-actually-rises` | the spike reaches `raised_y` | top reached **240.0** |
+| `spring-trap-punishes-the-jump` | jumping across is fatal | DYING at (1566.6, 265.5), reason "It goes up when you do" |
+| `coin-not-collectable-on-foot` | the coin is above standing height | walked D end to end, `coins_taken 0` |
+| `coin-collected-by-jumping` | a jump from ledge D takes it | `coins_taken 1` |
+| `retry-rearms-trap-and-coin` | a death restores both | `coins_taken 0`, phase `down`, spike y 304 |
+
+The two route checks were also tightened to assert the coin split: `complete-real-route`
+requires `coins_taken == 0` (the low road cannot reach it) and `complete-high-road-route`
+requires `coins_taken == 1`.
 
 ### Fixture changes, and why they are not weakening
 
@@ -92,8 +108,11 @@ real physics. These are measurements, not arithmetic.
 | C → D | +24, 48 px gap | 58 px |
 | D → merge platform | −72 | 54 px |
 | low road → merge (56 px gap) | flat | 38 px |
-| merge → over final spikes | flat | 54 px |
 | low corridor walk-through | — | clear, 0 jumps |
+| **spring-trap bait from standing** | — | **10 px (x 1550–1558)** |
+
+Standing at x ≥ 1560 already touches the grounded spike, so 1558 is the last safe
+bait position and the window is bounded on both sides by geometry, not by tuning.
 
 Run it with:
 
@@ -180,6 +199,14 @@ ACROSS: no headroom, one committed gap.
 with a short `LOW / NO HEADROOM` marker at y = 333, on the dark slab, clear of both the
 walking line and the HUD footer. Verified in `screens/09-fork-decision.png`.
 
+**Third cycle (spring trap, three passes at Bao's direction).** The first trap armed
+from x = 1464, 104 px before the spike — it sprang while the player was nowhere near
+it, which read as unrelated. Moved the arming test to a zone directly above the spike
+and restricted it to the jump band. Measured bait window came out 20 px; halved to
+**10 px** on a second instruction by moving the zone's left edge from 1548 to 1558.
+The guide rail drawn under the spike was then removed, so the trap has no floor
+marking and no rail — the sign is the only tell.
+
 **Second cycle (capture quality).** `screens/10-high-road-ledges.png` originally froze
 mid-jump, so it documented a blur rather than the landing it was meant to show. The
 capture loop now waits for `is_on_floor()` before freezing.
@@ -189,9 +216,11 @@ capture loop now waits for `is_on_floor()` before freezing.
 ## 9. Honest limitations
 
 1. **No human has played this.** The largest gap in this report. §7 is empty.
-2. **The high road saves no time.** Both branches complete in exactly 618 ticks, because
-   horizontal speed is constant and jumps do not change it. The fork is a
-   precision-vs-nerve choice, *not* a shortcut, and calling it a shortcut would be wrong.
+2. **The high road still saves no time — but it now pays.** Both branches cost the same
+   671 ticks, because horizontal speed is constant and jumps do not change it. That was
+   limitation #3 in the first version of this report: the fork traded precision for
+   nothing. The reward coin above ledge D fixes the *payoff* (high road 1 coin, low road
+   0, both asserted) but **not** the timing. The fork is still not a shortcut.
 3. **Missing ledge D kills you.** B and C sit above safe floor so a miss is recoverable,
    but D overhangs the gap. This asymmetry was recorded in the change brief before
    implementation, not discovered afterwards and rationalised.
@@ -208,3 +237,10 @@ capture loop now waits for `is_on_floor()` before freezing.
    fixed input line each. Off-route behaviour in the new section — odd approach speeds,
    backtracking, jumping into ledge corners — is unverified.
 8. **No export.** Source-only. No Web build, no standalone application.
+9. **The 10 px bait window is unvalidated by a human.** It is bounded by geometry and
+   reliably reproducible in the probe, but 10 px is 0.06 s of walking at full speed.
+   Whether a person can find and hit it without frustration is exactly the kind of
+   judgment §7 exists for, and §7 is still empty.
+10. **The trap's timing constants are untested against human reaction.** `rise 0.18 s`,
+   `hold 2.6 s`, `fall 0.45 s` were chosen so the scripted route clears comfortably.
+   Nobody has checked whether the hold is long enough when a person hesitates.

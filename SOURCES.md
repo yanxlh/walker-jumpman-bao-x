@@ -31,11 +31,11 @@ unedited; they describe the starter's state, not this extension's.
 | Area | Change |
 |---|---|
 | `features/player/player.gd` | `_draw()` fully rewritten — the Lamp-Head Courier. Physics, collider and tuning untouched. |
-| `levels/first_steps.json` | Extension geometry at x > 960; finish moved 916 → 1696; width 960 → 1760. Original geometry unchanged. |
-| `game/session.gd` | Spike and finish drawing made data-driven; level width, grid, background and parallax derived from data; hazard collision width derived from the rect; new signage. |
+| `levels/first_steps.json` | Extension geometry at x > 960; spring trap and reward coin; finish moved 916 → 1696; width 960 → 1760. Original geometry unchanged. |
+| `game/session.gd` | Spike and finish drawing made data-driven; level width, grid, background and parallax derived from data; hazard collision width derived from the rect; spring-trap state machine and coin pickup; new signage. |
 | `ui/hud.gd` | `progress_ratio()` extracted and derived from level data instead of the literal 852; retitled. |
 | `tests/route_driver.gd` | Branch-aware; low and high routes to the relocated finish. |
-| `tests/test_game.gd` | 8 checks added. No starter assertion altered. |
+| `tests/test_game.gd` | 15 checks added. No starter assertion altered. |
 | `tests/probe_reach.gd` | **New.** Reachability probe. |
 | `tests/capture_game.gd` | 8 captures added; grounded-frame and HUD-visibility handling. |
 | `scripts/record-build.cjs` | Project name, scope, and full screenshot enumeration. |
@@ -65,7 +65,7 @@ game, no sprite sheets, and no imported art.
 | Node.js | v25.8.2 | `scripts/record-build.cjs` |
 | git | 2.51.0 | version control |
 | Claude Code (Opus 5) | — | see below |
-| Brutalist `godot-waikthrough` | **not installed** | required for the film; see README "Known limitations" |
+| Brutalist `godot-waikthrough` | vendored at `~/brutalist.art` | film workflow; render toolchain still missing, see README |
 
 ## AI contribution
 
@@ -78,7 +78,11 @@ additions; the prose drafts of these documents.
 **Claude diagnosed:** the head-height/roofing conflict that made the first fork layout
 impossible — I would not have found this by inspection.
 
-**I decided:** the character concept (and rejected two others on collider-fit grounds);
+**I decided:** that the spring trap should arm off a geometry test against the player's
+collider box rather than an Area2D, so the rule reads in one line and is testable
+without the physics broadphase; that the trap's arming zone belongs directly above the
+spike and the bait window should be 10 px; that the coin belongs on the highest ledge so
+it becomes the high road's payoff; the character concept (and rejected two others on collider-fit grounds);
 the level concept; to keep the fork and re-cut geometry rather than touch `tuning.gd`;
 to run and archive a pre-edit baseline; to revert the tick budget to the starter's 900;
 the final label placement; which sections of `TEST-REPORT.md` and `FRICTIONAL.md` must

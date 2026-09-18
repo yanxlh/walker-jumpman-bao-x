@@ -81,11 +81,13 @@ coyote (478,285), spike (330,310) and fall-boundary (415,432) fixtures remain va
 regression evidence.
 
 ```
+                                   ($) coin 1320,206
                                     D━━━━━
                        C━━━━━                    (y=248)
           B━━━━━                                 (y=272)
- ORIGINAL ═══════════════════════════════┓ 56px ┏━━━━━━▲━━━⚑
-  x ≤ 960     low road: roofed, no headroom      gap    spikes  finish 1696
+ ORIGINAL ═══════════════════════════════┓ 56px ┏━━━━━━▲━━━━━⚑
+  x ≤ 960     low road: roofed, no headroom      gap   trap   finish 1696
+                                                       1568
 ```
 
 At the end of the original floor the route forks:
@@ -95,11 +97,32 @@ At the end of the original floor the route forks:
 - **Low road** — keep running. The ledges overhead form a **roofed corridor you cannot
   jump in**, and it ends at a committed 56 px gap.
 
-Both lines merge onto a final platform with one shared spike cluster before the flag.
-Missing ledge B or C drops you onto the low road and the run continues; missing D
-drops you into the gap.
+Both lines merge onto a final platform. Missing ledge B or C drops you onto the low
+road and the run continues; missing D drops you into the gap.
 
 Finish moved 916 → 1696. Level width 960 → 1760.
+
+### The spring trap
+
+The final spike is a trap, not an obstacle. It arms off plain geometry against the
+player's own collider box — no trigger area, nothing drawn on the floor, no guide rail.
+The arming zone sits directly above the spike and **inside the jump band only**:
+
+- standing, you occupy y 292–320 — the zone at y 244–284 is out of reach
+- airborne, you reach y 236–264 — which intersects it
+
+So **walking never arms it and jumping beside it always does.** Jump across and the
+spike launches into your own arc. The way through is to bait it from the safe side and
+walk underneath, where the raised spike at y 240–256 leaves 36 px of headroom. The
+measured bait window is **10 px** (x 1550–1558); at x ≥ 1560 you are already standing
+in the grounded spike.
+
+### The reward coin
+
+One coin at (1320, 206), above ledge D — the highest surface in the game. Standing on D
+your body occupies y 220–248, so it needs a jump, and because D is high-road-only **the
+coin is the high road's payoff**. Low route finishes with 0, high route with 1, and both
+route checks assert it.
 
 ### Drawing bugs fixed
 
@@ -118,8 +141,8 @@ correctly *by accident* — `evidence/screens/13-p5-datadriven-fixture.png`.
 
 ## Verification
 
-**42 automated checks, 0 failures** — 25 starter checks still passing with their
-assertions unmodified, plus 8 new, plus 9 keyboard checks.
+**49 automated checks, 0 failures** — 25 starter checks still passing with their
+assertions unmodified, plus 15 new, plus 9 keyboard checks.
 
 ```bash
 /Applications/Godot.app/Contents/MacOS/Godot --headless --path godot --script res://tests/test_game.gd
@@ -128,7 +151,7 @@ assertions unmodified, plus 8 new, plus 9 keyboard checks.
 node scripts/record-build.cjs
 ```
 
-Both branches complete with zero deaths in **618 ticks**, under the starter's original
+Both branches complete with zero deaths in **671 ticks**, under the starter's original
 900-tick ceiling, which was deliberately left unchanged.
 
 Geometry was chosen by measurement. `tests/probe_reach.gd` sweeps real takeoff
@@ -147,21 +170,27 @@ credits: **[SOURCES.md](SOURCES.md)**
 
 1. **No human has played this build.** `TEST-REPORT.md` §7 is deliberately empty. An
    automated input route is not a playtest.
-2. **The film is not yet rendered.** The required Brutalist `godot-waikthrough` skill is
-   not installed on this machine (checked `~/.claude/skills` and the plugin cache). The
-   beat sheet, script and gameplay evidence are staged in [`film/`](film/); rendering is
-   blocked until the course-provided skill is available.
-3. **The high road saves no time.** Both branches take exactly 618 ticks — horizontal
-   speed is constant and jumps do not change it. The fork trades precision against
-   nerve; it is not a shortcut.
-4. **The high road is entry-committed.** Once on the low road the window back up onto
+2. **The film is not yet rendered.** The Brutalist `godot-waikthrough` skill is now
+   installed (vendored to `~/brutalist.art`, symlinked into `~/.claude/skills`), but its
+   render toolchain is not: `ffmpeg`/`ffprobe`, `kokoro-onnx`, `mutagen`, `manim`,
+   `faster-whisper`, the Remotion `node_modules`, and the Kokoro voice model are all
+   missing. Beat sheet and script are staged in [`film/`](film/).
+3. **The high road still saves no time.** Both branches take 671 ticks — horizontal
+   speed is constant and jumps do not change it. The reward coin gives the high road a
+   payoff, but not a faster one. It is not a shortcut.
+4. **The 10 px bait window has not been tried by a human.** It is geometry-bounded and
+   reproducible in the probe, but 10 px is 0.06 s of walking at full speed, and whether
+   a person can find it without frustration is exactly what is untested.
+5. **The trap's timing constants are untested against human reaction.** `rise 0.18 s`,
+   `hold 2.6 s`, `fall 0.45 s` were chosen so the scripted route clears comfortably.
+6. **The high road is entry-committed.** Once on the low road the window back up onto
    ledge B is 4 px. Kept deliberately, but it was a consequence discovered by
    measurement, not an original intention.
-5. **Missing ledge D kills you**, unlike B and C. Recorded in the change brief before
+7. **Missing ledge D kills you**, unlike B and C. Recorded in the change brief before
    implementation.
-6. **Extension coverage is route-based.** One fixed input line per branch. Off-route
+8. **Extension coverage is route-based.** One fixed input line per branch. Off-route
    behaviour in the new section is unverified.
-7. **Source only.** No Web export, no standalone application.
+9. **Source only.** No Web export, no standalone application.
 
 ## Film
 
