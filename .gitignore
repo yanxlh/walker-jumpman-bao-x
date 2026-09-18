@@ -1,1 +1,16 @@
 .godot/
+.DS_Store
+
+# Media kept out of git per the assignment (>25 MB / MP4 / MP3).
+# Reproduce with youtube/**/BUILD-PROMPT.md; the beat sheet, coverage contract,
+# input log and QC reports ARE committed.
+*.mp4
+*.avi
+*.mp3
+*.wav
+youtube/**/capture/*.avi
+youtube/**/capture/*.mp4
+youtube/**/media/
+youtube/**/exports/
+youtube/**/clips/
+youtube/**/mp3/

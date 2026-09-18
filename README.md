@@ -170,11 +170,9 @@ credits: **[SOURCES.md](SOURCES.md)**
 
 1. **No human has played this build.** `TEST-REPORT.md` §7 is deliberately empty. An
    automated input route is not a playtest.
-2. **The film is not yet rendered.** The Brutalist `godot-waikthrough` skill is now
-   installed (vendored to `~/brutalist.art`, symlinked into `~/.claude/skills`), but its
-   render toolchain is not: `ffmpeg`/`ffprobe`, `kokoro-onnx`, `mutagen`, `manim`,
-   `faster-whisper`, the Remotion `node_modules`, and the Kokoro voice model are all
-   missing. Beat sheet and script are staged in [`film/`](film/).
+2. **The outro card is silent.** The stock jingle asset is missing from the toolkit
+   checkout; reported as an asset blocker rather than substituted. Everything else on
+   that card conforms to the outro lock.
 3. **The high road still saves no time.** Both branches take 671 ticks — horizontal
    speed is constant and jumps do not change it. The reward coin gives the high road a
    payoff, but not a faster one. It is not a shortcut.
@@ -194,16 +192,36 @@ credits: **[SOURCES.md](SOURCES.md)**
 
 ## Film
 
-**Not yet rendered — see limitation 2.**
+Rendered with the course Brutalist `godot-waikthrough` skill in **walker** mode.
 
 | | |
 |---|---|
-| Filename | *pending* |
-| SHA-256 | *pending* |
-| Link | *pending — course media storage* |
+| Filename | `claude-liam-walker-jumpman-bao-x-walkthrough.mp4` |
+| SHA-256 | `5faee3c29c60dfae135978eae8dcb136a27df8c34e8bbf761661a19924c3c94c` |
+| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:16** (196.67 s), 12 MB |
+| Link | *upload to course media storage pending* |
 
-Beat sheet and script: [`film/BEAT-SHEET.md`](film/BEAT-SHEET.md),
-[`film/SCRIPT.md`](film/SCRIPT.md).
+Gameplay is **real engine capture at native 4K**, driven by real key events, labeled
+`SCRIPTED INPUT` on screen; frozen tails are labeled `HELD FRAME`. Narration is AI
+(Liam / Kokoro `am_onyx`), stated in the outro.
+
+Reel: [`youtube/claude-liam-walker-jumpman-bao-x-walkthrough/`](youtube/claude-liam-walker-jumpman-bao-x-walkthrough/)
+
+| Document | What it holds |
+|---|---|
+| `beat_sheet.json` | 13 beats, measured durations |
+| `coverage.json` | 19 implemented features with evidence, 5 named as not built |
+| `CAPTURE.md` | how the capture was driven, and the one disclosed deviation |
+| `FACTCHECK.md` | every numeric claim traced to source |
+| `SHOTLIST.md` / `RIFF.md` / `PROMPTS.md` / `BUILD-PROMPT.md` | shot list, commentary, provenance, reproduction |
+| `_qc/REPORT.md` / `_qc/HUMAN-REVIEW.md` | gate output, and what I checked by eye |
+
+**Known asset blocker:** the stock outro jingle (`svg/claude/mp3/`) is absent from this
+checkout of brutalist.art, so the final card is silent rather than silent-under-jingle.
+Reported rather than substituted, per the skill.
+
+Media (`*.mp4`, `*.avi`, `*.mp3`) is gitignored per the assignment; `BUILD-PROMPT.md`
+reproduces it.
 
 ## Repository layout
 

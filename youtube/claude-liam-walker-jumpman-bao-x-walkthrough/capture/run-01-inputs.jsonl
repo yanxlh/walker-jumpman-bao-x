@@ -1,0 +1,69 @@
+{"detail":"main scene instantiated, MENU","kind":"scene","player_x":64.0,"state":0,"t_s":0.133,"tick":8}
+{"detail":"confirm","kind":"press","player_x":64.0,"state":0,"t_s":0.8,"tick":48}
+{"detail":"confirm","kind":"release","player_x":64.0,"state":1,"t_s":0.85,"tick":51}
+{"detail":"start: Enter from the menu","kind":"feature","player_x":64.0,"state":1,"t_s":0.867,"tick":52}
+{"detail":"move_right","kind":"press","player_x":64.0,"state":1,"t_s":0.867,"tick":52}
+{"detail":"movement: holding right","kind":"feature","player_x":64.0,"state":1,"t_s":0.867,"tick":52}
+{"detail":"jump","kind":"press","player_x":140.6,"state":1,"t_s":1.4,"tick":84}
+{"detail":"jump","kind":"release","player_x":148.6,"state":1,"t_s":1.45,"tick":87}
+{"detail":"jump","kind":"press","player_x":292.6,"state":1,"t_s":2.35,"tick":141}
+{"detail":"jump","kind":"release","player_x":300.6,"state":1,"t_s":2.4,"tick":144}
+{"detail":"jump","kind":"press","player_x":426.0,"state":1,"t_s":3.183,"tick":191}
+{"detail":"jump","kind":"release","player_x":434.0,"state":1,"t_s":3.233,"tick":194}
+{"detail":"jump","kind":"press","player_x":548.6,"state":1,"t_s":3.95,"tick":237}
+{"detail":"jump","kind":"release","player_x":556.6,"state":1,"t_s":4.0,"tick":240}
+{"detail":"jump","kind":"press","player_x":712.9,"state":1,"t_s":5.033,"tick":302}
+{"detail":"jump","kind":"release","player_x":720.9,"state":1,"t_s":5.083,"tick":305}
+{"detail":"original section cleared (two gaps, one spike)","kind":"feature","player_x":723.5,"state":1,"t_s":5.1,"tick":306}
+{"detail":"jump","kind":"press","player_x":942.2,"state":1,"t_s":6.467,"tick":388}
+{"detail":"jump","kind":"release","player_x":950.2,"state":1,"t_s":6.517,"tick":391}
+{"detail":"jump","kind":"press","player_x":1040.9,"state":1,"t_s":7.083,"tick":425}
+{"detail":"jump","kind":"release","player_x":1048.9,"state":1,"t_s":7.133,"tick":428}
+{"detail":"jump","kind":"press","player_x":1171.6,"state":1,"t_s":7.9,"tick":474}
+{"detail":"jump","kind":"release","player_x":1179.6,"state":1,"t_s":7.95,"tick":477}
+{"detail":"jump","kind":"press","player_x":1310.2,"state":1,"t_s":8.767,"tick":526}
+{"detail":"jump","kind":"release","player_x":1318.2,"state":1,"t_s":8.817,"tick":529}
+{"detail":"high road: ledges B, C, D and the reward coin","kind":"feature","player_x":1320.9,"state":1,"t_s":8.833,"tick":530}
+{"detail":"coin collected: 1/1","kind":"feature","player_x":1374.2,"state":1,"t_s":9.167,"tick":550}
+{"detail":"jump","kind":"press","player_x":1520.9,"state":1,"t_s":10.083,"tick":605}
+{"detail":"jump","kind":"release","player_x":1528.9,"state":1,"t_s":10.133,"tick":608}
+{"detail":"spring trap: jumping across it (the punished play)","kind":"feature","player_x":1531.5,"state":1,"t_s":10.15,"tick":609}
+{"detail":"death: It goes up when you do","kind":"feature","player_x":1571.5,"state":3,"t_s":10.4,"tick":624}
+{"detail":"automatic retry: back at spawn, retries=1","kind":"feature","player_x":64.0,"state":1,"t_s":10.967,"tick":658}
+{"detail":"move_right","kind":"press","player_x":64.0,"state":1,"t_s":11.3,"tick":678}
+{"detail":"jump","kind":"press","player_x":140.6,"state":1,"t_s":11.833,"tick":710}
+{"detail":"jump","kind":"release","player_x":148.6,"state":1,"t_s":11.883,"tick":713}
+{"detail":"jump","kind":"press","player_x":292.6,"state":1,"t_s":12.783,"tick":767}
+{"detail":"jump","kind":"release","player_x":300.6,"state":1,"t_s":12.833,"tick":770}
+{"detail":"jump","kind":"press","player_x":426.0,"state":1,"t_s":13.617,"tick":817}
+{"detail":"jump","kind":"release","player_x":434.0,"state":1,"t_s":13.667,"tick":820}
+{"detail":"jump","kind":"press","player_x":548.6,"state":1,"t_s":14.383,"tick":863}
+{"detail":"jump","kind":"release","player_x":556.6,"state":1,"t_s":14.433,"tick":866}
+{"detail":"jump","kind":"press","player_x":712.9,"state":1,"t_s":15.467,"tick":928}
+{"detail":"jump","kind":"release","player_x":720.9,"state":1,"t_s":15.517,"tick":931}
+{"detail":"jump","kind":"press","player_x":1360.2,"state":1,"t_s":19.517,"tick":1171}
+{"detail":"jump","kind":"release","player_x":1368.2,"state":1,"t_s":19.567,"tick":1174}
+{"detail":"low road: the roofed corridor, then the 56 px gap","kind":"feature","player_x":1370.8,"state":1,"t_s":19.583,"tick":1175}
+{"detail":"move_right","kind":"release","player_x":1546.8,"state":1,"t_s":20.683,"tick":1241}
+{"detail":"released move_right to stop short of the trap","kind":"bait","player_x":1546.8,"state":1,"t_s":20.683,"tick":1241}
+{"detail":"jump","kind":"press","player_x":1552.2,"state":1,"t_s":20.767,"tick":1246}
+{"detail":"jump","kind":"release","player_x":1552.2,"state":1,"t_s":20.817,"tick":1249}
+{"detail":"hopped straight up beside the spike to spring it","kind":"bait","player_x":1552.2,"state":1,"t_s":20.833,"tick":1250}
+{"detail":"move_right","kind":"press","player_x":1552.2,"state":1,"t_s":21.6,"tick":1296}
+{"detail":"walking under the raised spike","kind":"bait","player_x":1552.2,"state":1,"t_s":21.6,"tick":1296}
+{"detail":"complete: 11.6s, 1 retries, coin 0/1","kind":"feature","player_x":1692.8,"state":4,"t_s":22.533,"tick":1352}
+{"detail":"confirm","kind":"press","player_x":1692.8,"state":4,"t_s":23.867,"tick":1432}
+{"detail":"confirm","kind":"release","player_x":64.0,"state":1,"t_s":23.917,"tick":1435}
+{"detail":"replay: Enter from the completion card, retries reset","kind":"feature","player_x":64.0,"state":1,"t_s":23.933,"tick":1436}
+{"detail":"move_right","kind":"press","player_x":64.0,"state":1,"t_s":23.933,"tick":1436}
+{"detail":"move_right","kind":"release","player_x":151.0,"state":1,"t_s":24.683,"tick":1481}
+{"detail":"pause","kind":"press","player_x":151.0,"state":1,"t_s":24.683,"tick":1481}
+{"detail":"pause","kind":"release","player_x":151.0,"state":2,"t_s":24.733,"tick":1484}
+{"detail":"pause: Esc","kind":"feature","player_x":151.0,"state":2,"t_s":24.75,"tick":1485}
+{"detail":"confirm","kind":"press","player_x":151.0,"state":2,"t_s":25.667,"tick":1540}
+{"detail":"confirm","kind":"release","player_x":151.0,"state":1,"t_s":25.717,"tick":1543}
+{"detail":"resume: Enter","kind":"feature","player_x":151.0,"state":1,"t_s":25.733,"tick":1544}
+{"detail":"move_right","kind":"press","player_x":151.0,"state":1,"t_s":25.733,"tick":1544}
+{"detail":"restart","kind":"press","player_x":151.0,"state":1,"t_s":26.567,"tick":1594}
+{"detail":"restart","kind":"release","player_x":66.1,"state":1,"t_s":26.617,"tick":1597}
+{"detail":"manual retry: R, and it does not count as a death","kind":"feature","player_x":67.6,"state":1,"t_s":26.633,"tick":1598}

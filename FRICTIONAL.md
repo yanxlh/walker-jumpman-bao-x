@@ -190,8 +190,8 @@ treated it as a collision problem; it was an information-placement problem.
 
 ## Entry 9 — What is still not done
 
-- **No human has played this build.** `TEST-REPORT.md` §7 is empty and stays empty
-  until I play it. This is the biggest hole in the submission.
+- **Played 2026-09-18** — see Entry 11. The remaining hole is that the only playtester
+  is the person who designed the level.
 - **The Brutalist skill is now installed** — vendored from
   `github.com/nikbearbrown/brutalist.art` to `~/brutalist.art` and symlinked into
   `~/.claude/skills`. Its render toolchain is not: `ffmpeg`, `kokoro-onnx`, `mutagen`,
@@ -243,10 +243,31 @@ fair. That belongs in the playthrough section below, unfilled.
 
 ---
 
-## [TO BE COMPLETED BY BAO] — my own playthrough
+## Entry 11 — 2026-09-18 · My own playthrough
 
-*Write after playing. Retries taken, what confused me, whether the fork read as a
-choice, and anything I changed as a result. If something worked immediately, say so.*
+Played it start to finish with the keyboard. **Completed, fewer than 5 retries.**
+
+Three things I specifically wanted to check, because I had written all three into the
+report as unverified risks:
+
+- **Did the fork read as a choice?** Yes — at x≈960 I could see it was two roads.
+  That is the revision from Entry 7 working; the earlier version had the explanation
+  buried in the corridor where the character walked over it.
+- **Did the high road's 48 px entry work in a human's hands?** Yes, I took it.
+- **Did I work out the spring trap unaided?** Yes, and it was not hard. This is the one
+  that surprised me, because I had asked Claude to halve the bait window to 10 px and
+  then written a limitation saying I was not sure that was fair. It was fine.
+
+**The thing I have to be honest about:** I designed this. I knew the trap sprang on
+leaving the ground, I knew roughly where to stand, and I knew the coin was on the top
+ledge. So "not hard" from me is much weaker evidence than "not hard" from someone who
+has never seen it. I have written it that way in TEST-REPORT §7 rather than letting a
+clean pass stand unqualified. The remaining gap is a naive playtester, and I have not
+got one.
+
+**Nothing changed as a result.** The playthrough confirmed the design rather than
+correcting it, so there is no revision to record here — which is itself worth stating
+plainly instead of inventing a tweak to look responsive.
 
 ---
 

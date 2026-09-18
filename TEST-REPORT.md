@@ -154,27 +154,38 @@ conflict — **was not predicted by me at all** and was found only by running th
 
 ---
 
-## 7. Human playtest — NOT YET PERFORMED
+## 7. Human playtest — PERFORMED 2026-09-18
 
-I have not played this build with hands on a keyboard, and no other person has. The
-rows below are **deliberately empty**. An automated input route is not a playtest and
-no agent may fill these in.
-
-```bash
-./walker-jumpman.command     # or: /Applications/Godot.app/Contents/MacOS/Godot --path godot
-```
+Player: **Bao Xing** (the author), on this machine, Godot 4.7.2, normal keyboard
+input via `./walker-jumpman.command`. One session.
 
 | Question | Observation | Verdict |
 |---|---|---|
-| Does the fork read as a choice before you commit? | | |
-| Is the high road's entry jump findable without instruction? | | |
-| Does the no-headroom corridor feel deliberate or broken? | | |
-| Does a missed high-road landing feel fair? | | |
-| Does the 56 px low-road gap feel like a real commitment? | | |
-| Does completion and replay work as expected? | | |
-| Retries taken on first playthrough: | | |
+| Reached the finish? | Yes | PASS |
+| Retries taken | **Fewer than 5** | within the "quick retry, try again" intent |
+| Did the fork read as a choice before committing? | "Saw it was two roads" | PASS |
+| Was the high road's 48 px entry jump findable? | Yes — took the high road | PASS |
+| Did the spring trap's bait solution occur to the player unaided? | "Worked it out, not hard" | PASS |
+| Did the 10 px bait window feel unfair? | No | PASS |
+| Completion and replay | Reached the finish; completion card shown | PASS |
 
----
+### What this does and does not establish
+
+It retires two risks I had recorded as unverified:
+
+- **Limitation #4 (the 10 px bait window may be unfindable).** It was found and
+  executed without difficulty. The window stays at 10 px.
+- **Fork readability.** The sign plus the ledge layout communicated a choice at the
+  decision point, which is what the revision in §8 was for.
+
+**The caveat that matters: this player designed the level.** Bao knew the trap's
+mechanism, the bait position, and the geometry before playing. That makes this
+strong evidence that the level is *completable and not frustrating for someone who
+understands it*, and weak evidence about **discoverability for a first-time player**.
+The honest reading is: one informed playtest passed; no naive playtest has happened.
+
+An automated input route is still not a playtest, and the route fixtures in
+`test_game.gd` are not counted as one here.
 
 ## 8. Inspect-and-revise cycle
 
@@ -237,10 +248,8 @@ capture loop now waits for `is_on_floor()` before freezing.
    fixed input line each. Off-route behaviour in the new section — odd approach speeds,
    backtracking, jumping into ledge corners — is unverified.
 8. **No export.** Source-only. No Web build, no standalone application.
-9. **The 10 px bait window is unvalidated by a human.** It is bounded by geometry and
-   reliably reproducible in the probe, but 10 px is 0.06 s of walking at full speed.
-   Whether a person can find and hit it without frustration is exactly the kind of
-   judgment §7 exists for, and §7 is still empty.
-10. **The trap's timing constants are untested against human reaction.** `rise 0.18 s`,
-   `hold 2.6 s`, `fall 0.45 s` were chosen so the scripted route clears comfortably.
-   Nobody has checked whether the hold is long enough when a person hesitates.
+9. **The 10 px bait window is validated only by an informed player.** §7 found it
+   easy, but by someone who knew where to stand. Still unvalidated for a naive player.
+10. **The trap's timing constants held for one player.** `rise 0.18 s`, `hold 2.6 s`,
+   `fall 0.45 s` were chosen for the scripted route; one human run did not report the
+   hold expiring. Not stress-tested against a hesitant player.

@@ -1,0 +1,342 @@
+{
+  "schema_version": 1,
+  "game": {
+    "name": "walker-jumpman-bao-x",
+    "build_id": "585b05e7f6d9d55673973778ba8a269c7c68d3021de1484374e170e42f3d9cd6"
+  },
+  "captures": {
+    "run-01": {
+      "path": "capture/run-01.avi",
+      "sha256": "0fca37440bb9e4cb8881fc5c4a26909d8c8431f75483ac65b2884c64af6abfc4",
+      "build_id": "585b05e7f6d9d55673973778ba8a269c7c68d3021de1484374e170e42f3d9cd6",
+      "method": "scripted-input",
+      "input_log": "capture/run-01-inputs.jsonl"
+    }
+  },
+  "features": [
+    {
+      "id": "menu-and-start",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B02",
+          "start_s": 0.0,
+          "action_s": 0.2,
+          "end_s": 0.6,
+          "observation": "Menu card is up; Enter is pressed and the card clears into play.",
+          "riff": "The start card states the whole contract before you touch anything: one jump, no double jump, unlimited retries."
+        }
+      ]
+    },
+    {
+      "id": "horizontal-movement",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B02",
+          "start_s": 0.2,
+          "action_s": 0.27,
+          "end_s": 1.6,
+          "observation": "Right is held; the courier accelerates and the lamp wedge widens as it reaches speed.",
+          "riff": "Speed is a readout here — the light cone widening is the only running cue that does not depend on colour."
+        }
+      ]
+    },
+    {
+      "id": "fixed-height-jump",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B02",
+          "start_s": 0.6,
+          "action_s": 0.8,
+          "end_s": 1.6,
+          "observation": "One jump, fixed height, no double jump available.",
+          "riff": "Everything downstream is built on this single unchanged number: a 56 pixel rise."
+        }
+      ]
+    },
+    {
+      "id": "starter-gaps-unchanged",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B02",
+          "start_s": 1.5,
+          "action_s": 1.75,
+          "end_s": 4.8,
+          "observation": "Four jumps clear the starter's two gaps and its steps; geometry below x=960 is byte-identical to the starter.",
+          "riff": "Leaving this section untouched is what keeps the starter's own coyote and spike fixtures valid as regression evidence."
+        }
+      ]
+    },
+    {
+      "id": "starter-spike-hazard",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B02",
+          "start_s": 1.6,
+          "action_s": 1.9,
+          "end_s": 2.5,
+          "observation": "The starter's three-spike cluster at x=320 is jumped and cleared.",
+          "riff": "The original hazard still reads and still kills; it is the baseline the new trap is measured against."
+        }
+      ]
+    },
+    {
+      "id": "fork-decision",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B03",
+          "start_s": 0.4,
+          "action_s": 0.8,
+          "end_s": 1.6,
+          "observation": "The fork sign is on screen: UP three tight landings, ACROSS no headroom and one committed gap.",
+          "riff": "Both costs are stated before the player commits — an earlier build hid this inside the corridor where the courier walked over the text."
+        }
+      ]
+    },
+    {
+      "id": "high-road-ledges",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B03",
+          "start_s": 1.0,
+          "action_s": 1.07,
+          "end_s": 3.6,
+          "observation": "A 48 px up-jump onto ledge B, then hops to C and D: three new landings that require jumps.",
+          "riff": "The measured takeoff windows are 70, 56 and 58 pixels — tight, but chosen by probe, not by feel."
+        }
+      ]
+    },
+    {
+      "id": "reward-coin",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B03",
+          "start_s": 3.4,
+          "action_s": 3.77,
+          "end_s": 4.2,
+          "observation": "The coin above ledge D is taken in flight; the HUD counter turns green and reads COIN 1/1.",
+          "riff": "Ledge D is the highest surface in the game and only the high line reaches it, so the coin is the high road's entire payoff."
+        }
+      ]
+    },
+    {
+      "id": "spring-trap",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B04",
+          "start_s": 0.2,
+          "action_s": 0.48,
+          "end_s": 0.9,
+          "observation": "The courier jumps to clear the last spike; the spike springs upward into the jump arc and kills it.",
+          "riff": "The trap is pure geometry: leaving the ground beside it is what arms it, so the naive play is the fatal one."
+        }
+      ]
+    },
+    {
+      "id": "death-and-reason",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B04",
+          "start_s": 0.7,
+          "action_s": 0.8,
+          "end_s": 1.3,
+          "observation": "Death card reads 'It goes up when you do'.",
+          "riff": "The failure names its own cause, which is the difference between a trap and an ambush."
+        }
+      ]
+    },
+    {
+      "id": "automatic-retry",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B04",
+          "start_s": 1.2,
+          "action_s": 1.37,
+          "end_s": 1.8,
+          "observation": "About half a second after the death the run restarts at spawn with RETRIES reading 01.",
+          "riff": "No lives and no menu: the cost of failure is time, not progress, which is what makes a lethal trap acceptable."
+        }
+      ]
+    },
+    {
+      "id": "low-road-corridor",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B05",
+          "start_s": 0.1,
+          "action_s": 0.4,
+          "end_s": 7.8,
+          "observation": "The retried run crosses the original section again and re-enters the fork area on the floor.",
+          "riff": "The low line is the one you take by doing nothing, which is why its cost has to be legible."
+        },
+        {
+          "capture": "run-01",
+          "beat_id": "B06",
+          "start_s": 0.05,
+          "action_s": 0.1,
+          "end_s": 0.3,
+          "observation": "Running beneath the high ledges with LOW / NO HEADROOM printed on the slab.",
+          "riff": "A ceiling you cannot jump under is a cost you feel without being told twice."
+        }
+      ]
+    },
+    {
+      "id": "low-road-gap",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B06",
+          "start_s": 0.1,
+          "action_s": 0.32,
+          "end_s": 0.8,
+          "observation": "A 56 px gap is cleared from the corridor onto the merge platform.",
+          "riff": "Measured takeoff window 38 pixels — the tightest required jump in the level."
+        }
+      ]
+    },
+    {
+      "id": "trap-bait-solution",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B06",
+          "start_s": 1.3,
+          "action_s": 1.57,
+          "end_s": 2.8,
+          "observation": "The courier stops short of the spike, hops straight up to spring it, lands safe, then walks underneath the raised spike.",
+          "riff": "Baiting it is the whole puzzle: the same input that kills you in the air is the one that clears the path from the ground."
+        }
+      ]
+    },
+    {
+      "id": "finish-and-completion",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B06",
+          "start_s": 3.0,
+          "action_s": 3.33,
+          "end_s": 4.4,
+          "observation": "The flag at x=1696 is reached; the completion card shows time, retries and coin 0/1 for this attempt.",
+          "riff": "Coin zero on a finished run is the fork being honest — this attempt took the low line and the coin was never reachable."
+        }
+      ]
+    },
+    {
+      "id": "replay",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B07",
+          "start_s": 0.1,
+          "action_s": 0.33,
+          "end_s": 0.9,
+          "observation": "Enter on the completion card starts a fresh session with the retry counter back at 00.",
+          "riff": "Replay resets the coin and re-arms the trap, so a second run is a real second run."
+        }
+      ]
+    },
+    {
+      "id": "pause-and-resume",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B07",
+          "start_s": 0.9,
+          "action_s": 1.15,
+          "end_s": 2.4,
+          "observation": "Escape raises the 'Take a breath.' card and freezes the run; Enter resumes from the same position.",
+          "riff": "Pause freezes the clock as well as the player, which is why the finish time stays meaningful."
+        }
+      ]
+    },
+    {
+      "id": "manual-retry",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B07",
+          "start_s": 2.6,
+          "action_s": 3.03,
+          "end_s": 4.2,
+          "observation": "R restarts the attempt from spawn and the retry counter stays at 00.",
+          "riff": "Choosing to restart is not failing, and the counter agrees — a small honesty in the HUD."
+        }
+      ]
+    },
+    {
+      "id": "hud-progress-and-counters",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B03",
+          "start_s": 0.0,
+          "action_s": 2.0,
+          "end_s": 4.2,
+          "observation": "The progress bar tracks spawn-to-finish and the coin and retry counters update live.",
+          "riff": "The bar is derived from level data; the starter divided by a hard-coded 852 and saturated less than halfway along this level."
+        }
+      ]
+    },
+    {
+      "id": "cherries",
+      "status": "planned",
+      "reason": "Proposed in the starter GDD (20 optional cherries). Not built; the reward coin is a single collectible, not that system.",
+      "evidence": []
+    },
+    {
+      "id": "audio",
+      "status": "planned",
+      "reason": "No sound in the build. No fabricated sound effects were added for the film.",
+      "evidence": []
+    },
+    {
+      "id": "settings-and-remapping",
+      "status": "planned",
+      "reason": "Proposed in the starter GDD. Not built.",
+      "evidence": []
+    },
+    {
+      "id": "moving-platforms",
+      "status": "planned",
+      "reason": "Documented as a follow-up in the starter GDD. Not built.",
+      "evidence": []
+    },
+    {
+      "id": "web-export",
+      "status": "planned",
+      "reason": "Proposed shareable target in the starter design package. Not built; this is a source-only release.",
+      "evidence": []
+    }
+  ]
+}
