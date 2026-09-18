@@ -124,6 +124,11 @@ your body occupies y 220–248, so it needs a jump, and because D is high-road-o
 coin is the high road's payoff**. Low route finishes with 0, high route with 1, and both
 route checks assert it.
 
+**What the fork trades.** Precision for the coin — *not* for speed. Both branches cost
+the same 671 ticks, because horizontal speed is constant and jumps do not change it.
+That is the design: the high line is the reward line, and a route that buys a
+collectible does not also owe you a shortcut.
+
 ### Drawing bugs fixed
 
 The starter hard-coded coordinates that silently break when level data moves:
@@ -173,9 +178,6 @@ credits: **[SOURCES.md](SOURCES.md)**
 2. **The outro card is silent.** The stock jingle asset is missing from the toolkit
    checkout; reported as an asset blocker rather than substituted. Everything else on
    that card conforms to the outro lock.
-3. **The high road still saves no time.** Both branches take 671 ticks — horizontal
-   speed is constant and jumps do not change it. The reward coin gives the high road a
-   payoff, but not a faster one. It is not a shortcut.
 4. **The 10 px bait window has not been tried by a human.** It is geometry-bounded and
    reproducible in the probe, but 10 px is 0.06 s of walking at full speed, and whether
    a person can find it without frustration is exactly what is untested.
@@ -197,8 +199,8 @@ Rendered with the course Brutalist `godot-waikthrough` skill in **walker** mode.
 | | |
 |---|---|
 | Filename | `claude-liam-walker-jumpman-bao-x-walkthrough.mp4` |
-| SHA-256 | `5faee3c29c60dfae135978eae8dcb136a27df8c34e8bbf761661a19924c3c94c` |
-| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:16** (196.67 s), 12 MB |
+| SHA-256 | `9d82df50cf6d012e5f5138689dcf3dd7dc279dccb5c3b24117ec64e14fb94ec9` |
+| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:22** (202.0 s) |
 | Link | *upload to course media storage pending* |
 
 Gameplay is **real engine capture at native 4K**, driven by real key events, labeled

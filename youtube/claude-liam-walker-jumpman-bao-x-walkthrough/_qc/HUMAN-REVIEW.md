@@ -5,7 +5,7 @@ not by trusting the gate output.
 
 | Check | Result |
 |---|---|
-| Container | 3840 x 2160, h264, 30 fps, AAC stereo 48 kHz, 196.67 s |
+| Container | 3840 x 2160, h264, 30 fps, AAC stereo 48 kHz, 202.0 s |
 | Gate V (frame QC) | 26 frames sampled, **0 BLOCKER, 0 MAJOR** |
 | `godot-waikthrough --check` | PASS — 19 implemented features, 5 planned, 20 evidence intervals |
 | Narration present throughout | sampled at 5/40/80/120/160 s: −28.1, −28.7, −26.9, −29.2, −25.9 dB |
@@ -50,9 +50,17 @@ Gameplay was **not** relabelled as a source report, and no check was globally di
   a missed feature would not show up here.
 - That the game is enjoyable. One human has played it — the person who designed it.
 
+## Re-cut 2026-09-18 — verdict beat corrected
+
+B10 was re-recorded and the film recompiled. The earlier cut placed "the high road
+still costs the same 671 ticks" in the verdict's untested/caveat half, which framed a
+deliberate design choice as a shortfall. The fork trades precision for the coin, not
+for speed; the card now carries it under **By design**, between the observed items and
+the untested one. Gate V re-run after the recompile.
+
 ## Master
 
 ```
 /Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/exports/landscape/claude-liam-walker-jumpman-bao-x-walkthrough.mp4
-sha256  5faee3c29c60dfae135978eae8dcb136a27df8c34e8bbf761661a19924c3c94c
+sha256  9d82df50cf6d012e5f5138689dcf3dd7dc279dccb5c3b24117ec64e14fb94ec9
 ```

@@ -235,14 +235,27 @@ capture loop now waits for `is_on_floor()` before freezing.
 
 ---
 
+## 8b. Design decision — what the fork actually trades
+
+**The high road buys the coin, not time.** Both branches cost the same 671 ticks,
+because horizontal speed is constant and jumps do not change it.
+
+An earlier version of this report listed that as limitation #3. It was one *before the
+coin existed*: at that point the high line cost precision and returned nothing, which
+is a real defect. Once the reward coin was placed on ledge D — the highest surface, and
+high-road-only — the line has a payoff. A route that trades precision for a collectible
+is a complete exchange; it does not also owe the player a speed advantage.
+
+Asserted, not asserted-about: `complete-real-route` requires `coins_taken == 0` on the
+low branch and `complete-high-road-route` requires `coins_taken == 1` on the high one.
+
+The open question is not "why is it not faster" but "does a first-time player read it
+as a reward line rather than a shortcut" — and that belongs to §7, which one informed
+player has passed and no naive player has attempted.
+
 ## 9. Honest limitations
 
 1. **No human has played this.** The largest gap in this report. §7 is empty.
-2. **The high road still saves no time — but it now pays.** Both branches cost the same
-   671 ticks, because horizontal speed is constant and jumps do not change it. That was
-   limitation #3 in the first version of this report: the fork traded precision for
-   nothing. The reward coin above ledge D fixes the *payoff* (high road 1 coin, low road
-   0, both asserted) but **not** the timing. The fork is still not a shortcut.
 3. **Missing ledge D kills you.** B and C sit above safe floor so a miss is recoverable,
    but D overhangs the gap. This asymmetry was recorded in the change brief before
    implementation, not discovered afterwards and rationalised.
