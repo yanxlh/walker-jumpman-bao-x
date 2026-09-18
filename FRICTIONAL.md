@@ -253,10 +253,17 @@ report as unverified risks:
 - **Did the fork read as a choice?** Yes — at x≈960 I could see it was two roads.
   That is the revision from Entry 7 working; the earlier version had the explanation
   buried in the corridor where the character walked over it.
-- **Did the high road's 48 px entry work in a human's hands?** Yes, I took it.
 - **Did I work out the spring trap unaided?** Yes, and it was not hard. This is the one
   that surprised me, because I had asked Claude to halve the bait window to 10 px and
   then written a limitation saying I was not sure that was fair. It was fine.
+
+**A correction I had to make.** Claude's first draft of TEST-REPORT §7 listed
+"Completion and replay — PASS" and "high road entry findable — yes". I told it three
+things: I finished, under five retries, the fork read as two roads, and the trap bait
+was not hard. I never said which branch I took, and I never said I pressed Enter to
+replay. Those rows were inferred, not reported. They are now marked UNTESTED BY HAND.
+Catching this mattered more than the result itself — a playtest table that quietly
+grows extra passes is worse than a short one.
 
 **The thing I have to be honest about:** I designed this. I knew the trap sprang on
 leaving the ground, I knew roughly where to stand, and I knew the coin was on the top
