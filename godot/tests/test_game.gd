@@ -8,10 +8,14 @@ var failures: int = 0
 func _initialize() -> void:
 	call_deferred("run")
 
+## Exactly n physics ticks. The original also awaited process_frame, which lets
+## any EXTRA physics ticks that Godot runs to catch up on a loaded machine slip by
+## unobserved -- so steps(1) could silently advance 3-5 ticks and every tick-counted
+## assertion in this file would drift. Proven on this machine: the unmodified starter
+## fails fixed-jump-and-no-double 3/3 under load, and passes with this change.
 func steps(n: int) -> void:
 	for i in range(n):
 		await physics_frame
-		await process_frame
 
 func check(id: String, passed: bool, observation: Dictionary) -> void:
 	results.append({"id": id, "status": "PASS" if passed else "FAIL", "observed": observation})

@@ -1,8 +1,8 @@
 {
   "project": "walker-jumpman-bao-x",
   "starter": "nikbearbrown/walker-jumpman",
-  "build_id": "585b05e7f6d9d55673973778ba8a269c7c68d3021de1484374e170e42f3d9cd6",
-  "created_at": "2026-09-18T16:01:22.543Z",
+  "build_id": "625a829451a8104d5dcd4daedccd270aad94f5f41990b91b4e5846f3af630097",
+  "created_at": "2026-09-18T20:35:11.609Z",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "renderer": "Compatibility",
   "scope": "First Steps control/retry slice (starter, unmodified) plus the Pick a Line fork extension",
@@ -18,12 +18,12 @@
     "godot/project.godot": "18b80fb608279ceda4a94c998aea4ec6f5bb8d79c1969a9a6c4ac7a1552e47cf",
     "godot/tests/capture_game.gd": "f8cb6a694688416fcead42c19f2fed8ca7679f0b747862dd674e2fe232d7eee5",
     "godot/tests/capture_game.gd.uid": "60af73a3bc1bbf2fb747f628c6b19d474e5d8ec63086693d7a3662c343635625",
-    "godot/tests/probe_reach.gd": "d5141fa4f996b31218ba6fb1f7fffa5fcbdd729db381305ad0eba420bb7fc047",
+    "godot/tests/probe_reach.gd": "14e01b5cda8f63a548b829a0981a271c74558c54f26488c61668657c51aa0c95",
     "godot/tests/route_driver.gd": "956fb5f1e80f38cfb959911b2c607815720ac2efa9d4729f1a00e477490423fb",
     "godot/tests/route_driver.gd.uid": "6e51ae14383d23db51a043c2455ae9a4b9b972304db25c9422dbe41d698af41b",
-    "godot/tests/test_game.gd": "db423c2799e90d95f29d9525b90313a013c9b12e6f9e955f08758fd5c1f72019",
+    "godot/tests/test_game.gd": "aa4633b3854f8f544d5c6ee8f9509c1c92d6ec9f8676e42b2f47a43e94c148d4",
     "godot/tests/test_game.gd.uid": "57933fea45074e0597f2fb3f474e69944d6198c1f432274187c9a10bee0c31dc",
-    "godot/tests/test_keyboard.gd": "39b5d37039cee469aa6a87ab45acc852d1c55a7ebcebca5ec328d9d71413c6c9",
+    "godot/tests/test_keyboard.gd": "bf3d1ceb4dd972874602efeedc6146c52ee05619bbbd3486cb06fff04a199975",
     "godot/tests/test_keyboard.gd.uid": "6ea68e4d1bb1c113e9454aca6e4dc08c148cbcf6eeefb5b301c289dcc718f25e",
     "godot/ui/hud.gd": "77ea10c7514d26bac3161e79d009a3d3ccde79ed4db8714bbd2697c073eb1db4",
     "godot/ui/hud.gd.uid": "d2eaf3c885a55bcd31e9b2f36d3a5355f10105da426e96a9685434da00b28330",
@@ -31,12 +31,12 @@
   },
   "tests": [
     {
-      "file": "evidence/mechanics-1789747268.94509.json",
+      "file": "evidence/mechanics-1789763651.78094.json",
       "checks": 40,
       "failures": 0
     },
     {
-      "file": "evidence/keyboard-1789747270.10336.json",
+      "file": "evidence/keyboard-1789763555.14508.json",
       "checks": 9,
       "failures": 0
     }

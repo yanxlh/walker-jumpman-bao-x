@@ -98,7 +98,9 @@ from Claude's implementation where it is not obvious.
 ## Film
 
 Beat sheet, script and narration prompts: `film/`. AI narration is permitted by the
-assignment. The film is **not yet rendered** — see README "Known limitations".
+assignment. The film **is rendered**: `claude-liam-walker-jumpman-bao-x-walkthrough.mp4`,
+3840x2160, 3:22. Reel and all its documents are in
+`youtube/claude-liam-walker-jumpman-bao-x-walkthrough/`.
 
 ## Collaborators
 

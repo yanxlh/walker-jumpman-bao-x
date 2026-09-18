@@ -253,6 +253,46 @@ The open question is not "why is it not faster" but "does a first-time player re
 as a reward line rather than a shortcut" — and that belongs to §7, which one informed
 player has passed and no naive player has attempted.
 
+## 8c. The test harness was non-deterministic, and that is now fixed
+
+**Found 2026-09-18, after everything else was done.** Re-running the suite on a loaded
+machine produced 2–3 failures, including two of the starter's own checks
+(`fixed-jump-and-no-double`, `held-jump-no-bounce`, both reporting `jumps: 2`).
+
+**It is not a regression I introduced.** The unmodified starter in the sibling
+`walker-jumpman-main/` folder fails the same two checks **3 runs out of 3** under the
+same load. The defect is in the starter's harness and has always been there.
+
+**Cause.** `steps(n)` was `for i in range(n): await physics_frame; await process_frame`.
+Godot runs several physics ticks in one frame to catch up when the machine is busy,
+and the extra ticks elapse *while awaiting the process frame* — unobserved. Instrumented
+on this machine: at loop iteration 12 the player's own tick counter read **41**, not 16,
+and the player had already passed its jump apex and was descending. The check then
+"presses jump again" against a player that has effectively landed, and a legitimate
+second jump happens.
+
+**Fix.** `steps(n)` in `test_game.gd` and `probe_reach.gd` now awaits `physics_frame`
+only, which is exactly one tick. `test_keyboard.gd` deliberately keeps `process_frame`:
+input events reach `_unhandled_input` during the process frame, and without it
+`enter-start`, `keyboard-jump` and `menu-start-again` starve. The drift is harmless
+there because nothing in that file counts ticks. Both files carry a comment saying why
+they differ.
+
+**Verified after the fix:** mechanics 40/40 on 6 consecutive runs, keyboard 9/9 on
+7 consecutive runs, under the same load that was failing.
+
+**What this means for the earlier numbers in this report.** The baseline (25/25) and
+every "0 failures" result before today were taken on a quiet machine and were real —
+but the harness that produced them could drift silently. They should be read as
+"passed, on a harness that has since been made deterministic", not as stronger evidence
+than they were. Nothing was re-passed by loosening an assertion; the assertions are
+untouched and the harness now measures what they always assumed.
+
+**A first attempt that was worse.** My first fix set `Engine.max_physics_steps_per_frame
+= 1`. It made the checks deterministic but forced every run to real time — the
+reachability probe went from ~3 minutes to over 5 and was still running when I killed
+it. Reverted in favour of the one-line change above.
+
 ## 9. Honest limitations
 
 1. **No human has played this.** The largest gap in this report. §7 is empty.

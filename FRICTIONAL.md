@@ -278,6 +278,41 @@ plainly instead of inventing a tweak to look responsive.
 
 ---
 
+## Entry 12 — 2026-09-18 · Everything was green, so I re-ran it
+
+After the film was done I ran the suite once more before calling it finished. **2
+failures.** Two of them were the *starter's* own checks, which had passed all day.
+
+My first instinct was that I had broken something with the last round of edits. I had
+not — but the way I found that out matters more than the answer: I ran the **unmodified
+starter** in the sibling folder and it failed the same two checks, 3 out of 3. So the
+defect predates me.
+
+Then I guessed wrong twice:
+
+1. Guessed physics catch-up was making `steps(1)` advance several ticks. Wrote a probe.
+   It reported exactly 10 ticks for `steps(10)` — **hypothesis disproved.** (The machine
+   happened to be idle for those few seconds.)
+2. Guessed it was test-order pollution. Ran the failing check in isolation — it passed.
+
+What actually found it was printing the player's own tick counter inside the loop: at
+iteration 12 the tick read **41**, not 16. So hypothesis 1 had been right all along and
+my probe had simply been too lucky to show it. The extra ticks slip past during
+`await process_frame`.
+
+Fixed it the wrong way first — capped `Engine.max_physics_steps_per_frame` to 1, which
+worked but forced every run to real time and made the probe unusably slow. The right
+fix was one line: stop awaiting the process frame in the tick loop.
+
+Then that fix broke the keyboard tests (8/9, 8/9), because input events are delivered
+on the process frame. So the two files now differ on purpose, each with a comment
+saying why.
+
+**Learned, and slightly uncomfortable:** every "0 failures" I reported today was true,
+but it came off a harness that could silently drift. I got clean numbers partly because
+the machine was quiet. If I had not re-run the suite one last time on a busy machine, I
+would have submitted a green report built on a measurement I did not understand.
+
 ## Human / AI contribution summary
 
 | | Mine | Claude's |

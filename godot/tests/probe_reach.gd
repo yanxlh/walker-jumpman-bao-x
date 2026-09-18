@@ -12,10 +12,14 @@ var game: Node2D
 func _initialize() -> void:
 	call_deferred("run")
 
+## Exactly n physics ticks. The original also awaited process_frame, which lets
+## any EXTRA physics ticks that Godot runs to catch up on a loaded machine slip by
+## unobserved -- so steps(1) could silently advance 3-5 ticks and every tick-counted
+## assertion in this file would drift. Proven on this machine: the unmodified starter
+## fails fixed-jump-and-no-double 3/3 under load, and passes with this change.
 func steps(n: int) -> void:
 	for i in range(n):
 		await physics_frame
-		await process_frame
 
 func fresh() -> void:
 	if is_instance_valid(game):
@@ -139,8 +143,9 @@ func run() -> void:
 	# --- LOW ROAD ---
 	# The only low-road jump: GAP-L 1392..1448 (56 px). Takeoff must clear ledge D (ends 1352).
 	await sweep("L1 -> M  (56px gap)", Vector2(1300, 320), 1356, 1392, 320, 1448, 1760)
-	# Shared final obstacle on M: spikes at 1568..1592, open sky
-	await sweep("M -> over HZ3", Vector2(1460, 320), 1500, 1566, 320, 1592, 1760)
+	# NOTE: the old static spike at 1568 is gone -- it is now the spring trap, which
+	# arms on any jump beside it, so "jump over it" is fatal by design and a takeoff
+	# sweep is the wrong probe. The trap's real measurement is the bait window below.
 
 	# --- SPRING TRAP ---
 	# Sweep every standing position and hop straight up: report which spots arm

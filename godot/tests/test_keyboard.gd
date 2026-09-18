@@ -7,6 +7,11 @@ var failures := 0
 func _initialize() -> void:
 	call_deferred("run")
 
+## This file KEEPS `await process_frame`, unlike test_game.gd. Input events reach
+## _unhandled_input during the process frame, so dropping it starves every key press
+## here (measured: enter-start, keyboard-jump and menu-start-again fail intermittently
+## without it). The tick drift that forced the change in test_game.gd is harmless here
+## because nothing in this file counts ticks -- every assertion is state-based.
 func steps(n: int) -> void:
 	for i in range(n):
 		await physics_frame
