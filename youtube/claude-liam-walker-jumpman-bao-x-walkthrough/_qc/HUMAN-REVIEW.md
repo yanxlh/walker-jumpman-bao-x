@@ -5,7 +5,7 @@ not by trusting the gate output.
 
 | Check | Result |
 |---|---|
-| Container | 3840 x 2160, h264, 30 fps, AAC stereo 48 kHz, 210.5 s |
+| Container | 3840 x 2160, h264, 30 fps, AAC stereo 48 kHz, 202.0 s |
 | Gate V (frame QC) | 26 frames sampled, **0 BLOCKER, 0 MAJOR** |
 | `godot-waikthrough --check` | PASS — 19 implemented features, 5 planned, 20 evidence intervals |
 | Narration present throughout | sampled at 5/40/80/120/160 s: −28.1, −28.7, −26.9, −29.2, −25.9 dB |
@@ -50,27 +50,25 @@ Gameplay was **not** relabelled as a source report, and no check was globally di
   a missed feature would not show up here.
 - That the game is enjoyable. One human has played it — the person who designed it.
 
-## Re-cut 2026-09-18 — verdict beat corrected
+## Re-cut 2026-09-22 — rebuilt for the key and the door
 
-B10 was re-recorded and the film recompiled. The earlier cut placed "the high road
-still costs the same 671 ticks" in the verdict's untested/caveat half, which framed a
-deliberate design choice as a shortfall. The fork trades precision for the coin, not
-for speed; the card now carries it under **By design**, between the observed items and
-the untested one. Gate V re-run after the recompile.
+The game changed fundamentally (coin -> mandatory key, fork -> dead-end detour,
+flag -> locked door), so the film was rebuilt rather than patched: new 4K capture, new
+beat sheet, 14 beats, all narration re-recorded.
 
-## Re-cut 2026-09-21 — a second playtester invalidated the verdict
+Two things fixed during the rebuild:
 
-B10 was re-recorded a second time and the film recompiled. The previous cut said "the
-only human playtest was by the person who designed the level, so discoverability for a
-stranger is unknown", and closed with "put it in front of someone who has never seen
-it". A second player finished the build that day -- meeting the spring trap cold, dying
-to it several times and solving the bait unaided -- which made both lines false. The
-verdict now reports that result, states plainly that n = 2 with no retry counts or
-timings, and the next improvement asks for instrumented death positions instead.
+- **Too much frozen frame.** The first cut used 16.8 s of the 29.4 s capture as action
+  and 26 s of hold. The capture reference's first remedy is shortening narration, not
+  freezing more frames, so the six gameplay narrations were cut down and the action
+  windows widened: now 27.2 s action, 20.9 s hold.
+- **A stale probe line.** `D -> M` now returns UNREACHABLE. That is the barrier
+  working, so it is labelled `<- by design` on screen in B10 rather than read as a
+  defect.
 
 ## Master
 
 ```
 /Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/exports/landscape/claude-liam-walker-jumpman-bao-x-walkthrough.mp4
-sha256  3fbd8d9ff47329ad54551aba57d5e74732dce9c26ca26d80f8196d7adf1ee245
+sha256  02f30177d20aa8842960570b7631ca34b36038b0495101ae973132a1be0d3e31
 ```

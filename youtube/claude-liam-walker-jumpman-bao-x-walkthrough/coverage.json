@@ -2,13 +2,13 @@
   "schema_version": 1,
   "game": {
     "name": "walker-jumpman-bao-x",
-    "build_id": "585b05e7f6d9d55673973778ba8a269c7c68d3021de1484374e170e42f3d9cd6"
+    "build_id": "18bc54e6851535d4a4271f55aaf1141b522dd41b413e45840dab2df7b5603213"
   },
   "captures": {
     "run-01": {
       "path": "capture/run-01.avi",
-      "sha256": "0fca37440bb9e4cb8881fc5c4a26909d8c8431f75483ac65b2884c64af6abfc4",
-      "build_id": "585b05e7f6d9d55673973778ba8a269c7c68d3021de1484374e170e42f3d9cd6",
+      "sha256": "96d1ca9880317286623f06303759fd0c0017d8e841fd4f1ffc08181fc553f849",
+      "build_id": "18bc54e6851535d4a4271f55aaf1141b522dd41b413e45840dab2df7b5603213",
       "method": "scripted-input",
       "input_log": "capture/run-01-inputs.jsonl"
     }
@@ -24,8 +24,8 @@
           "start_s": 0.0,
           "action_s": 0.2,
           "end_s": 0.6,
-          "observation": "Menu card is up; Enter is pressed and the card clears into play.",
-          "riff": "The start card states the whole contract before you touch anything: one jump, no double jump, unlimited retries."
+          "observation": "Menu card is up; Enter clears it into play.",
+          "riff": "The start card states the contract before you touch anything: one jump, no double jump, unlimited retries."
         }
       ]
     },
@@ -37,10 +37,10 @@
           "capture": "run-01",
           "beat_id": "B02",
           "start_s": 0.2,
-          "action_s": 0.27,
+          "action_s": 0.3,
           "end_s": 1.6,
-          "observation": "Right is held; the courier accelerates and the lamp wedge widens as it reaches speed.",
-          "riff": "Speed is a readout here — the light cone widening is the only running cue that does not depend on colour."
+          "observation": "Right is held; the courier accelerates and the lamp wedge widens.",
+          "riff": "Speed is a readout here — the widening cone is the running cue that does not depend on colour."
         }
       ]
     },
@@ -52,85 +52,25 @@
           "capture": "run-01",
           "beat_id": "B02",
           "start_s": 0.6,
-          "action_s": 0.8,
-          "end_s": 1.6,
-          "observation": "One jump, fixed height, no double jump available.",
-          "riff": "Everything downstream is built on this single unchanged number: a 56 pixel rise."
+          "action_s": 0.85,
+          "end_s": 1.7,
+          "observation": "One jump, fixed height, no double jump.",
+          "riff": "Every landing downstream is built on this single unchanged number: a 56 px rise."
         }
       ]
     },
     {
-      "id": "starter-gaps-unchanged",
+      "id": "starter-section-unchanged",
       "status": "implemented",
       "evidence": [
         {
           "capture": "run-01",
           "beat_id": "B02",
           "start_s": 1.5,
-          "action_s": 1.75,
+          "action_s": 1.8,
           "end_s": 4.8,
-          "observation": "Four jumps clear the starter's two gaps and its steps; geometry below x=960 is byte-identical to the starter.",
-          "riff": "Leaving this section untouched is what keeps the starter's own coyote and spike fixtures valid as regression evidence."
-        }
-      ]
-    },
-    {
-      "id": "starter-spike-hazard",
-      "status": "implemented",
-      "evidence": [
-        {
-          "capture": "run-01",
-          "beat_id": "B02",
-          "start_s": 1.6,
-          "action_s": 1.9,
-          "end_s": 2.5,
-          "observation": "The starter's three-spike cluster at x=320 is jumped and cleared.",
-          "riff": "The original hazard still reads and still kills; it is the baseline the new trap is measured against."
-        }
-      ]
-    },
-    {
-      "id": "fork-decision",
-      "status": "implemented",
-      "evidence": [
-        {
-          "capture": "run-01",
-          "beat_id": "B03",
-          "start_s": 0.4,
-          "action_s": 0.8,
-          "end_s": 1.6,
-          "observation": "The fork sign is on screen: UP three tight landings, ACROSS no headroom and one committed gap.",
-          "riff": "Both costs are stated before the player commits — an earlier build hid this inside the corridor where the courier walked over the text."
-        }
-      ]
-    },
-    {
-      "id": "high-road-ledges",
-      "status": "implemented",
-      "evidence": [
-        {
-          "capture": "run-01",
-          "beat_id": "B03",
-          "start_s": 1.0,
-          "action_s": 1.07,
-          "end_s": 3.6,
-          "observation": "A 48 px up-jump onto ledge B, then hops to C and D: three new landings that require jumps.",
-          "riff": "The measured takeoff windows are 70, 56 and 58 pixels — tight, but chosen by probe, not by feel."
-        }
-      ]
-    },
-    {
-      "id": "reward-coin",
-      "status": "implemented",
-      "evidence": [
-        {
-          "capture": "run-01",
-          "beat_id": "B03",
-          "start_s": 3.4,
-          "action_s": 3.77,
-          "end_s": 4.2,
-          "observation": "The coin above ledge D is taken in flight; the HUD counter turns green and reads COIN 1/1.",
-          "riff": "Ledge D is the highest surface in the game and only the high line reaches it, so the coin is the high road's entire payoff."
+          "observation": "Four jumps clear the starter's two gaps and its steps; geometry below x=960 is byte-identical.",
+          "riff": "Leaving it untouched is what keeps the starter's own coyote, spike and fall fixtures valid as regression evidence."
         }
       ]
     },
@@ -140,12 +80,12 @@
       "evidence": [
         {
           "capture": "run-01",
-          "beat_id": "B04",
-          "start_s": 0.2,
-          "action_s": 0.48,
-          "end_s": 0.9,
-          "observation": "The courier jumps to clear the last spike; the spike springs upward into the jump arc and kills it.",
-          "riff": "The trap is pure geometry: leaving the ground beside it is what arms it, so the naive play is the fatal one."
+          "beat_id": "B03",
+          "start_s": 3.8,
+          "action_s": 4.75,
+          "end_s": 5.2,
+          "observation": "The courier jumps to clear the last spike; the spike springs up into the arc and kills it.",
+          "riff": "Pure geometry: leaving the ground beside it is what arms it, so the naive play is the fatal one."
         }
       ]
     },
@@ -155,10 +95,10 @@
       "evidence": [
         {
           "capture": "run-01",
-          "beat_id": "B04",
-          "start_s": 0.7,
-          "action_s": 0.8,
-          "end_s": 1.3,
+          "beat_id": "B03",
+          "start_s": 5.0,
+          "action_s": 5.2,
+          "end_s": 5.6,
           "observation": "Death card reads 'It goes up when you do'.",
           "riff": "The failure names its own cause, which is the difference between a trap and an ambush."
         }
@@ -170,51 +110,102 @@
       "evidence": [
         {
           "capture": "run-01",
-          "beat_id": "B04",
-          "start_s": 1.2,
-          "action_s": 1.37,
-          "end_s": 1.8,
-          "observation": "About half a second after the death the run restarts at spawn with RETRIES reading 01.",
-          "riff": "No lives and no menu: the cost of failure is time, not progress, which is what makes a lethal trap acceptable."
+          "beat_id": "B03",
+          "start_s": 5.4,
+          "action_s": 5.6,
+          "end_s": 6.2,
+          "observation": "About half a second later the run restarts at spawn with RETRIES 01.",
+          "riff": "No lives and no menu: failure costs time, not progress — which is what makes a lethal trap acceptable."
         }
       ]
     },
     {
-      "id": "low-road-corridor",
+      "id": "high-ledges",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B04",
+          "start_s": 3.5,
+          "action_s": 4.1,
+          "end_s": 6.2,
+          "observation": "A 48 px up-jump onto ledge B, then hops to C and D.",
+          "riff": "Measured takeoff windows 70, 56 and 58 px — chosen by probe, not by feel."
+        }
+      ]
+    },
+    {
+      "id": "key-requires-a-jump",
       "status": "implemented",
       "evidence": [
         {
           "capture": "run-01",
           "beat_id": "B05",
-          "start_s": 0.1,
-          "action_s": 0.4,
-          "end_s": 7.8,
-          "observation": "The retried run crosses the original section again and re-enters the fork area on the floor.",
-          "riff": "The low line is the one you take by doing nothing, which is why its cost has to be legible."
-        },
-        {
-          "capture": "run-01",
-          "beat_id": "B06",
-          "start_s": 0.05,
-          "action_s": 0.1,
-          "end_s": 0.3,
-          "observation": "Running beneath the high ledges with LOW / NO HEADROOM printed on the slab.",
-          "riff": "A ceiling you cannot jump under is a cost you feel without being told twice."
+          "start_s": 0.3,
+          "action_s": 0.6,
+          "end_s": 1.1,
+          "observation": "A jump on ledge D takes the key; the HUD turns to KEY HELD.",
+          "riff": "Standing on D the body occupies y 220–248 and the key spans 197–215, so walking under it is provably not enough."
         }
       ]
     },
     {
-      "id": "low-road-gap",
+      "id": "key-follows-the-player",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B05",
+          "start_s": 0.7,
+          "action_s": 0.9,
+          "end_s": 1.9,
+          "observation": "The key trails the courier as it turns and walks back.",
+          "riff": "Carrying it visibly is what makes the door's demand legible before you reach the door."
+        }
+      ]
+    },
+    {
+      "id": "barrier-dead-end",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B05",
+          "start_s": 0.9,
+          "action_s": 1.2,
+          "end_s": 1.9,
+          "observation": "The ledge ends in a barrier marked DEAD END; the courier turns and drops back to the floor.",
+          "riff": "The barrier is what converts a second route into a there-and-back errand — and it is why the level no longer asks you to choose."
+        }
+      ]
+    },
+    {
+      "id": "no-headroom-corridor",
       "status": "implemented",
       "evidence": [
         {
           "capture": "run-01",
           "beat_id": "B06",
           "start_s": 0.1,
-          "action_s": 0.32,
-          "end_s": 0.8,
-          "observation": "A 56 px gap is cleared from the corridor onto the merge platform.",
-          "riff": "Measured takeoff window 38 pixels — the tightest required jump in the level."
+          "action_s": 0.4,
+          "end_s": 1.2,
+          "observation": "Running beneath the high ledges with WALK BACK / NO HEADROOM on the slab.",
+          "riff": "A ceiling you cannot jump under is a cost you feel without being told twice."
+        }
+      ]
+    },
+    {
+      "id": "committed-gap",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B06",
+          "start_s": 1.0,
+          "action_s": 1.35,
+          "end_s": 1.9,
+          "observation": "A 56 px gap cleared onto the merge platform.",
+          "riff": "Measured takeoff window 38 px — the tightest required jump in the level."
         }
       ]
     },
@@ -225,26 +216,41 @@
         {
           "capture": "run-01",
           "beat_id": "B06",
-          "start_s": 1.3,
-          "action_s": 1.57,
+          "start_s": 1.9,
+          "action_s": 2.3,
           "end_s": 2.8,
-          "observation": "The courier stops short of the spike, hops straight up to spring it, lands safe, then walks underneath the raised spike.",
-          "riff": "Baiting it is the whole puzzle: the same input that kills you in the air is the one that clears the path from the ground."
+          "observation": "The courier stops short, hops straight up to spring the spike, then walks underneath it.",
+          "riff": "The same input that kills you in the air is the one that clears the path from the ground."
         }
       ]
     },
     {
-      "id": "finish-and-completion",
+      "id": "key-docks-and-opens-door",
       "status": "implemented",
       "evidence": [
         {
           "capture": "run-01",
-          "beat_id": "B06",
-          "start_s": 3.0,
-          "action_s": 3.33,
-          "end_s": 4.4,
-          "observation": "The flag at x=1696 is reached; the completion card shows time, retries and coin 0/1 for this attempt.",
-          "riff": "Coin zero on a finished run is the fork being honest — this attempt took the low line and the coin was never reachable."
+          "beat_id": "B07",
+          "start_s": 0.2,
+          "action_s": 0.55,
+          "end_s": 1.4,
+          "observation": "The key leaves the courier, flies to the lock and seats; LOCKED becomes OPEN.",
+          "riff": "The dock line at x=1600 is the moment the errand pays off — the carried object becomes the thing that changes the level."
+        }
+      ]
+    },
+    {
+      "id": "door-is-the-finish",
+      "status": "implemented",
+      "evidence": [
+        {
+          "capture": "run-01",
+          "beat_id": "B07",
+          "start_s": 1.1,
+          "action_s": 1.5,
+          "end_s": 1.9,
+          "observation": "The courier walks into the open door; Course complete.",
+          "riff": "The finish moved from a flag at 916 to a door at 1696, and it will not accept you without the key."
         }
       ]
     },
@@ -254,12 +260,12 @@
       "evidence": [
         {
           "capture": "run-01",
-          "beat_id": "B07",
+          "beat_id": "B08",
           "start_s": 0.1,
-          "action_s": 0.33,
-          "end_s": 0.9,
-          "observation": "Enter on the completion card starts a fresh session with the retry counter back at 00.",
-          "riff": "Replay resets the coin and re-arms the trap, so a second run is a real second run."
+          "action_s": 0.35,
+          "end_s": 1.2,
+          "observation": "Enter on the completion card starts a fresh session; retries reset and the key is restored.",
+          "riff": "Replay re-locks the door and re-arms the trap, so a second run is a real second run."
         }
       ]
     },
@@ -269,11 +275,11 @@
       "evidence": [
         {
           "capture": "run-01",
-          "beat_id": "B07",
-          "start_s": 0.9,
-          "action_s": 1.15,
+          "beat_id": "B08",
+          "start_s": 1.1,
+          "action_s": 1.45,
           "end_s": 2.4,
-          "observation": "Escape raises the 'Take a breath.' card and freezes the run; Enter resumes from the same position.",
+          "observation": "Escape raises the pause card and freezes the run; Enter resumes from the same position.",
           "riff": "Pause freezes the clock as well as the player, which is why the finish time stays meaningful."
         }
       ]
@@ -284,26 +290,26 @@
       "evidence": [
         {
           "capture": "run-01",
-          "beat_id": "B07",
+          "beat_id": "B08",
           "start_s": 2.6,
-          "action_s": 3.03,
-          "end_s": 4.2,
+          "action_s": 3.05,
+          "end_s": 3.4,
           "observation": "R restarts the attempt from spawn and the retry counter stays at 00.",
-          "riff": "Choosing to restart is not failing, and the counter agrees — a small honesty in the HUD."
+          "riff": "Choosing to restart is not failing, and the counter agrees."
         }
       ]
     },
     {
-      "id": "hud-progress-and-counters",
+      "id": "hud-key-and-progress",
       "status": "implemented",
       "evidence": [
         {
           "capture": "run-01",
-          "beat_id": "B03",
-          "start_s": 0.0,
-          "action_s": 2.0,
-          "end_s": 4.2,
-          "observation": "The progress bar tracks spawn-to-finish and the coin and retry counters update live.",
+          "beat_id": "B05",
+          "start_s": 0.5,
+          "action_s": 0.8,
+          "end_s": 1.9,
+          "observation": "The HUD switches from KEY -- to KEY HELD, and the progress bar tracks spawn to door.",
           "riff": "The bar is derived from level data; the starter divided by a hard-coded 852 and saturated less than halfway along this level."
         }
       ]
@@ -311,7 +317,7 @@
     {
       "id": "cherries",
       "status": "planned",
-      "reason": "Proposed in the starter GDD (20 optional cherries). Not built; the reward coin is a single collectible, not that system.",
+      "reason": "Proposed in the starter GDD (20 optional cherries). Not built.",
       "evidence": []
     },
     {
@@ -335,7 +341,7 @@
     {
       "id": "web-export",
       "status": "planned",
-      "reason": "Proposed shareable target in the starter design package. Not built; this is a source-only release.",
+      "reason": "Proposed shareable target in the starter design package. Not built; source-only release.",
       "evidence": []
     }
   ]

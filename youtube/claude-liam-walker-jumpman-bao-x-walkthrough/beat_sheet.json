@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Pick a Line — Extending walker-jumpman",
+    "title": "The Key and the Door — Extending walker-jumpman",
     "slug": "claude-liam-walker-jumpman-bao-x-walkthrough",
     "topic": "WALKER · GAME EXTENSION WALKTHROUGH",
     "kind": "godot-waikthrough",
@@ -20,17 +20,16 @@
     "presenter": "Liam (in for Bear)",
     "in_for_bear": true,
     "greeting": "Annyeong, Liam",
-    "greeting_note": "sum('claude-liam-walker-jumpman-bao-x-walkthrough') = 4343; 4343 mod 10 = 3",
     "audience": "CSYE 7270 reviewers and Brutalist fellows",
     "register": "Walkthrough",
     "game": {
       "name": "walker-jumpman-bao-x",
-      "commit": "8c646723578adbd589340602c5d304cf40a2f409",
-      "build_id": "585b05e7f6d9d55673973778ba8a269c7c68d3021de1484374e170e42f3d9cd6",
+      "commit": "fb75763fd0d6f0343b8e7cc116b304cac244b94f",
+      "build_id": "18bc54e6851535d4a4271f55aaf1141b522dd41b413e45840dab2df7b5603213",
       "starter": "nikbearbrown/walker-jumpman",
       "engine_version": "4.7.2.stable.official.ed1daf0bf"
     },
-    "note": "Walker-mode godot-waikthrough of walker-jumpman-bao-x. Gameplay beats B02-B06 are REAL engine capture at native 3840x2160, scripted input, labeled on screen; holds are labeled HELD FRAME. The only human playtest is recorded in the game's TEST-REPORT.md section 7 and is explicitly NOT claimed as evidence of discoverability, because the player designed the level. B00's prompt is an illustrative reconstruction, labeled as such. No upload.",
+    "note": "Walker-mode godot-waikthrough. Gameplay beats B02-B08 are REAL engine capture at native 3840x2160, scripted input, labeled on screen; holds are labeled HELD FRAME. Two human playtests are recorded in the game's TEST-REPORT.md section 7. B00's prompt is an illustrative reconstruction, labeled as such. No upload.",
     "tags": [
       "Walker",
       "walker-jumpman",
@@ -43,10 +42,10 @@
       "Claude"
     ],
     "build": {
-      "at": "2026-09-21T21:54:52",
+      "at": "2026-09-22T12:36:31",
       "cut": "master",
-      "filled": 13,
-      "of": 13,
+      "filled": 14,
+      "of": 14,
       "slates": [],
       "skin_warnings": []
     }
@@ -55,9 +54,11 @@
     {
       "beat_id": "B00",
       "act": "ASK",
-      "estimated_duration_s": 17.3667,
-      "role_note": "WALKER BOOKEND 1 — ClaudeComposerAsk. Prompt is an ILLUSTRATIVE RECONSTRUCTION, labeled on screen; it is not a historical transcript. No fabricated build receipts.",
+      "estimated_duration_s": 17.344,
+      "role_note": "WALKER BOOKEND 1 — ClaudeComposerAsk. Prompt is an ILLUSTRATIVE RECONSTRUCTION, labeled on screen.",
       "narration_text": "Annyeong — this is Liam, in for Bear. Bao Xing took Nik Bear Brown's walker-jumpman, a small Godot platformer with two gaps and a spike, and was asked to give it a new character and a new section. Here is the kind of ask that starts that work. This prompt is a reconstruction for the film, not a recording of the original session.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "class": "SHOW",
@@ -66,15 +67,15 @@
         "show": [
           {
             "at": "0.02",
-            "event": "composer card fades in on cream"
+            "event": "composer card fades in"
           },
           {
             "at": "0.10",
-            "event": "'ILLUSTRATIVE RECONSTRUCTION' badge sets above the composer"
+            "event": "'ILLUSTRATIVE RECONSTRUCTION' badge sets above it"
           },
           {
             "at": "0.30",
-            "event": "prompt types: 'Please use Walker to convert my game design document about a small readable 2D platformer — one fixed-height jump, unlimited retries — into a playable Godot project, then extend it with a new character and a new section that asks the player to choose a route.'"
+            "event": "the ask types in"
           },
           {
             "at": "0.80",
@@ -86,44 +87,43 @@
           "props": {
             "greeting": "Annyeong, Liam",
             "topic": "WALKER · GAME EXTENSION",
-            "segment": "Pick a Line — illustrative reconstruction",
-            "command": "Please use Walker to convert my game design document about a small, readable 2D platformer — one fixed-height jump, forgiving input windows, unlimited retries — into a playable Godot project. Then extend it: a new main character, and a new section that makes the player choose a route instead of just surviving one.",
+            "segment": "The Key and the Door — illustrative reconstruction",
+            "command": "Please use Walker to convert my game design document about a small, readable 2D platformer — one fixed-height jump, forgiving input windows, unlimited retries — into a playable Godot project. Then extend it: a new main character, and a new section built around a locked door and the key that opens it.",
             "runningText": "reconstructing the ask — not a transcript of the original session…",
             "folderLabel": "walker-jumpman-bao-x",
             "modelLabel": "Claude",
             "effortLabel": "High",
             "output": [
               "Starter: two gaps, a spike, a flag.",
-              "Added: a courier, and a fork.",
-              "49 checks, 0 failures."
+              "Added: a courier, a key, a door.",
+              "53 checks, 0 failures."
             ],
             "durationSeconds": 17.344
           },
           "rendered": {
             "out": "media/B00.mp4",
-            "at": "2026-09-18T16:51:55.540582+00:00"
+            "at": "2026-09-22T16:27:09.394446+00:00"
           }
         }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 17.34,
+      "actual_duration_s": 17.344,
       "audio_file": "mp3/beat-B00.mp3",
       "render_duration_s": 17.366666666666667,
       "build": {
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-21T21:54:52"
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
       "beat_id": "B01",
       "act": "BLUF",
-      "estimated_duration_s": 19.2667,
-      "lead_silence_s": 0.8,
-      "role_note": "WALKER BOOKEND 2 — what was ACTUALLY built. Hesitant-writer correction: 'a new game' struck to 'an extension'. States the slice's real limits.",
-      "narration_text": "What exists is not a new game. It is the starter, unmodified below x nine hundred and sixty, plus two additions: a character called the Lamp-Head Courier, and a section called Pick a Line. Forty-nine automated checks pass, twenty-five of them the starter's own, unaltered. Cherries, audio, settings and an export are still not built, and this film will not pretend otherwise.",
+      "estimated_duration_s": 19.733,
+      "role_note": "WALKER BOOKEND 2 — what was ACTUALLY built. Hesitant-writer correction.",
+      "narration_text": "What exists is not a new game. It is the starter, unmodified below x nine hundred and sixty, plus two additions: a character called the Lamp-Head Courier, and a locked door with the key that opens it. Fifty-three automated checks pass, twenty-five of them the starter's own, unaltered. Cherries, audio, settings and an export are still not built, and this film will not pretend otherwise.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "class": "SHOW",
@@ -132,7 +132,7 @@
         "show": [
           {
             "at": "0.0",
-            "event": "cream page, typing begins in the lead silence"
+            "event": "typing begins in the lead silence"
           },
           {
             "at": "0.18",
@@ -140,25 +140,21 @@
           },
           {
             "at": "0.42",
-            "event": "'a new game' struck through in terracotta; 'an extension' typed in"
-          },
-          {
-            "at": "0.70",
-            "event": "two bullets settle: Lamp-Head Courier / Pick a Line"
+            "event": "'a new game' struck through, 'an extension' typed in"
           },
           {
             "at": "0.88",
-            "event": "footnote: 49 checks, 0 failures"
+            "event": "footnote: 53 checks, 0 failures"
           }
         ],
         "remotion": {
           "pattern": "BrutalistHesitantWriter",
           "props": {
             "contextTitle": "WHAT WAS ACTUALLY BUILT",
-            "text": "Bao built a new game.\nThe starter is untouched below x=960.\nTwo additions: a courier, and a fork.",
+            "text": "Bao built a new game.\nThe starter is untouched below x=960.\nAdded: a courier, a key, a locked door.",
             "triggerWords": "a new game",
             "replacementWords": "an extension",
-            "fontSize": 78,
+            "fontSize": 74,
             "lineSpacing": 2.7,
             "align": "center",
             "seed": "7270",
@@ -166,35 +162,36 @@
             "hesitateWithin": 0,
             "hesitateBetween": 1,
             "charMs": 8,
-            "durationSeconds": 19.243,
+            "durationSeconds": 19.733,
             "ink": "#3D3929",
             "accent": "#D97757",
             "bg": "#FAF9F5"
           },
           "rendered": {
             "out": "media/B01.mp4",
-            "at": "2026-09-18T16:52:49.080427+00:00"
+            "at": "2026-09-22T16:28:00.495077+00:00"
           }
         }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 19.24,
+      "lead_silence_s": 0.8,
+      "actual_duration_s": 19.733,
       "audio_file": "mp3/beat-B01.mp3",
-      "render_duration_s": 19.266666666666666,
+      "render_duration_s": 19.733333333333334,
       "build": {
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "remotion:BrutalistHesitantWriter",
-        "at": "2026-09-21T21:54:52"
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
       "beat_id": "B02",
       "act": "GAMEPLAY",
       "estimated_duration_s": 7.5333,
-      "role_note": "REAL GAMEPLAY. Scripted input, labeled on screen. Shows menu, start, movement, the starter's two gaps and spike — the part that was NOT changed.",
+      "role_note": "REAL GAMEPLAY, scripted input. The starter's own section, unchanged.",
       "narration_text": "Enter to start. Two gaps and one spike cluster. None of this was touched — it is the starter's own geometry, kept byte for byte.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "USER-CAPTURE",
         "class": "SHOW",
@@ -210,30 +207,24 @@
             "event": "Enter; card clears"
           },
           {
-            "at": "0.2",
+            "at": "0.25",
             "event": "courier runs right, lamp wedge widens"
           },
           {
-            "at": "0.55",
+            "at": "0.6",
             "event": "first gap cleared"
           },
           {
-            "at": "0.85",
+            "at": "0.9",
             "event": "spike cluster cleared"
           }
-        ]
+        ],
+        "qc": {
+          "full_bleed": true
+        }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 7.53,
+      "actual_duration_s": 7.531,
       "audio_file": "mp3/beat-B02.mp3",
-      "render_duration_s": 7.533333333333333,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B02.mp4",
-        "filled_by": "media",
-        "at": "2026-09-21T21:54:52"
-      },
       "qc": {
         "full_bleed": true,
         "contrast_regions": [
@@ -256,15 +247,24 @@
             ]
           }
         ],
-        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply to it (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage -- the average is genuinely low while every piece of essential text is high contrast. The essential text is the HUD: the title/controls bar across the top and the status footer carrying COIN, RETRIES and the timer. Both bands are declared above and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage. The essential text is the HUD: the title/controls bar across the top and the status footer carrying KEY state, RETRIES and the timer. Both bands are declared and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+      },
+      "render_duration_s": 7.533333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B02.mp4",
+        "filled_by": "media",
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
       "beat_id": "B03",
       "act": "GAMEPLAY",
-      "estimated_duration_s": 7.3667,
-      "role_note": "REAL GAMEPLAY. The fork and the high road: three new landings that require jumps, plus the reward coin.",
-      "narration_text": "Here is the new section. The route forks. This is the high line — three narrow ledges, and a coin only this line can reach.",
+      "estimated_duration_s": 7.0667,
+      "role_note": "REAL GAMEPLAY — genuine failure. Attempt 1 skips the key and is punished by the trap.",
+      "narration_text": "First attempt, straight for the door with no key. It never gets that far — the last spike looks jumpable, and it is not.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "USER-CAPTURE",
         "class": "SHOW",
@@ -272,38 +272,32 @@
         "media": "media/B03.mp4",
         "show": [
           {
-            "at": "0.0",
-            "event": "fork sign visible: UP three tight landings / ACROSS no headroom"
+            "at": "0.05",
+            "event": "courier jumps to clear the final spike"
           },
           {
-            "at": "0.25",
-            "event": "up-jump onto ledge B"
+            "at": "0.2",
+            "event": "spike springs up into the arc"
           },
           {
-            "at": "0.5",
-            "event": "hop to C"
+            "at": "0.3",
+            "event": "death card: It goes up when you do"
           },
           {
-            "at": "0.75",
-            "event": "hop to D, the highest surface"
+            "at": "0.55",
+            "event": "automatic retry, back at spawn, RETRIES 01"
           },
           {
-            "at": "0.9",
-            "event": "coin taken, HUD reads COIN 1/1"
+            "at": "0.8",
+            "event": "HELD FRAME label; action has stopped"
           }
-        ]
+        ],
+        "qc": {
+          "full_bleed": true
+        }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 7.34,
+      "actual_duration_s": 7.061,
       "audio_file": "mp3/beat-B03.mp3",
-      "render_duration_s": 7.366666666666666,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B03.mp4",
-        "filled_by": "media",
-        "at": "2026-09-21T21:54:52"
-      },
       "qc": {
         "full_bleed": true,
         "contrast_regions": [
@@ -326,15 +320,24 @@
             ]
           }
         ],
-        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply to it (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage -- the average is genuinely low while every piece of essential text is high contrast. The essential text is the HUD: the title/controls bar across the top and the status footer carrying COIN, RETRIES and the timer. Both bands are declared above and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage. The essential text is the HUD: the title/controls bar across the top and the status footer carrying KEY state, RETRIES and the timer. Both bands are declared and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+      },
+      "render_duration_s": 7.066666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B03.mp4",
+        "filled_by": "media",
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
       "beat_id": "B04",
       "act": "GAMEPLAY",
-      "estimated_duration_s": 6.1333,
-      "role_note": "REAL GAMEPLAY — genuine failure. The spring trap. Not staged: the driver jumps across and dies. Held frame at the end is labeled.",
-      "narration_text": "Then the last spike. It looks jumpable. Watch what happens when you try — and watch how fast it puts you back.",
+      "estimated_duration_s": 6.3667,
+      "role_note": "REAL GAMEPLAY — the climb for the key.",
+      "narration_text": "Second attempt. The door is locked and the only key is up on the ledges. Forty-eight pixels up, then two hops.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "USER-CAPTURE",
         "class": "SHOW",
@@ -343,37 +346,23 @@
         "show": [
           {
             "at": "0.05",
-            "event": "courier jumps to clear the final spike"
+            "event": "up-jump onto ledge B"
           },
           {
-            "at": "0.15",
-            "event": "spike springs up into the arc"
+            "at": "0.35",
+            "event": "hop to C"
           },
           {
-            "at": "0.2",
-            "event": "death card: It goes up when you do"
-          },
-          {
-            "at": "0.5",
-            "event": "automatic retry, back at spawn, RETRIES 01"
-          },
-          {
-            "at": "0.75",
-            "event": "HELD FRAME label; action has stopped"
+            "at": "0.7",
+            "event": "hop to D, the highest surface"
           }
-        ]
+        ],
+        "qc": {
+          "full_bleed": true
+        }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 6.1,
+      "actual_duration_s": 6.336,
       "audio_file": "mp3/beat-B04.mp3",
-      "render_duration_s": 6.1,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B04.mp4",
-        "filled_by": "media",
-        "at": "2026-09-21T21:54:52"
-      },
       "qc": {
         "full_bleed": true,
         "contrast_regions": [
@@ -396,15 +385,24 @@
             ]
           }
         ],
-        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply to it (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage -- the average is genuinely low while every piece of essential text is high contrast. The essential text is the HUD: the title/controls bar across the top and the status footer carrying COIN, RETRIES and the timer. Both bands are declared above and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage. The essential text is the HUD: the title/controls bar across the top and the status footer carrying KEY state, RETRIES and the timer. Both bands are declared and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+      },
+      "render_duration_s": 6.366666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B04.mp4",
+        "filled_by": "media",
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
       "beat_id": "B05",
       "act": "GAMEPLAY",
-      "estimated_duration_s": 10.1333,
-      "role_note": "REAL GAMEPLAY — recovery. Automatic retry, no lives, straight back into the run. Starter behaviour, preserved.",
-      "narration_text": "Back at the start, retry counter at one, already running. No lives, no menu, no lecture. That retry loop is the starter's, and it is the reason the trap is worth having at all.",
+      "estimated_duration_s": 6.366,
+      "role_note": "REAL GAMEPLAY — the key, the dead end, and the walk back.",
+      "narration_text": "The key sits above standing height, so it takes a jump. And the ledge dead-ends at a barrier. Turn around and drop.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "USER-CAPTURE",
         "class": "SHOW",
@@ -412,30 +410,28 @@
         "media": "media/B05.mp4",
         "show": [
           {
-            "at": "0.05",
-            "event": "running the original section again, RETRIES reads 01"
+            "at": "0.1",
+            "event": "jump on ledge D; the key is taken, HUD reads KEY HELD"
+          },
+          {
+            "at": "0.3",
+            "event": "the key falls in behind the courier"
           },
           {
             "at": "0.5",
-            "event": "second pass through the two gaps"
+            "event": "barrier at the ledge end, marked DEAD END"
           },
           {
-            "at": "0.9",
-            "event": "approaching the fork a second time"
+            "at": "0.7",
+            "event": "walking left, off the edge, dropping to the floor"
           }
-        ]
+        ],
+        "qc": {
+          "full_bleed": true
+        }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 10.11,
+      "actual_duration_s": 6.357,
       "audio_file": "mp3/beat-B05.mp3",
-      "render_duration_s": 10.133333333333333,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B05.mp4",
-        "filled_by": "media",
-        "at": "2026-09-21T21:54:52"
-      },
       "qc": {
         "full_bleed": true,
         "contrast_regions": [
@@ -458,15 +454,24 @@
             ]
           }
         ],
-        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply to it (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage -- the average is genuinely low while every piece of essential text is high contrast. The essential text is the HUD: the title/controls bar across the top and the status footer carrying COIN, RETRIES and the timer. Both bands are declared above and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage. The essential text is the HUD: the title/controls bar across the top and the status footer carrying KEY state, RETRIES and the timer. Both bands are declared and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+      },
+      "render_duration_s": 6.366666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B05.mp4",
+        "filled_by": "media",
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
       "beat_id": "B06",
       "act": "GAMEPLAY",
-      "estimated_duration_s": 9.6,
-      "role_note": "REAL GAMEPLAY — the solution and completion. Low road corridor, bait, walk under, finish. Coin reads 0/1 because this attempt took the low line.",
-      "narration_text": "Second attempt, low line. A roofed corridor you cannot jump in, one committed gap, then the trap again — but this time baited from the safe side and walked under. Finish.",
+      "estimated_duration_s": 6.7,
+      "role_note": "REAL GAMEPLAY — the corridor, the gap, and the trap solved.",
+      "narration_text": "Back on the floor, key in tow. A corridor with no headroom, one committed gap, then the trap — baited and walked under.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "USER-CAPTURE",
         "class": "SHOW",
@@ -474,42 +479,32 @@
         "media": "media/B06.mp4",
         "show": [
           {
-            "at": "0.05",
-            "event": "low corridor under the ledges"
+            "at": "0.1",
+            "event": "running the roofed corridor, key trailing"
           },
           {
-            "at": "0.25",
+            "at": "0.3",
             "event": "the fifty-six pixel gap"
           },
           {
-            "at": "0.45",
+            "at": "0.5",
             "event": "stops short of the spike and hops straight up"
           },
           {
-            "at": "0.55",
+            "at": "0.65",
             "event": "spike springs and stays up"
           },
           {
-            "at": "0.7",
+            "at": "0.85",
             "event": "courier walks underneath it"
-          },
-          {
-            "at": "0.8",
-            "event": "flag reached, completion card"
           }
-        ]
+        ],
+        "qc": {
+          "full_bleed": true
+        }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 9.58,
+      "actual_duration_s": 6.699,
       "audio_file": "mp3/beat-B06.mp3",
-      "render_duration_s": 9.6,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B06.mp4",
-        "filled_by": "media",
-        "at": "2026-09-21T21:54:52"
-      },
       "qc": {
         "full_bleed": true,
         "contrast_regions": [
@@ -532,17 +527,24 @@
             ]
           }
         ],
-        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply to it (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage -- the average is genuinely low while every piece of essential text is high contrast. The essential text is the HUD: the title/controls bar across the top and the status footer carrying COIN, RETRIES and the timer. Both bands are declared above and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage. The essential text is the HUD: the title/controls bar across the top and the status footer carrying KEY state, RETRIES and the timer. Both bands are declared and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+      },
+      "render_duration_s": 6.7,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B06.mp4",
+        "filled_by": "media",
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
       "beat_id": "B07",
       "act": "GAMEPLAY",
-      "estimated_duration_s": 9.5,
+      "estimated_duration_s": 6.5333,
+      "role_note": "REAL GAMEPLAY — the payoff. The key leaves the player, fits the lock, the door opens.",
+      "narration_text": "At the dock line the key leaves him, flies to the lock and fits. The door opens. Now the level can be finished.",
       "voice": "am_onyx",
       "engine": "kokoro",
-      "role_note": "REAL GAMEPLAY — menus and controls, so every implemented feature is shown. Replay from the completion card, pause, resume, manual retry. All starter behaviour, preserved unchanged.",
-      "narration_text": "And the rest of it still works. Enter replays from the completion card. Escape pauses, Enter resumes, R restarts the attempt — and R does not count as a death.",
       "shot": {
         "type": "USER-CAPTURE",
         "class": "SHOW",
@@ -550,32 +552,28 @@
         "media": "media/B07.mp4",
         "show": [
           {
-            "at": "0.05",
-            "event": "Enter on the completion card; retries reset to 00"
+            "at": "0.15",
+            "event": "the key detaches and flies ahead"
           },
           {
-            "at": "0.3",
-            "event": "Escape; 'Take a breath.' pause card"
+            "at": "0.35",
+            "event": "it seats in the keyhole; LOCKED becomes OPEN"
           },
           {
-            "at": "0.5",
-            "event": "Enter; play resumes from the same position"
+            "at": "0.55",
+            "event": "the door swings; HUD reads DOOR OPEN"
           },
           {
             "at": "0.75",
-            "event": "R; back at spawn with RETRIES still 00"
+            "event": "courier walks in — Course complete"
           }
-        ]
+        ],
+        "qc": {
+          "full_bleed": true
+        }
       },
-      "actual_duration_s": 9.47,
+      "actual_duration_s": 6.507,
       "audio_file": "mp3/beat-B07.mp3",
-      "render_duration_s": 9.5,
-      "build": {
-        "status": "VIDEO",
-        "src": "media/B07.mp4",
-        "filled_by": "media",
-        "at": "2026-09-21T21:54:52"
-      },
       "qc": {
         "full_bleed": true,
         "contrast_regions": [
@@ -598,15 +596,93 @@
             ]
           }
         ],
-        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply to it (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage -- the average is genuinely low while every piece of essential text is high contrast. The essential text is the HUD: the title/controls bar across the top and the status footer carrying COIN, RETRIES and the timer. Both bands are declared above and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage. The essential text is the HUD: the title/controls bar across the top and the status footer carrying KEY state, RETRIES and the timer. Both bands are declared and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+      },
+      "render_duration_s": 6.533333333333333,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B07.mp4",
+        "filled_by": "media",
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
       "beat_id": "B08",
+      "act": "GAMEPLAY",
+      "estimated_duration_s": 7.5667,
+      "role_note": "REAL GAMEPLAY — menus and controls, so every implemented feature is shown.",
+      "narration_text": "The rest still works. Enter replays and resets the key. Escape pauses, Enter resumes, R restarts — and counts no death.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
+      "shot": {
+        "type": "USER-CAPTURE",
+        "class": "SHOW",
+        "source": "capture",
+        "media": "media/B08.mp4",
+        "show": [
+          {
+            "at": "0.1",
+            "event": "Enter on the completion card; RETRIES back to 00, key restored"
+          },
+          {
+            "at": "0.35",
+            "event": "Escape; 'Take a breath.' pause card"
+          },
+          {
+            "at": "0.6",
+            "event": "Enter; play resumes"
+          },
+          {
+            "at": "0.85",
+            "event": "R; back at spawn with RETRIES still 00"
+          }
+        ],
+        "qc": {
+          "full_bleed": true
+        }
+      },
+      "actual_duration_s": 7.552,
+      "audio_file": "mp3/beat-B08.mp3",
+      "qc": {
+        "full_bleed": true,
+        "contrast_regions": [
+          {
+            "label": "hud-top-bar",
+            "box": [
+              0.03,
+              0.02,
+              0.97,
+              0.19
+            ]
+          },
+          {
+            "label": "hud-footer",
+            "box": [
+              0.03,
+              0.93,
+              0.97,
+              0.995
+            ]
+          }
+        ],
+        "contrast_reason": "This beat is a native 3840x2160 Godot viewport, not a flat title card. It is edge-to-edge by construction, so the title-safe margin test does not apply (qc.full_bleed). Its whole-frame average also fails the flat-card ink heuristic because the level is a light cream playfield with a small dark character and thin signage. The essential text is the HUD: the title/controls bar across the top and the status footer carrying KEY state, RETRIES and the timer. Both bands are declared and both must still pass. Underfill, empty-frame and every other check remain armed. Gameplay was NOT relabelled as a source report."
+      },
+      "render_duration_s": 7.566666666666666,
+      "build": {
+        "status": "VIDEO",
+        "src": "media/B08.mp4",
+        "filled_by": "media",
+        "at": "2026-09-22T12:36:31"
+      }
+    },
+    {
+      "beat_id": "B09",
       "act": "MECHANISM",
-      "estimated_duration_s": 25.3333,
-      "role_note": "CAUSE AND EFFECT 1 — the required source-change-to-behaviour link. Two numbers from the starter's own tuning decide the whole trap. FRAMEWORK beat.",
+      "estimated_duration_s": 25.323,
+      "role_note": "CAUSE AND EFFECT 1 — the required source-change-to-behaviour link. Two numbers from the starter's tuning decide the whole trap.",
       "narration_text": "That trap is not a timer and not a random event. It is two numbers from the starter's tuning, untouched. Standing, the player's collider occupies y two ninety-two to three twenty. At the top of a jump it occupies two thirty-six to two sixty-four. Those two bands do not overlap. So an arming rectangle placed between them, at two forty-four to two eighty-four, is provably unreachable on foot and provably reachable in the air. Walking can never spring it. Leaving the ground always will.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "class": "SHOW",
@@ -618,24 +694,20 @@
             "event": "title 'Two bands that never meet'"
           },
           {
-            "at": "0.15",
-            "event": "standing collider drawn, y 292 to 320, labeled"
+            "at": "0.2",
+            "event": "standing collider y 292-320"
           },
           {
-            "at": "0.35",
-            "event": "jump-apex collider drawn, y 236 to 264, labeled"
-          },
-          {
-            "at": "0.55",
-            "event": "the gap between them highlighted"
+            "at": "0.45",
+            "event": "jump-apex collider y 236-264"
           },
           {
             "at": "0.7",
-            "event": "arming rectangle 244 to 284 drops into the gap"
+            "event": "arming rectangle 244-284 drops into the gap"
           },
           {
-            "at": "0.88",
-            "event": "two captions: WALK = never arms / JUMP = always arms"
+            "at": "0.9",
+            "event": "WALK = never arms / JUMP = always arms"
           }
         ],
         "remotion": {
@@ -669,29 +741,29 @@
             "durationSeconds": 25.323
           },
           "rendered": {
-            "out": "media/B08.mp4",
-            "at": "2026-09-18T16:53:51.407063+00:00"
+            "out": "media/B09.mp4",
+            "at": "2026-09-22T16:28:56.500384+00:00"
           }
         }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 25.32,
-      "audio_file": "mp3/beat-B08.mp3",
+      "actual_duration_s": 25.323,
+      "audio_file": "mp3/beat-B09.mp3",
       "render_duration_s": 25.333333333333332,
       "build": {
         "status": "VIDEO",
-        "src": "media/B08.mp4",
+        "src": "media/B09.mp4",
         "filled_by": "remotion:WalkerGodotSetup",
-        "at": "2026-09-21T21:54:52"
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
-      "beat_id": "B09",
+      "beat_id": "B10",
       "act": "MECHANISM",
-      "estimated_duration_s": 22.5417,
-      "role_note": "CAUSE AND EFFECT 2 — the probe rejecting the first level design. Source-backed: real probe output. Honest about the design being wrong first.",
-      "narration_text": "The same arithmetic killed Bao's first level. The plan stacked the two roads, with spikes under the ledges. A reachability probe swept real takeoff positions through real physics and returned: unreachable, unreachable, blocked. A jumping head reaches two thirty-six; the ledges sat at two seventy-two. You cannot jump under them. The fix was geometry, not a bigger jump — and a check named tuning-unchanged proves the jump was never touched.",
+      "estimated_duration_s": 21.419,
+      "role_note": "CAUSE AND EFFECT 2 — the probe. Same arithmetic that killed the first layout now proves the barrier works.",
+      "narration_text": "The same arithmetic shaped the rest. A reachability probe sweeps real takeoff positions through real physics, and it is how every landing here was chosen: seventy pixels onto the first ledge, fifty-six and fifty-eight between them, thirty-eight across the gap, ten to bait the trap. Look at the fourth line. Ledge D to the merge platform: unreachable. That is not a defect — that is the barrier doing its job, measured rather than assumed.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "class": "SHOW",
@@ -700,69 +772,65 @@
         "show": [
           {
             "at": "0.0",
-            "event": "terminal shows probe output: L1 -> over HZ1 UNREACHABLE"
+            "event": "terminal shows the probe command"
           },
           {
-            "at": "0.22",
-            "event": "second line: walk-under B and C BLOCKED at 1116.6"
+            "at": "0.25",
+            "event": "windows print: 70, 56, 58"
           },
           {
-            "at": "0.45",
-            "event": "overlay: head reaches y=236, ledge bottom y=284"
+            "at": "0.5",
+            "event": "D -> merge: UNREACHABLE, highlighted"
           },
           {
-            "at": "0.65",
-            "event": "rejected layout fades; shipped layout draws in"
-          },
-          {
-            "at": "0.85",
-            "event": "green check: tuning-unchanged PASS"
+            "at": "0.75",
+            "event": "caption: the barrier, working"
           }
         ],
         "remotion": {
           "pattern": "WalkerGodotSetup",
           "props": {
             "mode": "terminal",
-            "title": "The probe rejected the first level.",
+            "title": "Every landing chosen by measurement.",
             "sparkLine": "Change the geometry, not the jump.",
             "source": "godot/tests/probe_reach.gd · real output, Godot 4.7.2.stable.official.ed1daf0bf",
             "command": "godot --headless --path godot --script res://tests/probe_reach.gd",
             "lines": [
               "floor -> B  (+48 rise)      takeoff window 70 px",
-              "L1 -> over HZ1             UNREACHABLE",
-              "L1 -> over HZ2             UNREACHABLE",
-              "L1 -> M (56px gap)         UNREACHABLE",
-              "walk-under B and C         BLOCKED at 1116.6",
-              "cause: jumping head reaches y=236; ledges sat at y=272",
-              "fix: re-cut geometry — tuning-unchanged still PASS"
+              "B -> C      (flat 64px)     takeoff window 56 px",
+              "C -> D      (+24, 48px)     takeoff window 58 px",
+              "D -> M      (barrier)       UNREACHABLE   <- by design",
+              "L1 -> M     (56px gap)      takeoff window 38 px",
+              "bait-from-standing          bait window 10 px",
+              "walk-under B and C          clear, 0 jumps"
             ],
-            "selected": 4,
-            "durationSeconds": 22.528
+            "selected": 3,
+            "durationSeconds": 21.419
           },
           "rendered": {
-            "out": "media/B09.mp4",
-            "at": "2026-09-18T16:54:47.983395+00:00"
+            "out": "media/B10.mp4",
+            "at": "2026-09-22T16:29:49.086467+00:00"
           }
         }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 22.53,
-      "audio_file": "mp3/beat-B09.mp3",
-      "render_duration_s": 22.533333333333335,
+      "actual_duration_s": 21.419,
+      "audio_file": "mp3/beat-B10.mp3",
+      "render_duration_s": 21.433333333333334,
       "build": {
         "status": "VIDEO",
-        "src": "media/B09.mp4",
+        "src": "media/B10.mp4",
         "filled_by": "remotion:WalkerGodotSetup",
-        "at": "2026-09-21T21:54:52"
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
-      "beat_id": "B10",
+      "beat_id": "B11",
       "act": "VERDICT",
-      "estimated_duration_s": 42.368,
-      "role_note": "VERDICT LAW — observed / by-design / tested-cold / still-thin / next. An earlier cut said 'the only human playtest was by the person who designed the level'; a second playtester finished the build on 2026-09-21 and that sentence became false, so the beat was re-recorded rather than left contradicting TEST-REPORT section 7.",
-      "narration_text": "Verdict. Observed working: both routes reach the relocated finish; the trap punishes the jump and spares the walk; the coin sits on the highest ledge, so the high line is the only line that can pay you; and forty-nine checks pass with the starter's twenty-five unaltered. By design, the fork trades precision for that coin, not for speed — both lines cost the same six hundred and seventy-one ticks, and that is the exchange, not a shortfall. Tested cold: a second player who had never seen the design met the trap, died to it several times, worked out the bait unaided, and finished. That is the trap's loop working on someone it was never explained to. Still thin, though: two players, no retry counts, no timings, one word of feedback. Next improvement: log where deaths actually happen, so the next playtest returns numbers instead of impressions.",
+      "estimated_duration_s": 36.587,
+      "role_note": "VERDICT LAW — observed / by-design / untested / next. Must not overclaim, and must name what the key cost the design.",
+      "narration_text": "Verdict. Observed working: the trap punishes the jump and spares the walk; the key cannot be taken on foot; the door will not open without it; and fifty-three checks pass with the starter's twenty-five unaltered. Two humans finished it, and the second had never seen the design — he met the trap cold, died to it, and worked out the bait unaided. By design, and this is the honest part: making the key mandatory cost this level its fork. It used to ask the player to choose a line. Now it asks them to notice a locked door and go and find what opens it. That is sequencing, not a decision, and it is the weaker prompt. Next improvement: log where deaths actually happen, so the next playtest returns numbers instead of impressions.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "class": "SHOW",
@@ -771,64 +839,60 @@
         "show": [
           {
             "at": "0.0",
-            "event": "three columns: OBSERVED / UNTESTED / NEXT"
+            "event": "verdict card"
           },
           {
-            "at": "0.2",
+            "at": "0.25",
             "event": "observed items tick in"
           },
           {
-            "at": "0.5",
-            "event": "untested items in amber"
+            "at": "0.6",
+            "event": "the by-design trade-off lands"
           },
           {
-            "at": "0.78",
-            "event": "next improvement lands"
-          },
-          {
-            "at": "0.9",
-            "event": "footer: revision 8c64672, build 585b05e5"
+            "at": "0.85",
+            "event": "next improvement"
           }
         ],
         "remotion": {
           "pattern": "ClaudeVerdictArtifact",
           "props": {
             "artifactTitle": "Verdict",
-            "artifactHeading": "Pick a Line — extending walker-jumpman.",
+            "artifactHeading": "The Key and the Door — extending walker-jumpman.",
             "brandLabel": "CSYE 7270 · Bao Xing",
             "artifactLines": [
-              "Observed: both routes finish; trap punishes the jump, spares the walk.",
-              "Observed: 49 checks pass — the starter's 25 unaltered.",
-              "By design: the fork buys the coin, not speed — both cost 671 ticks.",
+              "Observed: trap punishes the jump, spares the walk; key needs a jump.",
+              "Observed: the door will not open without the key. 53 checks pass.",
               "Tested cold: a second player died to the trap, then solved it unaided.",
-              "Thin: n = 2, no counts, no timings. Next: log where deaths happen."
+              "By design: a mandatory key cost this level its fork — sequencing, not choice.",
+              "Next: log where deaths happen, so a playtest yields numbers."
             ],
-            "durationSeconds": 42.368
+            "durationSeconds": 36.587
           },
           "rendered": {
-            "out": "media/B10.mp4",
-            "at": "2026-09-22T01:52:55.559247+00:00"
+            "out": "media/B11.mp4",
+            "at": "2026-09-22T16:31:38.200594+00:00"
           }
         }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 42.368,
-      "audio_file": "mp3/beat-B10.mp3",
-      "render_duration_s": 42.4,
+      "actual_duration_s": 36.587,
+      "audio_file": "mp3/beat-B11.mp3",
+      "render_duration_s": 36.6,
       "build": {
         "status": "VIDEO",
-        "src": "media/B10.mp4",
+        "src": "media/B11.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-09-21T21:54:52"
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
-      "beat_id": "B11",
+      "beat_id": "B12",
       "act": "HANDOFF",
-      "estimated_duration_s": 26.3667,
-      "role_note": "YOUR TURN LAW — a runnable Walker prompt relevant to THIS video, read in full, then one concrete experiment. Liam signs off here.",
+      "estimated_duration_s": 26.347,
+      "role_note": "YOUR TURN LAW — a runnable prompt relevant to THIS video, read in full. Liam signs off here.",
       "narration_text": "Your turn. If you are extending someone else's level, paste this before you commit to a layout: 'Read this project's tuning values, then write a throwaway script that sweeps real takeoff positions through the real physics and tells me which of my planned jumps actually land. Do not change the jump to make my layout work.' Bao's probe rejected a design he had already hand-computed and believed. The moment you reach for jump strength, you have stopped extending the game and started editing it to agree with you. Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "class": "SHOW",
@@ -837,19 +901,15 @@
         "show": [
           {
             "at": "0.0",
-            "event": "composer card, cream"
+            "event": "composer card"
           },
           {
             "at": "0.15",
             "event": "prompt types in full"
           },
           {
-            "at": "0.62",
-            "event": "prompt settles, readable"
-          },
-          {
-            "at": "0.78",
-            "event": "single line beneath: 'change the geometry, not the jump'"
+            "at": "0.8",
+            "event": "line beneath: 'change the geometry, not the jump'"
           }
         ],
         "remotion": {
@@ -871,30 +931,29 @@
             "durationSeconds": 26.347
           },
           "rendered": {
-            "out": "media/B11.mp4",
-            "at": "2026-09-18T16:57:36.970507+00:00"
+            "out": "media/B12.mp4",
+            "at": "2026-09-22T16:32:45.610384+00:00"
           }
         }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
-      "actual_duration_s": 26.35,
-      "audio_file": "mp3/beat-B11.mp3",
+      "actual_duration_s": 26.347,
+      "audio_file": "mp3/beat-B12.mp3",
       "render_duration_s": 26.366666666666667,
       "build": {
         "status": "VIDEO",
-        "src": "media/B11.mp4",
+        "src": "media/B12.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-21T21:54:52"
+        "at": "2026-09-22T12:36:31"
       }
     },
     {
-      "beat_id": "B12",
+      "beat_id": "B13",
       "act": "OUTRO",
-      "estimated_duration_s": 7.0,
-      "audio_policy": "silence",
-      "role_note": "OUTRO LAW — ClaudeTitleOutro, exact title restate, @NikBearBrown HARDCODED per OUTRO-LOCK.md, slug-seeded mascot, silent under the stock jingle.",
+      "estimated_duration_s": 7,
+      "role_note": "OUTRO LAW — ClaudeTitleOutro, exact title restate, @NikBearBrown hardcoded, silent.",
       "narration_text": "Liam, in for Bear.",
+      "voice": "am_onyx",
+      "engine": "kokoro",
       "shot": {
         "type": "GRAPHIC",
         "class": "SHOW",
@@ -903,7 +962,7 @@
         "show": [
           {
             "at": "0.0",
-            "event": "title 'Pick a Line — Extending walker-jumpman' on cream, EB Garamond"
+            "event": "title on cream"
           },
           {
             "at": "0.25",
@@ -911,34 +970,29 @@
           },
           {
             "at": "0.45",
-            "event": "slug-seeded mascot animation, small, under the handle"
-          },
-          {
-            "at": "0.7",
-            "event": "stock jingle only; no narration"
+            "event": "slug-seeded mascot"
           }
         ],
         "remotion": {
           "pattern": "ClaudeTitleOutro",
           "props": {
-            "title": "Pick a Line — Extending walker-jumpman",
+            "title": "The Key and the Door — Extending walker-jumpman",
             "slug": "claude-liam-walker-jumpman-bao-x-walkthrough"
           },
           "rendered": {
-            "out": "media/B12.mp4",
-            "at": "2026-09-18T16:57:58.325812+00:00"
+            "out": "media/B13.mp4",
+            "at": "2026-09-22T16:33:06.181784+00:00"
           }
         }
       },
-      "voice": "am_onyx",
-      "engine": "kokoro",
+      "audio_policy": "silence",
       "actual_duration_s": null,
       "render_duration_s": 7.0,
       "build": {
         "status": "VIDEO",
-        "src": "media/B12.mp4",
+        "src": "media/B13.mp4",
         "filled_by": "remotion:ClaudeTitleOutro",
-        "at": "2026-09-21T21:54:52"
+        "at": "2026-09-22T12:36:31"
       }
     }
   ]

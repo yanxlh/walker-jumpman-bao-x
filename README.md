@@ -197,8 +197,8 @@ Rendered with the course Brutalist `godot-waikthrough` skill in **walker** mode.
 | | |
 |---|---|
 | Filename | `claude-liam-walker-jumpman-bao-x-walkthrough.mp4` |
-| SHA-256 | `3fbd8d9ff47329ad54551aba57d5e74732dce9c26ca26d80f8196d7adf1ee245` |
-| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:30** (210.5 s) |
+| SHA-256 | `02f30177d20aa8842960570b7631ca34b36038b0495101ae973132a1be0d3e31` |
+| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:22** (202.0 s) |
 | Link | *upload to course media storage pending* |
 
 Gameplay is **real engine capture at native 4K**, driven by real key events, labeled

@@ -5,8 +5,8 @@
 | | |
 |---|---|
 | Game | walker-jumpman-bao-x (extension of nikbearbrown/walker-jumpman) |
-| Game commit | `8c646723578adbd589340602c5d304cf40a2f409` |
-| Source snapshot build_id | `585b05e7f6d9d55673973778ba8a269c7c68d3021de1484374e170e42f3d9cd6` |
+| Game commit | `fb75763fd0d6f0343b8e7cc116b304cac244b94f` |
+| Source snapshot build_id | `18bc54e6851535d4a4271f55aaf1141b522dd41b413e45840dab2df7b5603213` |
 | Engine | Godot 4.7.2.stable.official.ed1daf0bf, Compatibility/OpenGL |
 | Capture method | Godot Movie Maker, `--write-movie`, `--fixed-fps 60` |
 | Output | 3840 x 2160, 60 fps, native (verified with ffprobe on a probe take before the full run) |
@@ -61,25 +61,23 @@ The human playtest is separate and is recorded in the game's
 `TEST-REPORT.md` §7 — played by Bao Xing on 2026-09-18, completed with fewer than
 five retries. That is the only playtest, and the player designed the level.
 
-## Take 1 event log (measured, from the input log)
+## Take event log (measured, from the input log)
 
 | t (s) | x | event |
 |---|---|---|
 | 0.87 | 64 | start — Enter from the menu |
-| 5.10 | 723 | original section cleared (two gaps, one spike) — unchanged starter geometry |
-| 8.83 | 1321 | high road: ledges B, C, D |
-| 9.17 | 1374 | reward coin collected, 1/1 |
-| 10.15 | 1532 | spring trap: jumping across it (the punished play) |
+| 5.10 | 723 | original section cleared — unchanged starter geometry |
+| 10.15 | 1532 | attempt 1, no key: jumping across the spring trap |
 | 10.40 | 1572 | death — "It goes up when you do" |
 | 10.97 | 64 | automatic retry, retries = 1 |
-| 19.58 | 1372 | low road: roofed corridor, then the 56 px gap |
-| 20.68 | 1548 | stopped short of the trap |
-| 20.83 | 1553 | hopped straight up beside the spike to spring it |
-| 21.60 | 1553 | walking under the raised spike |
-| 22.53 | 1694 | complete — 11.6 s, 1 retry, coin 0/1 on this attempt |
+| 18.40 | 1182 | attempt 2: ledges B, C, D climbed |
+| 19.18 | 1308 | key taken on ledge D; barrier is a dead end |
+| 19.93 | 1225 | walked back left, dropped to the floor, key carried |
+| 22.33 | 1553 | spring trap baited from standing |
+| 23.10 | 1553 | walking under the raised spike |
+| 23.75 | 1648 | key flew to the lock and fitted; the door opened |
+| 24.03 | 1694 | complete — 13.1 s, 1 retry |
+| 25.43 | 64 | replay from the completion card |
+| 26.25 | 151 | pause · 27.23 resume · 28.13 manual R |
 
-Total 1442 ticks = 24.03 s at 60 fps.
-
-Note the coin reads 0/1 at the finish: attempt 1 took the high road and collected it,
-then died on the trap; the retry reset it and attempt 2 finished by the low road,
-which cannot reach the coin. That is the design working, not a bug.
+Total 1763 ticks = 29.40 s at 60 fps.
