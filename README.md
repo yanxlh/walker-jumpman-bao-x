@@ -1,6 +1,7 @@
 # walker-jumpman-bao-x — Pick a Line
 
 **Bao Xing** · CSYE 7270 · Godot **4.7.2.stable.official.ed1daf0bf** · GDScript
+Repository: <https://github.com/yanxlh/walker-jumpman-bao-x>
 
 An extension of **[nikbearbrown/walker-jumpman](https://github.com/nikbearbrown/walker-jumpman)**
 by Nik Bear Brown — not a new game. The starter is commit `0852e7f` in this repository,
