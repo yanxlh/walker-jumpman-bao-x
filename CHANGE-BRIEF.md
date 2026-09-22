@@ -317,7 +317,7 @@ stop. Still under the starter's original 900-tick ceiling, which remains unchang
 - Guide rail under the spike removed at Bao's request — the trap now has no floor
   marking and no rail, so the sign is the only tell.
 
-### R5 — 2026-09-22 · The coin became a key, and the fork became a detour
+### R7 — 2026-09-22 · The coin became a key, and the fork became a detour
 
 Scope change requested after the brief was frozen, and it is the largest one in this
 project. It is recorded here rather than folded into the original predictions.
