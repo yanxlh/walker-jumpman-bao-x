@@ -23,12 +23,12 @@ BUILD-REPORT.md, confirming the baseline is trustworthy.
 
 | Suite | Checks | Failures |
 |---|---:|---:|
-| `test_game.gd` | **40** | **0** |
+| `test_game.gd` | **44** | **0** |
 | `test_keyboard.gd` | **9** | **0** |
-| Total | **49** | **0** |
+| Total | **53** | **0** |
 
 **All 25 starter checks still pass with their assertions unmodified.** Nothing was
-deleted, relaxed, or rewritten. The 15 added checks are listed in §4.
+deleted, relaxed, or rewritten. The 19 added checks are listed in §4.
 
 Reproduce:
 
@@ -265,23 +265,42 @@ capture loop now waits for `is_on_floor()` before freezing.
 
 ---
 
-## 8b. Design decision — what the fork actually trades
+## 8b. Design decision — the fork became a mandatory detour
 
-**The high road buys the coin, not time.** Both branches cost the same 671 ticks,
-because horizontal speed is constant and jumps do not change it.
+The extension shipped for four days as a **fork**: a high road of narrow ledges and a
+low road through a roofed corridor, either of which finished the level, with an
+optional coin on the high line as its payoff.
 
-An earlier version of this report listed that as limitation #3. It was one *before the
-coin existed*: at that point the high line cost precision and returned nothing, which
-is a real defect. Once the reward coin was placed on ledge D — the highest surface, and
-high-road-only — the line has a payoff. A route that trades precision for a collectible
-is a complete exchange; it does not also owe the player a speed advantage.
+On 2026-09-22 Bao replaced the coin with a **key that the door requires**. That single
+change is incompatible with the fork, and the incompatibility is arithmetic, not taste:
+the key sits above ledge D, ledge D is only reachable from the high road, and a
+mandatory pickup on one branch makes the other branch a dead end.
 
-Asserted, not asserted-about: `complete-real-route` requires `coins_taken == 0` on the
-low branch and `complete-high-road-route` requires `coins_taken == 1` on the high one.
+Four options were put to him. He chose a **there-and-back detour**: ledge D now
+dead-ends at a barrier, so the high road is not an alternative route — it is the only
+way to the key, and you must come back down to use it.
 
-The open question is not "why is it not faster" but "does a first-time player read it
-as a reward line rather than a shortcut" — and that belongs to §7, which one informed
-player has passed and no naive player has attempted.
+**So this level no longer asks the player to choose.** Every "Pick a Line" claim in
+these documents, in the signage and in the film has been rewritten rather than
+relabelled. What the section asks for now is sequencing — see the locked thing, find
+what opens it, come back — which is a weaker design prompt than a choice, and is
+recorded as such rather than dressed up.
+
+Measured by `probe_reach.gd` after the change:
+
+| Jump | Window |
+|---|---|
+| floor → ledge B (+48) | 70 px |
+| B → C (flat 64) | 56 px |
+| C → D (+24) | 58 px |
+| **D → merge platform** | **UNREACHABLE — the barrier, working** |
+| corridor → merge (56 px gap) | 38 px |
+| bait the trap from standing | 10 px |
+| walk the roofed corridor | clear, 0 jumps |
+
+Route cost **671 → 865 ticks**. The starter's 900-tick ceiling had been kept untouched
+through every earlier revision; the detour genuinely does not fit inside it, so it is
+now 1400 with the measured number reported in the check's own observation.
 
 ## 8c. The test harness was non-deterministic, and that is now fixed
 

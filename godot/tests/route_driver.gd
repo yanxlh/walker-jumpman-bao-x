@@ -1,62 +1,94 @@
 extends RefCounted
 ## Fixed input route through the real level. No position/velocity edits.
 ##
-## The starter shipped one five-mark route ending at the old finish (x=916).
-## The level now forks at x~1000 and finishes at x=1696, so the fixture takes a
-## branch and carries the run to the relocated flag. Calling Route.new() with no
-## argument still yields the original five marks plus the low road, so the
-## starter's own `complete-real-route` check keeps its meaning.
+## The level is no longer a fork. The door at x=1696 is locked, the only key is
+## above ledge D, and ledge D dead-ends at a barrier — so there is one route and
+## it doubles back:
 ##
-##   "low"  - stay on the floor, walk the roofed no-jump corridor, jump the
-##            56 px gap onto the merge platform, walk under the spring trap.
-##   "high" - hop ledges B -> C -> D, drop onto the merge platform, walk under
-##            the spring trap.
+##   1. RUN   the starter's original section, unchanged (5 jumps)
+##   2. CLIMB the ledges B -> C -> D (3 jumps)
+##   3. GRAB  jump on D to reach the key, which sits above standing height
+##   4. BACK  walk LEFT off D and fall to the low floor — the barrier blocks right
+##   5. GAP   run right, jump the 56 px gap onto the merge platform
+##   6. BAIT  stop short of the spring trap, hop to spring it, walk under
+##   7. DOOR  the carried key flies to the door at x=1600 and fits; walk in
 ##
-## Every mark below sits inside a takeoff window measured on this engine by
-## tests/probe_reach.gd. The measured windows at the time of writing were:
-##   floor->B 924..992 | B->C 1034..1088 | C->D 1160..1216
-##   D->M 1300..1352   | gap 1356..1392
+## Every mark sits inside a takeoff window measured by tests/probe_reach.gd.
 
-const ORIGINAL: Array[float] = [138.0, 292.0, 424.0, 548.0, 712.0]
-## No jump mark near x=1568: the spring trap launches into the jump band, so the
-## correct play on both branches is to walk under it.
-## The reward coin sits above ledge D, the highest surface in the game, so only
-## the high branch can reach it -- the D->M takeoff at 1310 passes through it.
-const LOW_TAIL: Array[float] = [1360.0]
-const HIGH_TAIL: Array[float] = [940.0, 1040.0, 1170.0, 1310.0]
+const CLIMB_MARKS: Array[float] = [138.0, 292.0, 424.0, 548.0, 712.0, 940.0, 1040.0, 1170.0]
+const GRAB_X := 1288.0      ## on ledge D, jump to reach the key at (1320, 206)
+const OFF_D_X := 1258.0     ## walk left past D's left edge (1264) to fall off
+const GAP_X := 1360.0       ## takeoff for the 56 px gap (window 1356..1392)
+const BAIT_X := 1546.0      ## stop short of the spike (bait window 1550..1558)
 
-## Spring trap. Stop short of the spike, hop straight up to arm it from the
-## safe side, wait for it to reach the top, then walk underneath. Jumping
-## across it arms it into your own arc and is fatal by design.
-const BAIT_X: float = 1546.0
-const BAIT_WAIT_TICKS: int = 46
-
-var jump_marks: Array[float] = []
+var jump_marks: Array[float] = CLIMB_MARKS.duplicate()
 var next_jump: int = 0
-var branch: String = "low"
-var baited: bool = false
-var bait_wait: int = 0
+var phase: String = "climb"
+var branch: String = "key-route"
+var grabbed: bool = false
+var settle: int = 0
 
-func _init(which: String = "low") -> void:
-	branch = which
-	jump_marks = ORIGINAL.duplicate()
-	jump_marks.append_array(HIGH_TAIL if which == "high" else LOW_TAIL)
+func _init(_which: String = "key-route") -> void:
+	pass
 
-func step(player: CharacterBody2D) -> void:
+## `game` is read only to observe key phase and floor height; no state is written.
+func step(player: CharacterBody2D, game: Node2D = null) -> void:
 	player.test_control = true
 	player.test_jump_held = false
-	if not baited and player.position.x >= BAIT_X:
-		player.test_axis = 0.0
-		if player.is_on_floor() and absf(player.velocity.x) < 1.0:
-			player.test_jump_pressed = true
-			baited = true
-			bait_wait = BAIT_WAIT_TICKS
-		return
-	if bait_wait > 0:
-		bait_wait -= 1
-		player.test_axis = 0.0
-		return
-	player.test_axis = 1.0
-	if next_jump < jump_marks.size() and player.position.x >= jump_marks[next_jump] and player.is_on_floor():
-		player.test_jump_pressed = true
-		next_jump += 1
+	var has_key: bool = game != null and not game.key.is_empty() and game.key.phase != "idle"
+
+	match phase:
+		"climb":
+			player.test_axis = 1.0
+			if next_jump < jump_marks.size():
+				if player.position.x >= jump_marks[next_jump] and player.is_on_floor():
+					player.test_jump_pressed = true
+					next_jump += 1
+			elif player.is_on_floor() and player.position.y < 260.0:
+				phase = "grab"
+
+		"grab":
+			# On ledge D. Jump to collect the key, then turn around.
+			player.test_axis = 1.0
+			if has_key:
+				phase = "back"
+			elif not grabbed and player.position.x >= GRAB_X and player.is_on_floor():
+				player.test_jump_pressed = true
+				grabbed = true
+
+		"back":
+			# Barrier blocks the right. Walk left off D and drop to the low floor.
+			player.test_axis = -1.0
+			if player.position.y > 300.0 and player.is_on_floor():
+				phase = "gap"
+				settle = 4
+
+		"gap":
+			player.test_axis = 1.0
+			if settle > 0:
+				settle -= 1
+			elif player.position.x >= GAP_X and player.is_on_floor():
+				player.test_jump_pressed = true
+				phase = "cross"
+
+		"cross":
+			player.test_axis = 1.0
+			if player.position.x >= BAIT_X:
+				player.test_axis = 0.0
+				phase = "bait"
+
+		"bait":
+			player.test_axis = 0.0
+			if player.is_on_floor() and absf(player.velocity.x) < 1.0:
+				player.test_jump_pressed = true
+				phase = "wait"
+				settle = 46
+
+		"wait":
+			player.test_axis = 0.0
+			settle -= 1
+			if settle <= 0:
+				phase = "door"
+
+		"door":
+			player.test_axis = 1.0

@@ -317,4 +317,43 @@ stop. Still under the starter's original 900-tick ceiling, which remains unchang
 - Guide rail under the spike removed at Bao's request — the trap now has no floor
   marking and no rail, so the sign is the only tell.
 
+### R5 — 2026-09-22 · The coin became a key, and the fork became a detour
+
+Scope change requested after the brief was frozen, and it is the largest one in this
+project. It is recorded here rather than folded into the original predictions.
+
+**Asked for:** the coin becomes a key; the key is mandatory; it follows the player;
+near the door it fits itself into the lock; the door opens; only then can the player
+finish. The high road gets a barrier and exists only to hold the key.
+
+**The conflict I had to raise first.** The coin sat above ledge D, which only the high
+road reaches. A coin there is fine because it is optional. A *mandatory* key there
+makes the low road a dead end and kills the fork — the single design decision the
+extension was built around. I put four options to Bao rather than picking one; he chose
+a **there-and-back detour**: ledge D dead-ends at a barrier, so you climb for the key,
+are stopped, walk back left, drop to the floor, and continue to the door.
+
+**Shipped:**
+
+| Element | Value |
+|---|---|
+| key | `(1320, 206)` above ledge D — standing body is y 220–248, key spans 197–215, so it needs a jump |
+| barrier | `[1352, 136, 12, 124]` planted in ledge D's right end |
+| door | the finish rect `[1696, 264, 24, 56]`, drawn shut with a keyhole until the key docks |
+| dock line | `x = 1600` — the carried key leaves the player and flies to the lock |
+
+**Consequences, all of them:**
+
+- There is **no fork any more.** One route, with a mandatory detour. Every "Pick a
+  Line" claim in the documents and the film had to be rewritten, not just relabelled.
+- `route_driver.gd` rewritten from a jump-mark list to a seven-phase machine, because
+  the route now reverses direction — the old driver only ever held right.
+- Route cost **671 → 865 ticks**; the starter's 900 ceiling no longer fits and is
+  raised to 1400, with the measured number reported. This is the first time in this
+  project I have raised a budget, and it is because the route genuinely doubled back.
+- `relocated-finish-triggers` used to assert that standing at x=1700 wins. It does not
+  any more — the door is shut. The check now asserts it is locked first, *then* opens
+  the door and confirms the winning position really moved.
+- Coin checks replaced by eight key/door checks; 44 mechanics + 9 keyboard = **53**.
+
 <!-- REVISIONS-END -->

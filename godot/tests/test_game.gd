@@ -161,9 +161,16 @@ func run() -> void:
 	game.player.position = Vector2(916, 318)
 	await steps(3)
 	check("old-finish-position-no-longer-wins", game.state == Game.State.PLAYING, {"state":game.state,"old_finish_x":916})
+	# The finish is now a door at the relocated x. Standing in it is not enough --
+	# door-locked-without-key covers that -- so this check opens the door first and
+	# confirms the winning position really did move from 916 to 1696.
 	game.player.position = Vector2(1700, 318)
 	await steps(3)
-	check("relocated-finish-triggers", game.state == Game.State.COMPLETE, {"state":game.state,"finish_x":game.level.finish[0]})
+	var locked_at_new_finish: bool = game.state == Game.State.PLAYING
+	game.key.phase = "docked"
+	game.door_open = true
+	await steps(3)
+	check("relocated-finish-triggers", locked_at_new_finish and game.state == Game.State.COMPLETE, {"state":game.state,"finish_x":game.level.finish[0],"was_locked_first":locked_at_new_finish})
 
 	# HUD progress bar was hard-coded to /852 and saturated at the old finish.
 	await fresh()
@@ -192,17 +199,19 @@ func run() -> void:
 	game.player.reset_at(Vector2(1480, 320))
 	await steps(3)
 	var bait_route = Route.new()
-	# Spawned mid-level, so retire the earlier jump marks; otherwise the driver
-	# fires all of them on the spot and launches itself into the trap.
+	# Spawned mid-level past the climb, so drop the driver straight into its
+	# approach phase; otherwise it fires every climb mark on the spot and
+	# launches itself into the trap.
 	bait_route.next_jump = bait_route.jump_marks.size()
+	bait_route.phase = "cross"
 	var trap_peak_y: float = 320.0
 	for i in range(300):
-		bait_route.step(game.player)
+		bait_route.step(game.player, game)
 		await steps(1)
 		trap_peak_y = minf(trap_peak_y, game.rising[0].y)
 		if game.player.position.x >= 1640.0 or game.state != Game.State.PLAYING:
 			break
-	check("spring-trap-bait-then-walk-under", game.player.position.x >= 1640.0 and game.state == Game.State.PLAYING, {"x":snappedf(game.player.position.x,0.01),"state":game.state,"spike_top_reached":trap_peak_y,"baited":bait_route.baited})
+	check("spring-trap-bait-then-walk-under", game.player.position.x >= 1640.0 and game.state == Game.State.PLAYING, {"x":snappedf(game.player.position.x,0.01),"state":game.state,"spike_top_reached":trap_peak_y,"driver_phase":bait_route.phase})
 	check("spring-trap-actually-rises", trap_peak_y <= float(game.level.rising_hazards[0].raised_y) + 0.5, {"spike_top_reached":trap_peak_y,"raised_y":game.level.rising_hazards[0].raised_y})
 
 	# Jumping across it arms it into the jump band and kills.
@@ -220,59 +229,87 @@ func run() -> void:
 			break
 	check("spring-trap-punishes-the-jump", game.state == Game.State.DYING and trap_jumped, {"state":game.state,"death_reason":game.death_reason,"x":snappedf(game.player.position.x,0.01),"y":snappedf(game.player.position.y,0.01)})
 
-	# Coin sits above ledge D, the highest surface. Walking it must not collect.
+	# --- The key and the door ------------------------------------------------
+	# The key sits above ledge D at (1320, 206). Standing on D the player body
+	# occupies y 220..248 and the key spans 197..215, so walking cannot reach it.
 	await fresh()
 	game.player.reset_at(Vector2(1270, 248))
 	await steps(3)
 	game.player.test_axis = 1.0
 	for i in range(60):
 		await steps(1)
-		if game.player.position.x >= 1345.0 or game.state != Game.State.PLAYING:
+		if game.player.position.x >= 1340.0 or game.state != Game.State.PLAYING:
 			break
-	check("coin-not-collectable-on-foot", game.coins_taken == 0 and game.player.position.x >= 1345.0, {"coins_taken":game.coins_taken,"x":snappedf(game.player.position.x,0.01)})
+	check("key-not-collectable-on-foot", game.key.phase == "idle" and game.player.position.x >= 1335.0, {"phase":game.key.phase,"x":snappedf(game.player.position.x,0.01)})
+
+	# The barrier at x=1352 is what makes the high road a dead end: walking right
+	# along ledge D must stop against it, not carry on toward the door.
+	check("barrier-dead-ends-ledge-d", game.player.position.x < 1348.0 and game.player.position.y < 260.0, {"x":snappedf(game.player.position.x,0.01),"y":snappedf(game.player.position.y,0.01)})
 
 	await fresh()
 	game.player.reset_at(Vector2(1270, 248))
 	await steps(3)
 	game.player.test_axis = 1.0
-	var coin_jumped := false
+	var key_jumped := false
 	for i in range(120):
-		if not coin_jumped and game.player.position.x >= 1290.0 and game.player.is_on_floor():
+		if not key_jumped and game.player.position.x >= 1288.0 and game.player.is_on_floor():
 			game.player.test_jump_pressed = true
-			coin_jumped = true
+			key_jumped = true
 		await steps(1)
-		if game.coins_taken > 0 or game.state != Game.State.PLAYING:
+		if game.key.phase != "idle" or game.state != Game.State.PLAYING:
 			break
-	check("coin-collected-by-jumping", game.coins_taken == 1, {"coins_taken":game.coins_taken,"state":game.state,"jumped":coin_jumped})
+	check("key-collected-by-jumping", game.key.phase == "carried", {"phase":game.key.phase,"jumped":key_jumped,"state":game.state})
 
-	# A retry must re-arm the trap and restore the coin.
+	# Carried, it trails the player rather than sitting where it was picked up.
+	var key_start: Vector2 = game.key.p
+	game.player.test_axis = -1.0
+	await steps(30)
+	# It trails rather than snapping: the target is 38 px above the head and the
+	# lerp adds ~24 px of lag at full speed, so the leash is ~90 px, not zero.
+	check("key-follows-the-player", game.key.p.distance_to(key_start) > 20.0 and game.key.p.distance_to(game.player.position) < 90.0 and game.key.p.y < game.player.position.y, {"moved":snappedf(game.key.p.distance_to(key_start),0.01),"gap_to_player":snappedf(game.key.p.distance_to(game.player.position),0.01),"above_player":game.key.p.y < game.player.position.y})
+
+	# Without the key the door is shut: standing in it must not finish the level.
+	await fresh()
+	game.player.position = Vector2(1706, 318)
+	await steps(4)
+	check("door-locked-without-key", game.state == Game.State.PLAYING and not game.door_open, {"state":game.state,"door_open":game.door_open,"key_phase":game.key.phase})
+
+	# Carrying it past the dock line, the key flies to the door and fits.
+	await fresh()
+	game.key.phase = "carried"
+	game.key.p = Vector2(1500, 280)
+	game.player.position = Vector2(1620, 318)
+	for i in range(120):
+		await steps(1)
+		if game.door_open:
+			break
+	check("key-docks-and-opens-the-door", game.door_open and game.key.phase == "docked", {"door_open":game.door_open,"phase":game.key.phase,"key_pos":str(game.key.p)})
+
+	game.player.position = Vector2(1706, 318)
+	await steps(4)
+	check("open-door-finishes", game.state == Game.State.COMPLETE, {"state":game.state})
+
+	# A retry must re-arm the trap AND put the key back where it started.
+	await fresh()
+	game.key.phase = "carried"
 	game.resolve_contacts(true, false)
 	await steps(40)
-	check("retry-rearms-trap-and-coin", game.coins_taken == 0 and game.rising[0].phase == "down" and is_equal_approx(game.rising[0].y, float(game.level.rising_hazards[0].rect[1])), {"coins_taken":game.coins_taken,"phase":game.rising[0].phase,"spike_y":game.rising[0].y})
+	check("retry-rearms-trap-and-key", game.key.phase == "idle" and not game.door_open and game.rising[0].phase == "down" and is_equal_approx(game.rising[0].y, float(game.level.rising_hazards[0].rect[1])), {"key_phase":game.key.phase,"door_open":game.door_open,"trap_phase":game.rising[0].phase,"spike_y":game.rising[0].y})
 	# -------------------------------------------------------------------------
 
 	await fresh()
 	var route = Route.new()
 	var route_ticks := 0
-	# Budget deliberately left at the starter's 900 despite the level growing
-	# from 960 to 1760 px. CHANGE-BRIEF P4 predicted an overrun; measured cost is
-	# 618 ticks, so the original ceiling stands and no assertion was loosened.
-	while game.state == Game.State.PLAYING and route_ticks < 900:
-		route.step(game.player)
+	# Budget raised from the starter's 900 because the route is no longer a
+	# straight run: it climbs for the key, is stopped by the barrier, walks back
+	# left, drops, and only then continues to the door. Measured cost is
+	# reported in the observation below; the assertion itself is unchanged.
+	while game.state == Game.State.PLAYING and route_ticks < 1400:
+		route.step(game.player, game)
 		await steps(1)
 		route_ticks += 1
-	check("complete-real-route", game.state == Game.State.COMPLETE and game.deaths == 0 and game.coins_taken == 0, {"branch":route.branch,"state":game.state,"deaths":game.deaths,"ticks":route_ticks,"position":str(game.player.position),"jump_marks_used":route.next_jump,"coins_taken":game.coins_taken})
+	check("complete-real-route", game.state == Game.State.COMPLETE and game.deaths == 0 and game.door_open, {"state":game.state,"deaths":game.deaths,"ticks":route_ticks,"position":str(game.player.position),"door_open":game.door_open,"key_phase":game.key.phase,"driver_phase":route.phase})
 
-	# The coin is the high road's payoff: unreachable from the low floor, so the
-	# two route checks above and below assert 0 and 1 respectively.
-	await fresh()
-	var high_route = Route.new("high")
-	var high_ticks := 0
-	while game.state == Game.State.PLAYING and high_ticks < 900:
-		high_route.step(game.player)
-		await steps(1)
-		high_ticks += 1
-	check("complete-high-road-route", game.state == Game.State.COMPLETE and game.deaths == 0 and game.coins_taken == 1, {"branch":high_route.branch,"state":game.state,"deaths":game.deaths,"ticks":high_ticks,"position":str(game.player.position),"jump_marks_used":high_route.next_jump,"coins_taken":game.coins_taken})
 	game.start_session()
 	game.start_session()
 	check("replay-idempotent", game.state == Game.State.PLAYING and game.deaths == 0 and game.player.jumps == 0, {"state":game.state,"deaths":game.deaths,"jumps":game.player.jumps})

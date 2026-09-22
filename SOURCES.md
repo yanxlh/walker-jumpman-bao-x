@@ -31,11 +31,11 @@ unedited; they describe the starter's state, not this extension's.
 | Area | Change |
 |---|---|
 | `features/player/player.gd` | `_draw()` fully rewritten — the Lamp-Head Courier. Physics, collider and tuning untouched. |
-| `levels/first_steps.json` | Extension geometry at x > 960; spring trap and reward coin; finish moved 916 → 1696; width 960 → 1760. Original geometry unchanged. |
+| `levels/first_steps.json` | Extension geometry at x > 960; spring trap, mandatory key, dead-end barrier; finish moved 916 → 1696 and turned into a locked door; width 960 → 1760. Original geometry unchanged. |
 | `game/session.gd` | Spike and finish drawing made data-driven; level width, grid, background and parallax derived from data; hazard collision width derived from the rect; spring-trap state machine and coin pickup; new signage. |
 | `ui/hud.gd` | `progress_ratio()` extracted and derived from level data instead of the literal 852; retitled. |
-| `tests/route_driver.gd` | Branch-aware; low and high routes to the relocated finish. |
-| `tests/test_game.gd` | 15 checks added. No starter assertion altered. |
+| `tests/route_driver.gd` | Rewritten as a seven-phase machine: the route now reverses direction to fetch the key, so a forward-only jump-mark list no longer describes it. |
+| `tests/test_game.gd` | 19 checks added. One starter-era check (`relocated-finish-triggers`) rewritten because the finish is now a locked door; it asserts the locked state first. |
 | `tests/probe_reach.gd` | **New.** Reachability probe. |
 | `tests/capture_game.gd` | 8 captures added; grounded-frame and HUD-visibility handling. |
 | `scripts/record-build.cjs` | Project name, scope, and full screenshot enumeration. |
@@ -81,8 +81,9 @@ impossible — I would not have found this by inspection.
 **I decided:** that the spring trap should arm off a geometry test against the player's
 collider box rather than an Area2D, so the rule reads in one line and is testable
 without the physics broadphase; that the trap's arming zone belongs directly above the
-spike and the bait window should be 10 px; that the coin belongs on the highest ledge so
-it becomes the high road's payoff; the character concept (and rejected two others on collider-fit grounds);
+spike and the bait window should be 10 px; that the coin should become a mandatory key
+with a dead-end barrier on the high road, making it a there-and-back detour rather than
+a fork; the character concept (and rejected two others on collider-fit grounds);
 the level concept; to keep the fork and re-cut geometry rather than touch `tuning.gd`;
 to run and archive a pre-edit baseline; to revert the tick budget to the starter's 900;
 the final label placement; which sections of `TEST-REPORT.md` and `FRICTIONAL.md` must

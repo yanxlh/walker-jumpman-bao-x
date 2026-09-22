@@ -365,6 +365,40 @@ claim in the film that the documents contradict.
 
 ---
 
+## Entry 15 — 2026-09-22 · I traded the fork away for a key, on purpose
+
+I asked for the coin to become a key: mandatory, carried by the player, and fitted to
+the door automatically so the door opens and only then can you finish.
+
+Claude pushed back before writing anything, and it was right to. The coin sat above
+ledge D, which only the high road reaches. Optional, that is a reward. **Mandatory, it
+makes the low road a dead end** — and the fork was the single design decision the whole
+extension was built on. It gave me four ways out instead of picking one.
+
+I chose the detour: put a barrier at the end of ledge D so the high road goes nowhere.
+You climb it for the key, get stopped, walk back left, drop, and carry on to the door.
+
+**What I gave up, and I want it on the record rather than spun.** The level no longer
+asks the player to choose anything. It asks them to notice a locked door, work out what
+opens it, and go and get it. That is sequencing, not a decision, and it is a weaker
+prompt than the fork was. I made the trade knowingly because a key-and-door loop is
+what I wanted to build.
+
+**What it cost in work:** the route driver had to be rewritten from a list of jump
+marks into a phase machine, because for the first time the route reverses direction.
+The coin checks became eight key/door checks. And `relocated-finish-triggers` — a check
+that had survived every revision so far — had to change, because standing on the finish
+no longer wins.
+
+**The budget I finally had to raise.** I have refused to raise the starter's 900-tick
+route ceiling three times in this project, twice when Claude had already raised it.
+This time the route genuinely doubles back on itself: 671 → 865 ticks. It does not fit
+and no amount of discipline makes it fit, so 1400 with the measured number printed in
+the check. The difference from the earlier refusals is that this one is a real change
+in the route, not a tolerance for slop.
+
+---
+
 ## Human / AI contribution summary
 
 | | Mine | Claude's |
@@ -380,7 +414,7 @@ claim in the film that the documents contradict.
 | Documents | decided what must stay unfilled | drafted the prose |
 | Playtesting | played both sessions myself; recruited and observed Player 2 | recorded only what was reported, and flagged the film line that Player 2 invalidated |
 | Spring trap | required detection above the spike, no plate, no rail, and the window halved to 10 px | implemented the state machine and the geometry test |
-| Reward coin | placed it on the highest ledge so the high road finally pays | implemented pickup, HUD counter, retry reset |
+| Key and door | chose the detour over three other ways of resolving the mandatory-key/fork conflict; accepted losing the fork | raised the conflict before coding; implemented the key state machine, barrier, door and the 19 checks |
 
 **Accepted** from Claude: the probe methodology, the `_draw()` geometry, the data-driven
 rewrite of `session.gd`/`hud.gd`, the eight added checks.

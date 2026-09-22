@@ -130,7 +130,7 @@ func bait_sweep(lo: float, hi: float) -> void:
 		print("%-26s lethal standing spots from %.0f" % ["", died[0]])
 
 func run() -> void:
-	print("\n=== REACHABILITY PROBE: Pick a Line (revision 2) ===")
+	print("\n=== REACHABILITY PROBE: The Key and the Door ===")
 	print("engine ", Engine.get_version_info().string)
 
 	# --- HIGH ROAD ---
@@ -138,10 +138,13 @@ func run() -> void:
 	await sweep("floor -> B (+48 rise)", Vector2(860, 320), 900, 1006, 272, 1008, 1088)
 	await sweep("B -> C  (flat 64px)", Vector2(1010, 272), 1010, 1088, 272, 1152, 1216)
 	await sweep("C -> D  (+24, 48px)", Vector2(1154, 272), 1154, 1216, 248, 1264, 1352)
-	await sweep("D -> M  (-72 drop)", Vector2(1266, 248), 1266, 1352, 320, 1448, 1760)
+	# This one is EXPECTED to be unreachable: the barrier at x=1352 is what makes
+	# ledge D a dead end. UNREACHABLE here is the barrier working, not a defect.
+	await sweep("D -> M (barrier: none)", Vector2(1266, 248), 1266, 1352, 320, 1448, 1760)
 
-	# --- LOW ROAD ---
-	# The only low-road jump: GAP-L 1392..1448 (56 px). Takeoff must clear ledge D (ends 1352).
+	# --- AFTER THE KEY ---
+	# The high road dead-ends at the barrier (x=1352), so the player drops back to
+	# the low floor and walks to the door. The only jump left is GAP-L 1392..1448.
 	await sweep("L1 -> M  (56px gap)", Vector2(1300, 320), 1356, 1392, 320, 1448, 1760)
 	# NOTE: the old static spike at 1568 is gone -- it is now the spring trap, which
 	# arms on any jump beside it, so "jump over it" is fatal by design and a takeoff
@@ -153,7 +156,7 @@ func run() -> void:
 	await bait_sweep(1490, 1566)
 
 	# --- CORRIDOR ---
-	# The low road must be able to WALK the full roofed corridor 992 -> 1392.
+	# The walk back to the door: the roofed corridor 992 -> 1392, no headroom to jump.
 	await walk_under(965, 1390)
 	print("=== END PROBE ===\n")
 	quit(0)

@@ -1,8 +1,8 @@
 {
   "project": "walker-jumpman-bao-x",
   "starter": "nikbearbrown/walker-jumpman",
-  "build_id": "625a829451a8104d5dcd4daedccd270aad94f5f41990b91b4e5846f3af630097",
-  "created_at": "2026-09-18T20:35:11.609Z",
+  "build_id": "18bc54e6851535d4a4271f55aaf1141b522dd41b413e45840dab2df7b5603213",
+  "created_at": "2026-09-22T16:17:19.404Z",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "renderer": "Compatibility",
   "scope": "First Steps control/retry slice (starter, unmodified) plus the Pick a Line fork extension",
@@ -12,36 +12,36 @@
     "godot/features/player/tuning.gd": "7a09e96ef11bfa3e1e3b00849e84ed15b453a2e2780b9c94c90c376aea62aa37",
     "godot/features/player/tuning.gd.uid": "9411c240407f1c4afbb5e85649ef3215765190421bc3621a7457e065e036751a",
     "godot/game/main.tscn": "017da6e141ad6f6199a9219208483c82cacd257210dbaa6b1184a27157a63a2f",
-    "godot/game/session.gd": "4a0eb48a4658d30a91ae24781d7e44b1288ec4a886b29f2307f1e9b9a4a45508",
+    "godot/game/session.gd": "567e54a630fe63e9b543aed237467e3ea8361c2a13483056e40280fa63e7cff3",
     "godot/game/session.gd.uid": "cbd9b4dc192752918a54c94b364b7891028856b6de6a4391d924522985ffeb77",
-    "godot/levels/first_steps.json": "949eb1e238878f263741193503b28aacd2d8b1671c9f5aa044419e20675207b1",
+    "godot/levels/first_steps.json": "4e19cfa1e84b74b0559f79ae958d34ef7a2360713b438f17063da39370891141",
     "godot/project.godot": "18b80fb608279ceda4a94c998aea4ec6f5bb8d79c1969a9a6c4ac7a1552e47cf",
     "godot/tests/capture_game.gd": "f8cb6a694688416fcead42c19f2fed8ca7679f0b747862dd674e2fe232d7eee5",
     "godot/tests/capture_game.gd.uid": "60af73a3bc1bbf2fb747f628c6b19d474e5d8ec63086693d7a3662c343635625",
-    "godot/tests/probe_reach.gd": "14e01b5cda8f63a548b829a0981a271c74558c54f26488c61668657c51aa0c95",
-    "godot/tests/route_driver.gd": "956fb5f1e80f38cfb959911b2c607815720ac2efa9d4729f1a00e477490423fb",
+    "godot/tests/probe_reach.gd": "289f80e4c3cd2ff6d0a8570b8c03fe65160bc86a6de7cb92e4100072f8696223",
+    "godot/tests/route_driver.gd": "843b7cdbec3dc6793b997f0a16eae20e69ff38a6e518a8e496d9de8783eeffe1",
     "godot/tests/route_driver.gd.uid": "6e51ae14383d23db51a043c2455ae9a4b9b972304db25c9422dbe41d698af41b",
-    "godot/tests/test_game.gd": "aa4633b3854f8f544d5c6ee8f9509c1c92d6ec9f8676e42b2f47a43e94c148d4",
+    "godot/tests/test_game.gd": "29500af3b50ef72274a4d58119a6bbfda6b29ea8af4c01dfd6e6e66ed392e59d",
     "godot/tests/test_game.gd.uid": "57933fea45074e0597f2fb3f474e69944d6198c1f432274187c9a10bee0c31dc",
     "godot/tests/test_keyboard.gd": "bf3d1ceb4dd972874602efeedc6146c52ee05619bbbd3486cb06fff04a199975",
     "godot/tests/test_keyboard.gd.uid": "6ea68e4d1bb1c113e9454aca6e4dc08c148cbcf6eeefb5b301c289dcc718f25e",
-    "godot/ui/hud.gd": "77ea10c7514d26bac3161e79d009a3d3ccde79ed4db8714bbd2697c073eb1db4",
+    "godot/ui/hud.gd": "1a1430b898f728d9996076e51bc0ca1122ccbdb6de03f33768981bbc75e20e12",
     "godot/ui/hud.gd.uid": "d2eaf3c885a55bcd31e9b2f36d3a5355f10105da426e96a9685434da00b28330",
     "walker-jumpman.command": "4adbb8884b6c05bdba97f2b4919e97e7e351a0bd2446ac7e05d6d8b250041c79"
   },
   "tests": [
     {
-      "file": "evidence/mechanics-1789763651.78094.json",
-      "checks": 40,
+      "file": "evidence/mechanics-1790093823.22536.json",
+      "checks": 44,
       "failures": 0
     },
     {
-      "file": "evidence/keyboard-1789763555.14508.json",
+      "file": "evidence/keyboard-1790093323.85339.json",
       "checks": 9,
       "failures": 0
     }
   ],
-  "machine_checks_passed": 49,
+  "machine_checks_passed": 53,
   "human_playtest_sessions": 0,
   "exported": false,
   "game_published": false,
@@ -111,8 +111,16 @@
       "sha256": "6b2aca978045e1db80f4b31816631b79d66352429a8cf6789523ba8af78b91c1"
     },
     {
-      "file": "evidence/screens/17-coin-on-high-ledge.png",
-      "sha256": "10910b0bf64647f0a9d1ea67216f256026ae08076426d2d1d493d5563806c1b6"
+      "file": "evidence/screens/18-key-taken-on-ledge-d.png",
+      "sha256": "ac7229fd1aa06258a734c6bcd5c717b6c6427b9fcc3deae87156b8d0a8f4cfae"
+    },
+    {
+      "file": "evidence/screens/19-dropped-back-key-follows.png",
+      "sha256": "26c4d9b0abde75837d25a4f3d73f3867fd5cbcac7129c89c37a063cabfe5d689"
+    },
+    {
+      "file": "evidence/screens/20-door-open-complete.png",
+      "sha256": "c2a67835385ddcbb7102815f8fc6a0359b478eacc8bbbabea12de01c8f5585b5"
     }
   ]
 }

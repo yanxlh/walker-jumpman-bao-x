@@ -1,4 +1,4 @@
-# walker-jumpman-bao-x — Pick a Line
+# walker-jumpman-bao-x — The Key and the Door
 
 **Bao Xing** · CSYE 7270 · Godot **4.7.2.stable.official.ed1daf0bf** · GDScript
 Repository: <https://github.com/yanxlh/walker-jumpman-bao-x>
@@ -8,7 +8,8 @@ by Nik Bear Brown — not a new game. The starter is commit `0852e7f` in this re
 imported with file contents byte-identical. Everything after it is mine.
 
 My additions: a new main character (**the Lamp-Head Courier**) and a new playable
-section (**Pick a Line**, a high/low fork) with the finish relocated past it.
+section (**The Key and the Door**) with the finish relocated past it and turned into a
+locked door.
 
 ![The Lamp-Head Courier at the fork, deciding between the high ledges and the low corridor](evidence/screens/09-fork-decision.png)
 
@@ -75,33 +76,37 @@ are untouched**, and three automated checks assert that rather than claiming it.
 *Running and airborne. Camera zoomed 4× for these inspection frames only — the game is
 never played zoomed.*
 
-### The level — Pick a Line
+### The level — The Key and the Door
 
 A new section at **x > 960**. The original section is byte-identical, so the starter's
 coyote (478,285), spike (330,310) and fall-boundary (415,432) fixtures remain valid
 regression evidence.
 
 ```
-                                   ($) coin 1320,206
-                                    D━━━━━
-                       C━━━━━                    (y=248)
-          B━━━━━                                 (y=272)
- ORIGINAL ═══════════════════════════════┓ 56px ┏━━━━━━▲━━━━━⚑
-  x ≤ 960     low road: roofed, no headroom      gap   trap   finish 1696
-                                                       1568
+                        THE KEY (1320,206)
+                              ⚷    █ barrier 1352 — DEAD END
+                            D━━━━━━█
+               C━━━━━                 ┊ drop back
+      B━━━━━                          ▼
+ ORIGINAL ════════════════════════════════┓ 56px ┏━━━━━▲━━━━━🚪
+  x ≤ 960      walk back — no headroom     gap    trap 1568  door 1696
 ```
 
-At the end of the original floor the route forks:
+**The door at x=1696 is locked.** The only key is at (1320, 206), above ledge D — the
+highest surface in the game — and ledge D **dead-ends at a barrier**, so the route is a
+there-and-back detour, not a fork:
 
-- **High road** — three narrow ledges (80 / 64 / 88 px) reached by a 48 px up-jump.
-  No spikes, and the last ledge drops you clear of the gap. Tight landings.
-- **Low road** — keep running. The ledges overhead form a **roofed corridor you cannot
-  jump in**, and it ends at a committed 56 px gap.
+1. Climb B → C → D (three narrow ledges, 80 / 64 / 88 px, entered by a 48 px up-jump)
+2. Jump on D to take the key — standing, your body is y 220–248 and the key spans
+   197–215, so walking under it is not enough
+3. The barrier blocks the way on, so **walk back left and drop** to the floor
+4. Run the roofed corridor (no headroom to jump), clear the 56 px gap
+5. Bait the spring trap and walk under it
+6. At x = 1600 the carried key leaves you, flies to the lock and fits; the door opens
+7. Walk in
 
-Both lines merge onto a final platform. Missing ledge B or C drops you onto the low
-road and the run continues; missing D drops you into the gap.
-
-Finish moved 916 → 1696. Level width 960 → 1760.
+**The key is mandatory.** `door-locked-without-key` asserts that standing in the
+doorway without it does nothing, and a retry puts the key back and re-locks the door.
 
 ### The spring trap
 
@@ -115,20 +120,7 @@ The arming zone sits directly above the spike and **inside the jump band only**:
 So **walking never arms it and jumping beside it always does.** Jump across and the
 spike launches into your own arc. The way through is to bait it from the safe side and
 walk underneath, where the raised spike at y 240–256 leaves 36 px of headroom. The
-measured bait window is **10 px** (x 1550–1558); at x ≥ 1560 you are already standing
-in the grounded spike.
-
-### The reward coin
-
-One coin at (1320, 206), above ledge D — the highest surface in the game. Standing on D
-your body occupies y 220–248, so it needs a jump, and because D is high-road-only **the
-coin is the high road's payoff**. Low route finishes with 0, high route with 1, and both
-route checks assert it.
-
-**What the fork trades.** Precision for the coin — *not* for speed. Both branches cost
-the same 671 ticks, because horizontal speed is constant and jumps do not change it.
-That is the design: the high line is the reward line, and a route that buys a
-collectible does not also owe you a shortcut.
+measured bait window is **10 px** (x 1550–1558).
 
 ### Drawing bugs fixed
 
@@ -147,8 +139,8 @@ correctly *by accident* — `evidence/screens/13-p5-datadriven-fixture.png`.
 
 ## Verification
 
-**49 automated checks, 0 failures** — 25 starter checks still passing with their
-assertions unmodified, plus 15 new, plus 9 keyboard checks.
+**53 automated checks, 0 failures** — 25 starter checks still passing with their
+assertions unmodified, plus 19 new, plus 9 keyboard checks.
 
 ```bash
 /Applications/Godot.app/Contents/MacOS/Godot --headless --path godot --script res://tests/test_game.gd
@@ -157,8 +149,9 @@ assertions unmodified, plus 15 new, plus 9 keyboard checks.
 node scripts/record-build.cjs
 ```
 
-Both branches complete with zero deaths in **671 ticks**, under the starter's original
-900-tick ceiling, which was deliberately left unchanged.
+The route completes with zero deaths in **865 ticks**. The starter's 900-tick ceiling
+was kept untouched for as long as it fitted; the key detour doubles the route back on
+itself and genuinely needs more, so it is now 1400 with the measured number reported.
 
 Geometry was chosen by measurement. `tests/probe_reach.gd` sweeps real takeoff
 positions through real physics; it **rejected my first layout**, proving that a jumping
