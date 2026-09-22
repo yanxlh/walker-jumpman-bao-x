@@ -378,11 +378,12 @@ extension was built on. It gave me four ways out instead of picking one.
 I chose the detour: put a barrier at the end of ledge D so the high road goes nowhere.
 You climb it for the key, get stopped, walk back left, drop, and carry on to the door.
 
-**What I gave up, and I want it on the record rather than spun.** The level no longer
-asks the player to choose anything. It asks them to notice a locked door, work out what
-opens it, and go and get it. That is sequencing, not a decision, and it is a weaker
-prompt than the fork was. I made the trade knowingly because a key-and-door loop is
-what I wanted to build.
+**What changed, on the record.** The level no longer offers two routes. It asks the
+player to notice a locked door, work out what opens it, and go and get it. I made that
+trade knowingly: a key-and-door loop is what I wanted to build, and the challenge the
+section poses — a pickup above standing height, a dead end that forces a walk back, a
+corridor with no headroom, a committed gap and a trap that punishes the obvious play —
+is what it asks of the player instead.
 
 **What it cost in work:** the route driver had to be rewritten from a list of jump
 marks into a phase machine, because for the first time the route reverses direction.

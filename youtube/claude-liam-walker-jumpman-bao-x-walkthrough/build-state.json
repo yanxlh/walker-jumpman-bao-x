@@ -1,8 +1,8 @@
 {
   "status": "ready",
   "output": "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/exports/landscape/claude-liam-walker-jumpman-bao-x-walkthrough.mp4",
-  "sha256": "02f30177d20aa8842960570b7631ca34b36038b0495101ae973132a1be0d3e31",
-  "duration_s": 201.96666666666667,
+  "sha256": "9741c24b8c2eb25fd9960e0fac8d1d3bba6b92fe80689b62b68ac8630aa39a50",
+  "duration_s": 199.23333333333332,
   "input_sha256": {
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B00.mp4": "8071e8d75f7da771824c9e71c2584bf629d7403c6b1b1a7a13fe96f420bf209c",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B01.mp4": "7693725470d9857909c93bff1ca8e62ce2b2bbc1b9ccc7bc39c0c11e10eda018",
@@ -15,7 +15,7 @@
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B08.mp4": "8dfd3c43edafd574c1cb7fdbc3ac1a7619e39d7a01bf71f24e68ddfdf42cb424",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B09.mp4": "b66be02d829d361e1cb2f7f7b3f99a75da35f22dbdf6509c045826cc4d70e7e4",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B10.mp4": "8a350b92d1e763b2fe1d190bdb7572d467817b37a3c0d3a4960b7c35027523b8",
-    "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B11.mp4": "631a5b83c5b8d02c1538756377ab30ca158fb80bb2aedbdf345eb5dbefcaf97b",
+    "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B11.mp4": "6d3616a6fde6d5c8ff81e78afee382860ec0665d22f30aa578a1cd4ee3e0c4ee",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B12.mp4": "f68bb6254028136510e561f977169318a7145610504ec269149156031c76a34a",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/media/B13.mp4": "724b4a8aea2734cac6f78d393bdfbe642c2996957ab69417c781ff6172998530",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/mp3/beat-B00.mp3": "97b2f14a5e340f9897fe8cf85d1f0edf83d6231bd6340e7d2a7bd2fbfca3bc49",
@@ -29,8 +29,8 @@
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/mp3/beat-B08.mp3": "d36a317510979dabcf78689e55acc5e416b913616b3cbf40ef967f194c8e3764",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/mp3/beat-B09.mp3": "e2699db1fabcdfb6ed398747d56743c72b29c7ca068a3a93814c6d6a2d76f72b",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/mp3/beat-B10.mp3": "656ed05079a49adc6bc25f3a89e01822342c41cea2dcdf6a0067703de7101f45",
-    "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/mp3/beat-B11.mp3": "f66c39eeedf868897eb61273d5a068cf32951501056bdc5984c309706b0df4a1",
+    "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/mp3/beat-B11.mp3": "59dc14a5142bb9983cd2d62156d5d79adabb9911f28969bf843cc55f78040e81",
     "/Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/mp3/beat-B12.mp3": "8bc564332c2cc8370daec996e2990f07f8a47d70d5adbd079f50ed806ff614ca"
   },
-  "at": "2026-09-22T16:36:31.968381+00:00"
+  "at": "2026-09-22T20:02:03.269437+00:00"
 }

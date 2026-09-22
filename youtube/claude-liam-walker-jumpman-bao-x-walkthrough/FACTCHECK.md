@@ -31,14 +31,15 @@ committed evidence files, or a measured run on this machine.
 | B09 | "walking never arms it, leaving the ground always will" | 284 < 292 (no overlap grounded); 244..264 overlaps the apex band. Checks `trap-not-armed-by-walking`, `spring-trap-punishes-the-jump` |
 | B10 | every probe window on screen | verbatim from a real run of `godot/tests/probe_reach.gd`: 70 / 56 / 58 / UNREACHABLE / 38 / 10 / clear |
 | B11 | "two humans finished it, the second had never seen the design" | `TEST-REPORT.md` §7, Players 1 and 2 |
-| B11 | "a mandatory key cost this level its fork" | `TEST-REPORT.md` §8b and `CHANGE-BRIEF.md` R5 |
+| B11 | "the key is mandatory and the ledges dead-end" | `first_steps.json`: key required by `door_open` gate; barrier `[1352,136,12,124]`; probe reports `D -> M UNREACHABLE`. Change recorded in `TEST-REPORT.md` §8b and `CHANGE-BRIEF.md` R7 |
 
 ## Judgments, not facts — flagged as such
 
 - **B03 "looks jumpable".** A design intention. The grounded spike *is* jumpable in
   isolation; the trap is what makes the attempt fatal.
-- **B11 "sequencing, not a decision… the weaker prompt".** A design judgment about
-  Bao's own change, stated as such and not as a measurement.
+- **B11 "a there-and-back errand".** A description of the route's shape, not a
+  measurement. The verifiable parts of it — the key is mandatory, the ledges dead-end —
+  are each checked and listed above.
 
 ## Deliberately NOT claimed
 

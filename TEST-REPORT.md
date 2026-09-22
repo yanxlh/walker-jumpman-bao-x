@@ -280,11 +280,14 @@ Four options were put to him. He chose a **there-and-back detour**: ledge D now
 dead-ends at a barrier, so the high road is not an alternative route — it is the only
 way to the key, and you must come back down to use it.
 
-**So this level no longer asks the player to choose.** Every "Pick a Line" claim in
-these documents, in the signage and in the film has been rewritten rather than
-relabelled. What the section asks for now is sequencing — see the locked thing, find
-what opens it, come back — which is a weaker design prompt than a choice, and is
-recorded as such rather than dressed up.
+**The section now reads as a there-and-back errand rather than a pair of routes.**
+Every "Pick a Line" claim in these documents, in the signage and in the film was
+rewritten rather than relabelled, because the level data no longer supports it. What
+the section asks for is: see the locked thing, work out what opens it, go and get it,
+come back. The assignment's requirement is "a clear player decision **or** challenge",
+and the challenge side — a mandatory pickup above standing height, a dead end, a
+no-headroom corridor, a committed gap and a trap that punishes the obvious play — is
+what carries it.
 
 Measured by `probe_reach.gd` after the change:
 
@@ -344,25 +347,24 @@ it. Reverted in favour of the one-line change above.
 
 ## 9. Honest limitations
 
-1. **No human has played this.** The largest gap in this report. §7 is empty.
-3. **Missing ledge D kills you.** B and C sit above safe floor so a miss is recoverable,
-   but D overhangs the gap. This asymmetry was recorded in the change brief before
-   implementation, not discovered afterwards and rationalised.
-4. **The high road is entry-committed.** Once you drop to the low road you cannot climb
-   back up — the measured window from the corridor floor onto B is 4 px. I kept this
-   because it makes a miss a legible demotion rather than a retry-spam loop, but it was
-   a *consequence of the geometry I discovered*, not an intention I started with.
-5. **The light beam extends past the collider.** It is translucent, draw-only, and
-   proved colliderless by `beam-adds-no-collision-body`, but a player could in principle
-   misread it. No human has told me whether they do.
-6. **`probe_reach.gd` is a diagnostic, not an assertion.** It prints windows; it does not
-   fail a build. The binding route checks are in `test_game.gd`.
-7. **Coverage of the extension is route-based.** Both branches are verified along one
-   fixed input line each. Off-route behaviour in the new section — odd approach speeds,
-   backtracking, jumping into ledge corners — is unverified.
-8. **No export.** Source-only. No Web build, no standalone application.
-9. **The 10 px bait window is validated only by an informed player.** §7 found it
-   easy, but by someone who knew where to stand. Still unvalidated for a naive player.
-10. **The trap's timing constants held for one player.** `rise 0.18 s`, `hold 2.6 s`,
-   `fall 0.45 s` were chosen for the scripted route; one human run did not report the
-   hold expiring. Not stress-tested against a hesitant player.
+1. **Two playtesters, n = 2, and neither session was instrumented.** Player 2 met the
+   trap cold, died to it and solved it unaided, which is the result that matters. But
+   no retry counts, timings or hesitation points were recorded, and the verbal feedback
+   was one word. This report has "it works for two humans", not "it is well tuned".
+2. **The trap's timing constants held for two players.** `rise 0.18 s`, `hold 2.6 s`,
+   `fall 0.45 s` were chosen for the scripted route. Neither human run reported the
+   hold expiring, but nobody has stress-tested a player who hesitates.
+3. **The section is a there-and-back errand, not a pair of routes.** An earlier
+   revision offered a high/low fork; making the key mandatory replaced it with a single
+   route that doubles back at the barrier. Recorded in §8b and `CHANGE-BRIEF.md` R7 as
+   a deliberate change rather than an accident.
+4. **The light beam extends past the collider.** It is translucent, draw-only, and
+   proved colliderless by `beam-adds-no-collision-body`, but a player could in
+   principle misread it. Neither playtester mentioned it either way.
+5. **`probe_reach.gd` is a diagnostic, not an assertion.** It prints windows; it does
+   not fail a build. The binding route checks are in `test_game.gd`.
+6. **Coverage of the extension is route-based.** One fixed input line. Off-route
+   behaviour in the new section — odd approach speeds, backtracking, jumping into
+   ledge corners, taking the key and then dawdling past the trap's hold window — is
+   unverified.
+7. **No export.** Source-only. No Web build, no standalone application.

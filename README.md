@@ -173,22 +173,17 @@ credits: **[SOURCES.md](SOURCES.md)**
    because the author's own playtest structurally could not produce it. But n = 2, no
    retry counts or timings were recorded for that session, and the feedback was one
    word. "It works for two humans" is not "it is well tuned".
-2. **The outro card is silent.** The stock jingle asset is missing from the toolkit
-   checkout; reported as an asset blocker rather than substituted. Everything else on
-   that card conforms to the outro lock.
-4. **The 10 px bait window has not been tried by a human.** It is geometry-bounded and
-   reproducible in the probe, but 10 px is 0.06 s of walking at full speed, and whether
-   a person can find it without frustration is exactly what is untested.
-5. **The trap's timing constants are untested against human reaction.** `rise 0.18 s`,
+2. **The trap's timing constants are untested against human reaction.** `rise 0.18 s`,
    `hold 2.6 s`, `fall 0.45 s` were chosen so the scripted route clears comfortably.
-6. **The high road is entry-committed.** Once on the low road the window back up onto
-   ledge B is 4 px. Kept deliberately, but it was a consequence discovered by
-   measurement, not an original intention.
-7. **Missing ledge D kills you**, unlike B and C. Recorded in the change brief before
-   implementation.
-8. **Extension coverage is route-based.** One fixed input line per branch. Off-route
-   behaviour in the new section is unverified.
-9. **Source only.** No Web export, no standalone application.
+   One human run did not report the hold expiring; nobody has stress-tested a hesitant
+   player against it.
+3. **The section is a there-and-back errand, not a pair of routes.** An earlier
+   revision offered a high/low fork; making the key mandatory replaced it with a single
+   route that doubles back. Recorded in `TEST-REPORT.md` §8b and `CHANGE-BRIEF.md` R7.
+4. **Extension coverage is route-based.** One fixed input line. Off-route behaviour in
+   the new section — odd approach speeds, backtracking, jumping into ledge corners — is
+   unverified.
+5. **Source only.** No Web export, no standalone application.
 
 ## Film
 
@@ -197,8 +192,8 @@ Rendered with the course Brutalist `godot-waikthrough` skill in **walker** mode.
 | | |
 |---|---|
 | Filename | `claude-liam-walker-jumpman-bao-x-walkthrough.mp4` |
-| SHA-256 | `02f30177d20aa8842960570b7631ca34b36038b0495101ae973132a1be0d3e31` |
-| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:22** (202.0 s) |
+| SHA-256 | `9741c24b8c2eb25fd9960e0fac8d1d3bba6b92fe80689b62b68ac8630aa39a50` |
+| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:19** (199.2 s) |
 | Link | *upload to course media storage pending* |
 
 Gameplay is **real engine capture at native 4K**, driven by real key events, labeled
@@ -215,10 +210,6 @@ Reel: [`youtube/claude-liam-walker-jumpman-bao-x-walkthrough/`](youtube/claude-l
 | `FACTCHECK.md` | every numeric claim traced to source |
 | `SHOTLIST.md` / `RIFF.md` / `PROMPTS.md` / `BUILD-PROMPT.md` | shot list, commentary, provenance, reproduction |
 | `_qc/REPORT.md` / `_qc/HUMAN-REVIEW.md` | gate output, and what I checked by eye |
-
-**Known asset blocker:** the stock outro jingle (`svg/claude/mp3/`) is absent from this
-checkout of brutalist.art, so the final card is silent rather than silent-under-jingle.
-Reported rather than substituted, per the skill.
 
 Media (`*.mp4`, `*.avi`, `*.mp3`) is gitignored per the assignment; `BUILD-PROMPT.md`
 reproduces it.

@@ -9,7 +9,7 @@ Submitted commit SHA: <the SHA of the final submission commit — see the Canvas
 Game-source revision shown in the film: fb75763fd0d6f0343b8e7cc116b304cac244b94f
 Godot version and operating system: Godot 4.7.2.stable.official.ed1daf0bf, macOS 26.5.1 (Apple M4 Pro)
 Final film URL and filename: <course media storage URL> / claude-liam-walker-jumpman-bao-x-walkthrough.mp4
-Final film SHA-256: 02f30177d20aa8842960570b7631ca34b36038b0495101ae973132a1be0d3e31
+Final film SHA-256: 9741c24b8c2eb25fd9960e0fac8d1d3bba6b92fe80689b62b68ac8630aa39a50
 ```
 
 > **Two revisions, as the assignment allows.** The film was rendered from game-source
@@ -49,12 +49,10 @@ the design.
 
 ## Known limitations
 
-1. **The level no longer asks the player to choose.** Making the key mandatory cost the
-   extension its high/low fork; what remains is sequencing. Recorded in `TEST-REPORT.md`
-   §8b and `CHANGE-BRIEF.md` R5 as a knowing trade, not an accident.
+1. **The section is a there-and-back errand, not a pair of routes.** Making the key
+   mandatory replaced the earlier high/low fork with a single route that doubles back.
+   Recorded in `TEST-REPORT.md` §8b and `CHANGE-BRIEF.md` R7 as a deliberate change.
 2. **n = 2 playtesters**, neither session instrumented — no retry counts, no timings.
-3. **The outro card is silent.** The toolkit's stock jingle lives in a `svg/` asset pack
-   that upstream deliberately gitignores; reported rather than substituted.
-4. **Extension coverage is route-based** — one fixed input line. Off-route behaviour in
+3. **Extension coverage is route-based** — one fixed input line. Off-route behaviour in
    the new section is unverified.
-5. **Source only.** No Web export, no standalone application.
+4. **Source only.** No Web export, no standalone application.
