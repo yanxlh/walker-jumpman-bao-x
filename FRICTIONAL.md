@@ -331,6 +331,40 @@ reported something.
 
 ---
 
+## Entry 14 — 2026-09-21 · Someone else played it, and the trap taught them
+
+I got a second person to play it. They had not seen the design.
+
+They hit the spring trap, **died to it several times, and then worked out the bait
+themselves** — nobody told them. Then they finished the level. Asked what they thought:
+"good".
+
+**Why this is the most useful thing in the whole report.** Every playtest row I could
+fill myself was compromised by the same fact: I knew where to stand before I pressed a
+key. I wrote the trap's arming rectangle. So my "worked it out, not hard" said nothing
+about whether the trap is discoverable — it only said the level is completable by
+someone who already understands it. The honest limitation I had been carrying was
+exactly that, and it is the one thing I could not fix by testing harder myself.
+
+Player 2 fixed it by dying. That is the loop the trap was built for: punish the obvious
+play, put the reason on the death card ("It goes up when you do"), make the retry
+cheap, and let the player teach themselves. Seeing it actually happen to someone else
+is different from asserting it works.
+
+**What I did not get, and will not pretend I did.** I did not count their retries. I
+did not time them or watch where they hesitated. Their whole verbal feedback is one
+word. So the report says "it works for two humans", not "it is well tuned", and the
+film's next-improvement line now asks for instrumented death positions rather than
+"find a stranger" — because the stranger part is done and something more specific is
+the real next step.
+
+**Consequence I had to deal with:** the rendered film's Verdict said "the only human
+playtest was by the person who designed the level". That sentence became false the
+moment Player 2 finished. Re-recorded the beat and recompiled rather than leaving a
+claim in the film that the documents contradict.
+
+---
+
 ## Human / AI contribution summary
 
 | | Mine | Claude's |
@@ -344,6 +378,7 @@ reported something.
 | Label placement | called the second fix (move to the decision point) | made both edits |
 | Predictions | frozen before build, scored honestly afterwards | wrote them up |
 | Documents | decided what must stay unfilled | drafted the prose |
+| Playtesting | played both sessions myself; recruited and observed Player 2 | recorded only what was reported, and flagged the film line that Player 2 invalidated |
 | Spring trap | required detection above the spike, no plate, no rail, and the window halved to 10 px | implemented the state machine and the geometry test |
 | Reward coin | placed it on the highest ledge so the high road finally pays | implemented pickup, HUD counter, retry reset |
 

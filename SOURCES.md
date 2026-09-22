@@ -104,6 +104,12 @@ assignment. The film **is rendered**: `claude-liam-walker-jumpman-bao-x-walkthro
 
 ## Collaborators
 
-None. No other person has contributed to or playtested this build at the time of
-writing. If a playtester is recorded later they will be named here with their actual
-feedback.
+**Playtester (Player 2), 2026-09-21.** A second person, not the author, played the
+build without having seen the design. They met the spring trap, died to it several
+times, worked out the bait solution unaided, and finished the level; asked for an
+impression, they said "good". Their actual result and its limits are recorded in
+`TEST-REPORT.md` §7 — including what was *not* captured (retry count, timings,
+hesitation points). They are not named here because no name was supplied for
+publication; nothing beyond what they actually did has been attributed to them.
+
+No other person contributed code, design, documents or the film.

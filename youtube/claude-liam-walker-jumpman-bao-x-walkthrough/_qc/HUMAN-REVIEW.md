@@ -5,7 +5,7 @@ not by trusting the gate output.
 
 | Check | Result |
 |---|---|
-| Container | 3840 x 2160, h264, 30 fps, AAC stereo 48 kHz, 202.0 s |
+| Container | 3840 x 2160, h264, 30 fps, AAC stereo 48 kHz, 210.5 s |
 | Gate V (frame QC) | 26 frames sampled, **0 BLOCKER, 0 MAJOR** |
 | `godot-waikthrough --check` | PASS — 19 implemented features, 5 planned, 20 evidence intervals |
 | Narration present throughout | sampled at 5/40/80/120/160 s: −28.1, −28.7, −26.9, −29.2, −25.9 dB |
@@ -58,9 +58,19 @@ deliberate design choice as a shortfall. The fork trades precision for the coin,
 for speed; the card now carries it under **By design**, between the observed items and
 the untested one. Gate V re-run after the recompile.
 
+## Re-cut 2026-09-21 — a second playtester invalidated the verdict
+
+B10 was re-recorded a second time and the film recompiled. The previous cut said "the
+only human playtest was by the person who designed the level, so discoverability for a
+stranger is unknown", and closed with "put it in front of someone who has never seen
+it". A second player finished the build that day -- meeting the spring trap cold, dying
+to it several times and solving the bait unaided -- which made both lines false. The
+verdict now reports that result, states plainly that n = 2 with no retry counts or
+timings, and the next improvement asks for instrumented death positions instead.
+
 ## Master
 
 ```
 /Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/exports/landscape/claude-liam-walker-jumpman-bao-x-walkthrough.mp4
-sha256  9d82df50cf6d012e5f5138689dcf3dd7dc279dccb5c3b24117ec64e14fb94ec9
+sha256  3fbd8d9ff47329ad54551aba57d5e74732dce9c26ca26d80f8196d7adf1ee245
 ```

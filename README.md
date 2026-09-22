@@ -174,10 +174,12 @@ credits: **[SOURCES.md](SOURCES.md)**
 
 ## Known limitations
 
-1. **One playtester, and he designed the level.** Both branches, the failure/retry loop
-   and replay were played by hand (`TEST-REPORT.md` §7), but by the person who built it.
-   Discoverability for someone who has never seen it is untested. Pause, resume and
-   manual R are machine-checked only.
+1. **Two playtesters, and neither session was instrumented.** A second person who had
+   not seen the design met the spring trap cold, died to it several times, worked out
+   the bait unaided and finished (`TEST-REPORT.md` §7). That is the result that matters,
+   because the author's own playtest structurally could not produce it. But n = 2, no
+   retry counts or timings were recorded for that session, and the feedback was one
+   word. "It works for two humans" is not "it is well tuned".
 2. **The outro card is silent.** The stock jingle asset is missing from the toolkit
    checkout; reported as an asset blocker rather than substituted. Everything else on
    that card conforms to the outro lock.
@@ -202,8 +204,8 @@ Rendered with the course Brutalist `godot-waikthrough` skill in **walker** mode.
 | | |
 |---|---|
 | Filename | `claude-liam-walker-jumpman-bao-x-walkthrough.mp4` |
-| SHA-256 | `9d82df50cf6d012e5f5138689dcf3dd7dc279dccb5c3b24117ec64e14fb94ec9` |
-| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:22** (202.0 s) |
+| SHA-256 | `3fbd8d9ff47329ad54551aba57d5e74732dce9c26ca26d80f8196d7adf1ee245` |
+| Spec | 3840 × 2160, 30 fps, h264 / AAC, **3:30** (210.5 s) |
 | Link | *upload to course media storage pending* |
 
 Gameplay is **real engine capture at native 4K**, driven by real key events, labeled

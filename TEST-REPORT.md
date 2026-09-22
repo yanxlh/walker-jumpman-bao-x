@@ -154,14 +154,16 @@ conflict — **was not predicted by me at all** and was found only by running th
 
 ---
 
-## 7. Human playtest — PERFORMED 2026-09-18 and 2026-09-21
+## 7. Human playtest — TWO PLAYERS
 
-Player: **Bao Xing** (the author), on this machine, Godot 4.7.2, normal keyboard
-input via `./walker-jumpman.command`. Two sessions.
+Godot 4.7.2 on this machine, normal keyboard input via `./walker-jumpman.command`.
+
+### Player 1 — Bao Xing (the author), 2026-09-18 and 2026-09-21, two sessions
 
 **Reported by the player.** Session 1 (2026-09-18): reached the finish; fewer than five
 retries; the fork read as two roads; worked out the spring-trap bait unaided and did not
-find it hard. Session 2 (2026-09-21): **replay works, and both branches were played.**
+find it hard. Session 2 (2026-09-21): **replay works, both branches were played, and pause,
+resume and manual R were each exercised and all worked.**
 
 | Question | Observation | Verdict |
 |---|---|---|
@@ -173,13 +175,32 @@ find it hard. Session 2 (2026-09-21): **replay works, and both branches were pla
 | Which branch was taken? | **Both** — high and low were each played to the finish | PASS |
 | Was the high road's 48 px entry jump findable by hand? | Yes — the high line was completed | PASS |
 | Replay from the completion card | Yes — confirmed working | PASS |
-| Pause / resume / manual R by hand | **Not reported** | UNTESTED BY HAND |
+| Pause / resume / manual R by hand | Tested — all three work | PASS |
 
-The three routes the rubric names — route, failure/recovery, and replay — are all
-covered by hand. Pause, resume and manual R remain machine-verified only
-(`pause-freezes`, `focus-loss-pauses`, `manual-restart-not-death`, plus the three
-keyboard checks) and are visible in the film's scripted-input capture, but no human has
-confirmed them by hand and this table says so rather than rounding up.
+Every row above is confirmed by hand, including the three the rubric names by name —
+route, failure/recovery, and replay — plus pause, resume and manual R.
+
+### Player 2 — a second person, not the author, 2026-09-21
+
+| Question | Observation | Verdict |
+|---|---|---|
+| Reached the finish? | **Yes** | PASS |
+| Did the spring trap's bait solution occur to them **unaided**? | **Yes — after dying to it several times, they worked it out themselves.** No hint was given. | PASS |
+| Overall impression | "Good" | — |
+| Retries taken | not counted | UNKNOWN |
+| Which branch(es) taken | not recorded | UNKNOWN |
+
+**This is the single most useful result in this report**, because it is the one thing
+the author's own playtest structurally could not establish. Player 1 knew the trap's
+mechanism before pressing a key. Player 2 did not, met the trap, **died to it, and then
+solved it** — which is exactly the loop the trap was designed to produce: punish the
+obvious play, name its own cause on the death card, and let a fast retry teach the
+correct one.
+
+**What it does not establish.** n = 2. Player 2's retry count was not recorded, so
+there is no number for "how expensive was the lesson". Nobody timed them, nobody
+watched where they hesitated, and their impression is one word. This is a pass, not a
+study.
 
 An earlier draft of this table asserted "Completion and replay — PASS" before the player
 had reported it. That was inference, not evidence; it was struck, and the rows above are
@@ -194,11 +215,15 @@ It retires two risks I had recorded as unverified:
 - **Fork readability.** The sign plus the ledge layout communicated a choice at the
   decision point, which is what the revision in §8 was for.
 
-**The caveat that matters: this player designed the level.** Bao knew the trap's
-mechanism, the bait position, and the geometry before playing. That makes this
-strong evidence that the level is *completable and not frustrating for someone who
-understands it*, and weak evidence about **discoverability for a first-time player**.
-The honest reading is: one informed playtest passed; no naive playtest has happened.
+**Player 1's caveat still stands for Player 1:** Bao designed the level and knew the
+trap's mechanism, the bait position and the geometry before pressing a key. That
+session is strong evidence the level is completable and not frustrating for someone who
+understands it, and no evidence at all about discoverability.
+
+**Player 2 is what closes that gap** — a person who had not seen the design met the
+trap cold, died to it, and worked out the bait without being told. Limitation #4 in
+earlier revisions of this report ("the 10 px bait window may be unfindable") is
+retired by that result rather than by argument.
 
 An automated input route is still not a playtest, and the route fixtures in
 `test_game.gd` are not counted as one here.

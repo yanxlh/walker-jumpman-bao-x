@@ -43,7 +43,7 @@
       "Claude"
     ],
     "build": {
-      "at": "2026-09-18T15:46:03",
+      "at": "2026-09-21T21:54:52",
       "cut": "master",
       "filled": 13,
       "of": 13,
@@ -114,7 +114,7 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       }
     },
     {
@@ -186,7 +186,7 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "remotion:BrutalistHesitantWriter",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       }
     },
     {
@@ -232,7 +232,7 @@
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       },
       "qc": {
         "full_bleed": true,
@@ -302,7 +302,7 @@
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       },
       "qc": {
         "full_bleed": true,
@@ -372,7 +372,7 @@
         "status": "VIDEO",
         "src": "media/B04.mp4",
         "filled_by": "media",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       },
       "qc": {
         "full_bleed": true,
@@ -434,7 +434,7 @@
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       },
       "qc": {
         "full_bleed": true,
@@ -508,7 +508,7 @@
         "status": "VIDEO",
         "src": "media/B06.mp4",
         "filled_by": "media",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       },
       "qc": {
         "full_bleed": true,
@@ -574,7 +574,7 @@
         "status": "VIDEO",
         "src": "media/B07.mp4",
         "filled_by": "media",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       },
       "qc": {
         "full_bleed": true,
@@ -683,7 +683,7 @@
         "status": "VIDEO",
         "src": "media/B08.mp4",
         "filled_by": "remotion:WalkerGodotSetup",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       }
     },
     {
@@ -754,15 +754,15 @@
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "remotion:WalkerGodotSetup",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       }
     },
     {
       "beat_id": "B10",
       "act": "VERDICT",
-      "estimated_duration_s": 33.856,
-      "role_note": "VERDICT LAW — observed vs by-design vs untested vs next. The same-tick cost is stated as the fork's chosen exchange (precision for a collectible), NOT as a defect; an earlier cut framed it as a shortfall, which misrepresented the designer's intent.",
-      "narration_text": "Verdict. Observed working: both routes reach the relocated finish; the trap punishes the jump and spares the walk; the coin sits on the highest ledge, so the high line is the only line that can pay you; and forty-nine checks pass with the starter's twenty-five unaltered. By design, the fork trades precision for that coin, not for speed — both lines cost the same six hundred and seventy-one ticks, and that is the exchange, not a shortfall. Untested: the only human playtest was by the person who designed the level, so discoverability for a stranger is unknown. Next improvement: put it in front of someone who has never seen it, and watch where they stop.",
+      "estimated_duration_s": 42.368,
+      "role_note": "VERDICT LAW — observed / by-design / tested-cold / still-thin / next. An earlier cut said 'the only human playtest was by the person who designed the level'; a second playtester finished the build on 2026-09-21 and that sentence became false, so the beat was re-recorded rather than left contradicting TEST-REPORT section 7.",
+      "narration_text": "Verdict. Observed working: both routes reach the relocated finish; the trap punishes the jump and spares the walk; the coin sits on the highest ledge, so the high line is the only line that can pay you; and forty-nine checks pass with the starter's twenty-five unaltered. By design, the fork trades precision for that coin, not for speed — both lines cost the same six hundred and seventy-one ticks, and that is the exchange, not a shortfall. Tested cold: a second player who had never seen the design met the trap, died to it several times, worked out the bait unaided, and finished. That is the trap's loop working on someone it was never explained to. Still thin, though: two players, no retry counts, no timings, one word of feedback. Next improvement: log where deaths actually happen, so the next playtest returns numbers instead of impressions.",
       "shot": {
         "type": "GRAPHIC",
         "class": "SHOW",
@@ -800,27 +800,27 @@
               "Observed: both routes finish; trap punishes the jump, spares the walk.",
               "Observed: 49 checks pass — the starter's 25 unaltered.",
               "By design: the fork buys the coin, not speed — both cost 671 ticks.",
-              "Untested: the only playtester designed the level.",
-              "Next: put it in front of someone who has never seen it."
+              "Tested cold: a second player died to the trap, then solved it unaided.",
+              "Thin: n = 2, no counts, no timings. Next: log where deaths happen."
             ],
-            "durationSeconds": 33.856
+            "durationSeconds": 42.368
           },
           "rendered": {
             "out": "media/B10.mp4",
-            "at": "2026-09-18T19:39:18.739654+00:00"
+            "at": "2026-09-22T01:52:55.559247+00:00"
           }
         }
       },
       "voice": "am_onyx",
       "engine": "kokoro",
-      "actual_duration_s": 33.856,
+      "actual_duration_s": 42.368,
       "audio_file": "mp3/beat-B10.mp3",
-      "render_duration_s": 33.86666666666667,
+      "render_duration_s": 42.4,
       "build": {
         "status": "VIDEO",
         "src": "media/B10.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       }
     },
     {
@@ -885,7 +885,7 @@
         "status": "VIDEO",
         "src": "media/B11.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       }
     },
     {
@@ -938,7 +938,7 @@
         "status": "VIDEO",
         "src": "media/B12.mp4",
         "filled_by": "remotion:ClaudeTitleOutro",
-        "at": "2026-09-18T15:46:03"
+        "at": "2026-09-21T21:54:52"
       }
     }
   ]
