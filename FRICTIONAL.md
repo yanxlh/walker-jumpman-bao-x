@@ -313,6 +313,24 @@ but it came off a harness that could silently drift. I got clean numbers partly 
 the machine was quiet. If I had not re-run the suite one last time on a busy machine, I
 would have submitted a green report built on a measurement I did not understand.
 
+## Entry 13 — 2026-09-21 · Second session: replay, and both lines
+
+Went back and played the parts I had not reported. **Replay works** — Enter on the
+completion card starts a fresh session. And I played **both branches** to the finish,
+which also settles the row I had left open about whether the high road's 48 px entry
+jump is findable by hand: it is, I did it.
+
+That closes the three things the rubric names by name — route, failure/recovery, replay.
+Pause, resume and manual R I still have not exercised by hand; they are machine-checked
+and they appear in the film, and TEST-REPORT §7 says exactly that rather than rounding
+up to a full sweep.
+
+Worth noting against Entry 11: the first session I reported four things and Claude's
+draft turned them into seven PASS rows. This time the table only grew where I actually
+reported something.
+
+---
+
 ## Human / AI contribution summary
 
 | | Mine | Claude's |

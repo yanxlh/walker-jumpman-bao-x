@@ -154,13 +154,14 @@ conflict — **was not predicted by me at all** and was found only by running th
 
 ---
 
-## 7. Human playtest — PERFORMED 2026-09-18
+## 7. Human playtest — PERFORMED 2026-09-18 and 2026-09-21
 
 Player: **Bao Xing** (the author), on this machine, Godot 4.7.2, normal keyboard
-input via `./walker-jumpman.command`. One session.
+input via `./walker-jumpman.command`. Two sessions.
 
-**Reported by the player, verbatim:** reached the finish; fewer than five retries; the
-fork read as two roads; worked out the spring-trap bait unaided and did not find it hard.
+**Reported by the player.** Session 1 (2026-09-18): reached the finish; fewer than five
+retries; the fork read as two roads; worked out the spring-trap bait unaided and did not
+find it hard. Session 2 (2026-09-21): **replay works, and both branches were played.**
 
 | Question | Observation | Verdict |
 |---|---|---|
@@ -169,16 +170,20 @@ fork read as two roads; worked out the spring-trap bait unaided and did not find
 | Failure and recovery experienced? | Implied by a non-zero retry count | PASS |
 | Did the fork read as a choice before committing? | "Saw it was two roads" | PASS |
 | Did the spring trap's bait solution occur to the player unaided? | "Worked it out, not hard" | PASS |
-| Which branch was taken? | **Not reported** | UNKNOWN |
-| Was the high road's 48 px entry jump findable by hand? | **Not reported** | UNTESTED |
-| Replay from the completion card | **Not reported** — the player did not say whether Enter was pressed after finishing | UNTESTED BY HAND |
+| Which branch was taken? | **Both** — high and low were each played to the finish | PASS |
+| Was the high road's 48 px entry jump findable by hand? | Yes — the high line was completed | PASS |
+| Replay from the completion card | Yes — confirmed working | PASS |
 | Pause / resume / manual R by hand | **Not reported** | UNTESTED BY HAND |
 
-The four rows marked UNTESTED/UNKNOWN are deliberately not filled. They are covered by
-automated checks and appear in the film's scripted-input capture, but **no human has
-confirmed them with their own hands**, and an earlier draft of this table asserted
-"Completion and replay — PASS" on the strength of an inference. That was wrong and is
-corrected here rather than quietly rewritten.
+The three routes the rubric names — route, failure/recovery, and replay — are all
+covered by hand. Pause, resume and manual R remain machine-verified only
+(`pause-freezes`, `focus-loss-pauses`, `manual-restart-not-death`, plus the three
+keyboard checks) and are visible in the film's scripted-input capture, but no human has
+confirmed them by hand and this table says so rather than rounding up.
+
+An earlier draft of this table asserted "Completion and replay — PASS" before the player
+had reported it. That was inference, not evidence; it was struck, and the rows above are
+now filled only from what was actually reported.
 
 ### What this does and does not establish
 

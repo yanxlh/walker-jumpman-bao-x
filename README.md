@@ -173,8 +173,10 @@ credits: **[SOURCES.md](SOURCES.md)**
 
 ## Known limitations
 
-1. **No human has played this build.** `TEST-REPORT.md` §7 is deliberately empty. An
-   automated input route is not a playtest.
+1. **One playtester, and he designed the level.** Both branches, the failure/retry loop
+   and replay were played by hand (`TEST-REPORT.md` §7), but by the person who built it.
+   Discoverability for someone who has never seen it is untested. Pause, resume and
+   manual R are machine-checked only.
 2. **The outro card is silent.** The stock jingle asset is missing from the toolkit
    checkout; reported as an asset blocker rather than substituted. Everything else on
    that card conforms to the outro lock.
