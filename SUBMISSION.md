@@ -9,7 +9,7 @@ Submitted commit SHA: <the SHA of the final submission commit — see the Canvas
 Game-source revision shown in the film: fb75763fd0d6f0343b8e7cc116b304cac244b94f
 Godot version and operating system: Godot 4.7.2.stable.official.ed1daf0bf, macOS 26.5.1 (Apple M4 Pro)
 Final film URL and filename: <course media storage URL> / claude-liam-walker-jumpman-bao-x-walkthrough.mp4
-Final film SHA-256: 9741c24b8c2eb25fd9960e0fac8d1d3bba6b92fe80689b62b68ac8630aa39a50
+Final film SHA-256: 26673e971c1a685d4a8b4b1cddb703ab09af94ea91b49ca9c035c9ac307209b1
 ```
 
 > **Two revisions, as the assignment allows.** The film was rendered from game-source

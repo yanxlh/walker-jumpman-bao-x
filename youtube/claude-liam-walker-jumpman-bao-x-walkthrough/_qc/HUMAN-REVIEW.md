@@ -5,7 +5,7 @@ not by trusting the gate output.
 
 | Check | Result |
 |---|---|
-| Container | 3840 x 2160, h264, 30 fps, AAC stereo 48 kHz, 199.2 s |
+| Container | 3840 x 2160, h264, 30 fps, AAC stereo 48 kHz, 219.8 s |
 | Gate V (frame QC) | 26 frames sampled, **0 BLOCKER, 0 MAJOR** |
 | `godot-waikthrough --check` | PASS — 19 implemented features, 5 planned, 20 evidence intervals |
 | Narration present throughout | sampled at 5/40/80/120/160 s: −28.1, −28.7, −26.9, −29.2, −25.9 dB |
@@ -59,5 +59,5 @@ Two things fixed during the rebuild:
 
 ```
 /Users/yxlh/Documents/csye 7270/walker-jumpman-bao-x/youtube/claude-liam-walker-jumpman-bao-x-walkthrough/exports/landscape/claude-liam-walker-jumpman-bao-x-walkthrough.mp4
-sha256  9741c24b8c2eb25fd9960e0fac8d1d3bba6b92fe80689b62b68ac8630aa39a50
+sha256  26673e971c1a685d4a8b4b1cddb703ab09af94ea91b49ca9c035c9ac307209b1
 ```

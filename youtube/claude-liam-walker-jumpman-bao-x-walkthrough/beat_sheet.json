@@ -42,7 +42,7 @@
       "Claude"
     ],
     "build": {
-      "at": "2026-09-22T16:02:03",
+      "at": "2026-09-23T11:55:47",
       "cut": "master",
       "filled": 14,
       "of": 14,
@@ -113,7 +113,7 @@
         "status": "VIDEO",
         "src": "media/B00.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -181,7 +181,7 @@
         "status": "VIDEO",
         "src": "media/B01.mp4",
         "filled_by": "remotion:BrutalistHesitantWriter",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -254,7 +254,7 @@
         "status": "VIDEO",
         "src": "media/B02.mp4",
         "filled_by": "media",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -327,7 +327,7 @@
         "status": "VIDEO",
         "src": "media/B03.mp4",
         "filled_by": "media",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -392,7 +392,7 @@
         "status": "VIDEO",
         "src": "media/B04.mp4",
         "filled_by": "media",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -461,7 +461,7 @@
         "status": "VIDEO",
         "src": "media/B05.mp4",
         "filled_by": "media",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -534,7 +534,7 @@
         "status": "VIDEO",
         "src": "media/B06.mp4",
         "filled_by": "media",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -603,7 +603,7 @@
         "status": "VIDEO",
         "src": "media/B07.mp4",
         "filled_by": "media",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -672,7 +672,7 @@
         "status": "VIDEO",
         "src": "media/B08.mp4",
         "filled_by": "media",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -753,7 +753,7 @@
         "status": "VIDEO",
         "src": "media/B09.mp4",
         "filled_by": "remotion:WalkerGodotSetup",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -820,7 +820,7 @@
         "status": "VIDEO",
         "src": "media/B10.mp4",
         "filled_by": "remotion:WalkerGodotSetup",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -875,22 +875,22 @@
           }
         }
       },
-      "actual_duration_s": 33.835,
+      "actual_duration_s": 33.83,
       "audio_file": "mp3/beat-B11.mp3",
-      "render_duration_s": 33.86666666666667,
+      "render_duration_s": 33.833333333333336,
       "build": {
         "status": "VIDEO",
         "src": "media/B11.mp4",
         "filled_by": "remotion:ClaudeVerdictArtifact",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
       "beat_id": "B12",
       "act": "HANDOFF",
-      "estimated_duration_s": 26.347,
-      "role_note": "YOUR TURN LAW — a runnable prompt relevant to THIS video, read in full. Liam signs off here.",
-      "narration_text": "Your turn. If you are extending someone else's level, paste this before you commit to a layout: 'Read this project's tuning values, then write a throwaway script that sweeps real takeoff positions through the real physics and tells me which of my planned jumps actually land. Do not change the jump to make my layout work.' Bao's probe rejected a design he had already hand-computed and believed. The moment you reach for jump strength, you have stopped extending the game and started editing it to agree with you. Liam, in for Bear.",
+      "estimated_duration_s": 46.933,
+      "role_note": "YOUR TURN LAW — a runnable prompt relevant to THIS video, read in full, then the contributions split and the demonstrated revision (assignment film requirement 5), then Liam signs off before the final card.",
+      "narration_text": "Your turn. If you are extending someone else's level, paste this before you commit to a layout: 'Read this project's tuning values, then write a throwaway script that sweeps real takeoff positions through the real physics and tells me which of my planned jumps actually land. Do not change the jump to make my layout work.' Bao's probe rejected a design he had already hand-computed and believed. The moment you reach for jump strength, you have stopped extending the game and started editing it to agree with you. Who did what. Bao chose the courier, chose the key and the door over three other ways of resolving it, and decided to re-cut the geometry rather than touch the tuning. Claude Code wrote the vector drawing, the reachability probe, the trap and key state machines, and the added checks. This narration is AI. The build demonstrated is commit f b seven five seven six three, on Godot four point seven point two. Liam, in for Bear.",
       "voice": "am_onyx",
       "engine": "kokoro",
       "shot": {
@@ -904,12 +904,20 @@
             "event": "composer card"
           },
           {
-            "at": "0.15",
+            "at": "0.10",
             "event": "prompt types in full"
           },
           {
-            "at": "0.8",
+            "at": "0.52",
             "event": "line beneath: 'change the geometry, not the jump'"
+          },
+          {
+            "at": "0.66",
+            "event": "credits panel: HUMAN / AI split"
+          },
+          {
+            "at": "0.88",
+            "event": "revision line: commit fb75763 · Godot 4.7.2"
           }
         ],
         "remotion": {
@@ -924,26 +932,26 @@
             "modelLabel": "Claude",
             "effortLabel": "High",
             "output": [
-              "It rejected a layout I believed.",
-              "The fix was geometry.",
-              "Never the jump."
+              "Human: the courier, the key-and-door call, the geometry re-cut.",
+              "Claude Code: the drawing, the probe, the state machines, the checks.",
+              "Narration is AI. Build shown: commit fb75763 · Godot 4.7.2."
             ],
-            "durationSeconds": 26.347
+            "durationSeconds": 46.933
           },
           "rendered": {
             "out": "media/B12.mp4",
-            "at": "2026-09-22T16:32:45.610384+00:00"
+            "at": "2026-09-23T15:53:46.067206+00:00"
           }
         }
       },
-      "actual_duration_s": 26.35,
+      "actual_duration_s": 46.933,
       "audio_file": "mp3/beat-B12.mp3",
-      "render_duration_s": 26.366666666666667,
+      "render_duration_s": 46.93333333333333,
       "build": {
         "status": "VIDEO",
         "src": "media/B12.mp4",
         "filled_by": "remotion:ClaudeComposerAsk",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     },
     {
@@ -992,7 +1000,7 @@
         "status": "VIDEO",
         "src": "media/B13.mp4",
         "filled_by": "remotion:ClaudeTitleOutro",
-        "at": "2026-09-22T16:02:03"
+        "at": "2026-09-23T11:55:47"
       }
     }
   ]
