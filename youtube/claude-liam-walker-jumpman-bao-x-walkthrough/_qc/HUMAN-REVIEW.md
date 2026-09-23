@@ -55,6 +55,17 @@ Two things fixed during the rebuild:
   working, so it is labelled `<- by design` on screen in B10 rather than read as a
   defect.
 
+## Reviewer access, verified
+
+The film is hosted at
+
+    https://drive.google.com/file/d/14lLAIUfCEQjxkS8iFQW7CwSLDXWpvl8W/view?usp=sharing
+
+Checked with an anonymous HTTP fetch carrying no cookies and no Google session:
+HTTP 200, the filename renders in the returned page, and there is no "request
+access" interstitial. That is a strong indication the link is publicly viewable;
+the definitive check is opening it in a private window, which the author did.
+
 ## Master
 
 ```
