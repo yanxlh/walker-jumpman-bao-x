@@ -147,7 +147,21 @@ assertions unmodified, plus 19 new, plus 9 keyboard checks.
 /Applications/Godot.app/Contents/MacOS/Godot --headless --path godot --script res://tests/test_keyboard.gd
 /Applications/Godot.app/Contents/MacOS/Godot --headless --path godot --script res://tests/probe_reach.gd
 node scripts/record-build.cjs
+python3 scripts/audit-consistency.py
 ```
+
+That last one is not a game test. It checks that the **committed evidence agrees with
+what these documents claim** — the check count in four places, the film's SHA-256 in
+three, that the film's stated game-source revision really is byte-identical to `godot/`
+at HEAD, that every recorded source and screenshot hash still matches, that every check
+id and file path cited in prose exists, and that the manifest cites the newest receipts
+rather than whichever the filesystem happened to favour.
+
+It exists because that class of defect bit this project twice and the test suite could
+not see either one: once when `TEST-REPORT` kept describing the coin-and-fork build
+after the level became key-and-door, and once when an `rm` glob deleted a fresh receipt
+and the manifest silently fell back to a stale one reporting 49 checks instead of 53.
+Both were caught by a reader. Now they are caught by a script.
 
 The route completes with zero deaths in **865 ticks**. The starter's 900-tick ceiling
 was kept untouched for as long as it fitted; the key detour doubles the route back on
