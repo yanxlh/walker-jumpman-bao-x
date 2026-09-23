@@ -18,7 +18,12 @@ files['walker-jumpman.command'] = hash(fs.readFileSync(path.join(root,'walker-ju
 const sorted = Object.fromEntries(Object.entries(files).sort(([a],[b])=>a.localeCompare(b)));
 const evidence = path.join(root,'evidence');
 const reports = fs.readdirSync(evidence).filter(n=>/^(mechanics|keyboard)-.*\.json$/.test(n));
-const latest = prefix => reports.filter(n=>n.startsWith(prefix)).sort((a,b)=>fs.statSync(path.join(evidence,b)).mtimeMs-fs.statSync(path.join(evidence,a)).mtimeMs)[0];
+// Pick the newest receipt by the unix timestamp EMBEDDED IN ITS FILENAME, not by
+// mtime. A git clone stamps every file with checkout time, so an mtime sort makes
+// the choice arbitrary for anyone who did not generate these locally -- and it
+// silently selected a stale 40-check receipt here once already.
+const stamp = n => parseFloat((n.match(/-(\d+(?:\.\d+)?)\.json$/)||[0,0])[1]);
+const latest = prefix => reports.filter(n=>n.startsWith(prefix)).sort((a,b)=>stamp(b)-stamp(a))[0];
 const selected = [latest('mechanics'),latest('keyboard')];
 const results = selected.map(name=>({file:'evidence/'+name,...JSON.parse(fs.readFileSync(path.join(evidence,name),'utf8'))}));
 if(results.some(r=>r.failures!==0)) throw Error('Latest report failed; cannot mark build ready');

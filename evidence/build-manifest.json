@@ -2,7 +2,7 @@
   "project": "walker-jumpman-bao-x",
   "starter": "nikbearbrown/walker-jumpman",
   "build_id": "18bc54e6851535d4a4271f55aaf1141b522dd41b413e45840dab2df7b5603213",
-  "created_at": "2026-09-23T19:16:58.778Z",
+  "created_at": "2026-09-23T19:23:05.897Z",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "renderer": "Compatibility",
   "scope": "First Steps control/retry slice (starter, unmodified) plus The Key and the Door extension",
@@ -31,17 +31,17 @@
   },
   "tests": [
     {
-      "file": "evidence/mechanics-1789763651.78094.json",
-      "checks": 40,
+      "file": "evidence/mechanics-1790191372.90005.json",
+      "checks": 44,
       "failures": 0
     },
     {
-      "file": "evidence/keyboard-1789763555.14508.json",
+      "file": "evidence/keyboard-1790191374.09399.json",
       "checks": 9,
       "failures": 0
     }
   ],
-  "machine_checks_passed": 49,
+  "machine_checks_passed": 53,
   "human_playtest_sessions": 2,
   "exported": false,
   "game_published": false,
