@@ -188,7 +188,12 @@ treated it as a collision problem; it was an information-placement problem.
 
 ---
 
-## Entry 9 — What is still not done
+## Entry 9 — 2026-09-17 · What was still not done *at that point*
+
+> Snapshot, kept as written. Both items below were resolved later: the toolkit was
+> installed and the film rendered (Entry 10 onward), and the same-tick question became
+> moot when the fork itself was replaced in Entry 15. Left here because the log is
+> chronological and this is what I did not know yet.
 
 - **Played 2026-09-18** — see Entry 11. The remaining hole is that the only playtester
   is the person who designed the level.

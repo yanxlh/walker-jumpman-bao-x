@@ -26,10 +26,10 @@ const record = {
   project:'walker-jumpman-bao-x', starter:'nikbearbrown/walker-jumpman', build_id:hash(JSON.stringify(sorted)),
   created_at:new Date().toISOString(),
   engine:'4.7.2.stable.official.ed1daf0bf', renderer:'Compatibility',
-  scope:'First Steps control/retry slice (starter, unmodified) plus the Pick a Line fork extension', source_sha256:sorted,
+  scope:'First Steps control/retry slice (starter, unmodified) plus The Key and the Door extension', source_sha256:sorted,
   tests:results.map(r=>({file:r.file,checks:r.results.length,failures:r.failures})),
   machine_checks_passed:results.reduce((n,r)=>n+r.results.length,0),
-  human_playtest_sessions:0, exported:false, game_published:false,
+  human_playtest_sessions:2, exported:false, game_published:false,
   screenshots:fs.readdirSync(path.join(evidence,'screens')).filter(n=>n.endsWith('.png')).sort().map(n=>({file:'evidence/screens/'+n,sha256:hash(fs.readFileSync(path.join(evidence,'screens',n)))}))
 };
 fs.writeFileSync(path.join(evidence,'build-manifest.json'), JSON.stringify(record,null,2)+'\n');

@@ -13,11 +13,11 @@ between what I planned and what I shipped is itself part of the record. They are
 
 | Planned here | Actually shipped |
 |---|---|
-| 14 beats, ~4:30 target | **13 beats, 3:16** — duration followed the explanation, as the assignment asks |
+| 14 beats, ~4:30 target | **14 beats, 3:40** — duration followed the explanation, as the assignment asks |
 | Beats hand-listed in a table | `beat_sheet.json`, durations set from **measured** Kokoro audio and clip lengths |
 | Cause-and-effect: the roofing conflict + the HUD divisor | Kept the roofing conflict (B08/B09); dropped the HUD divisor beat for time |
-| No spring trap or coin (they did not exist yet) | Both are now central: B03 coin, B04 trap, B08 the geometry behind it |
-| Verdict said "no human has played this" | Verdict now reports the playtest **and** its caveat |
+| No spring trap, key or door (none existed yet) | All three are now central: B04–B05 the key and the barrier, B03 the trap, B07 the door, B09 the geometry behind the trap |
+| Verdict said "no human has played this" | Verdict reports two playtests **and** their limits |
 
 ## Authoritative documents for the delivered film
 

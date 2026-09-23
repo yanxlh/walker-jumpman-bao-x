@@ -2,10 +2,10 @@
   "project": "walker-jumpman-bao-x",
   "starter": "nikbearbrown/walker-jumpman",
   "build_id": "18bc54e6851535d4a4271f55aaf1141b522dd41b413e45840dab2df7b5603213",
-  "created_at": "2026-09-22T16:17:19.404Z",
+  "created_at": "2026-09-23T19:16:58.778Z",
   "engine": "4.7.2.stable.official.ed1daf0bf",
   "renderer": "Compatibility",
-  "scope": "First Steps control/retry slice (starter, unmodified) plus the Pick a Line fork extension",
+  "scope": "First Steps control/retry slice (starter, unmodified) plus The Key and the Door extension",
   "source_sha256": {
     "godot/features/player/player.gd": "cf923480b1fc5050167beea07782af56c96cab59e1538f9b29f78bddbc6775b6",
     "godot/features/player/player.gd.uid": "be96c2e71cbd69482fa0d107dfb1500a0054d2b963e9ba312e265bef985f0454",
@@ -31,18 +31,18 @@
   },
   "tests": [
     {
-      "file": "evidence/mechanics-1790093823.22536.json",
-      "checks": 44,
+      "file": "evidence/mechanics-1789763651.78094.json",
+      "checks": 40,
       "failures": 0
     },
     {
-      "file": "evidence/keyboard-1790093323.85339.json",
+      "file": "evidence/keyboard-1789763555.14508.json",
       "checks": 9,
       "failures": 0
     }
   ],
-  "machine_checks_passed": 53,
-  "human_playtest_sessions": 0,
+  "machine_checks_passed": 49,
+  "human_playtest_sessions": 2,
   "exported": false,
   "game_published": false,
   "screenshots": [

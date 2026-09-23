@@ -32,7 +32,7 @@ unedited; they describe the starter's state, not this extension's.
 |---|---|
 | `features/player/player.gd` | `_draw()` fully rewritten — the Lamp-Head Courier. Physics, collider and tuning untouched. |
 | `levels/first_steps.json` | Extension geometry at x > 960; spring trap, mandatory key, dead-end barrier; finish moved 916 → 1696 and turned into a locked door; width 960 → 1760. Original geometry unchanged. |
-| `game/session.gd` | Spike and finish drawing made data-driven; level width, grid, background and parallax derived from data; hazard collision width derived from the rect; spring-trap state machine and coin pickup; new signage. |
+| `game/session.gd` | Spike and finish drawing made data-driven; level width, grid, background and parallax derived from data; hazard collision width derived from the rect; spring-trap state machine, key state machine and door gating; new signage. |
 | `ui/hud.gd` | `progress_ratio()` extracted and derived from level data instead of the literal 852; retitled. |
 | `tests/route_driver.gd` | Rewritten as a seven-phase machine: the route now reverses direction to fetch the key, so a forward-only jump-mark list no longer describes it. |
 | `tests/test_game.gd` | 19 checks added. One starter-era check (`relocated-finish-triggers`) rewritten because the finish is now a locked door; it asserts the locked state first. |
@@ -65,7 +65,7 @@ game, no sprite sheets, and no imported art.
 | Node.js | v25.8.2 | `scripts/record-build.cjs` |
 | git | 2.51.0 | version control |
 | Claude Code (Opus 5) | — | see below |
-| Brutalist `godot-waikthrough` | vendored at `~/brutalist.art` | film workflow; render toolchain still missing, see README |
+| Brutalist `godot-waikthrough` | vendored at `~/brutalist.art` | film workflow, used to render the delivered film |
 
 ## AI contribution
 
@@ -100,7 +100,7 @@ from Claude's implementation where it is not obvious.
 
 Beat sheet, script and narration prompts: `film/`. AI narration is permitted by the
 assignment. The film **is rendered**: `claude-liam-walker-jumpman-bao-x-walkthrough.mp4`,
-3840x2160, 3:22. Reel and all its documents are in
+3840x2160, 3:40. Reel and all its documents are in
 `youtube/claude-liam-walker-jumpman-bao-x-walkthrough/`.
 
 ## Collaborators

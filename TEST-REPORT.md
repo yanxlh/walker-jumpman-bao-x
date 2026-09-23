@@ -46,53 +46,74 @@ node scripts/record-build.cjs
 | Check | Result | Evidence |
 |---|---|---|
 | Startup and controls | **PASS** — normal main-scene launch runs with no script errors; 9/9 keyboard checks inject real key events for start, move, jump, pause, resume, retry, replay, menu, restart | `evidence/keyboard-*.json` |
-| Character appearance | **PASS (machine)** — four rendered poses; collider provably unchanged | `screens/05-08`, checks `character-collider-unchanged`, `beam-adds-no-collision-body` |
-| Extended route | **PASS** — both branches reach the relocated finish with 0 deaths | `complete-real-route`, `complete-high-road-route` |
-| Failure and recovery | **PASS** — real spike contact kills and auto-retries; 20 consecutive retries; replay after completion | `actual-spike-collision`, `twenty-retries`, `replay-idempotent` |
-| Camera and presentation | **PASS** — finish and both lines visible and readable at the relocated flag | `screens/09-12` |
-| Automated checks | **42 / 0 failures** | §2 |
-| **Human playtest** | **NOT YET PERFORMED** | see §7 |
+| Character appearance | **PASS** — four rendered poses; collider provably unchanged | `screens/05-08`, checks `character-collider-unchanged`, `beam-adds-no-collision-body` |
+| Extended route | **PASS** — the route climbs for the key, is stopped by the barrier, walks back, and reaches the door with 0 deaths | `complete-real-route` |
+| Failure and recovery | **PASS** — real spike contact kills and auto-retries; the spring trap punishes a jump; 20 consecutive retries; replay after completion | `actual-spike-collision`, `spring-trap-punishes-the-jump`, `twenty-retries`, `replay-idempotent` |
+| Camera and presentation | **PASS** — the key, the barrier and the door are all visible and readable at the relocated finish | `screens/09-20` |
+| Automated checks | **53 / 0 failures** | §2 |
+| **Human playtest** | **PASS — two players** | §7 |
 
 ---
 
-## 4. The eight added checks
+## 4. The nineteen added checks
+
+Starter checks: 25, assertions unmodified. Added: 19. Observations are the measured
+values from the latest run, not restatements of the assertion.
+
+### Character — the collider and tuning were not touched
 
 | ID | Asserts | Observed |
 |---|---|---|
 | `character-collider-unchanged` | one collision child, `RectangleShape2D` 18×28 at offset (0,−14) | `size (18,28)`, `offset (0,-14)`, `shape_count 1` |
 | `beam-adds-no-collision-body` | the light wedge added no collider | `collision_children: 1` |
 | `tuning-unchanged` | speed 160, jump −320, gravity 960, coyote 6, buffer 6 | all match |
-| `low-corridor-walkable-no-jump` | the roofed corridor is traversable end to end | reached `x=1388.3`, `jumps=0`, still PLAYING |
-| `old-finish-position-no-longer-wins` | x=916 no longer completes the level | state stayed PLAYING |
-| `relocated-finish-triggers` | x=1700 completes | state COMPLETE |
-| `hud-progress-tracks-relocated-finish` | progress bar derives from level data | `0.522` at old finish x, `1.0` at new finish |
-| `complete-high-road-route` | the high branch also reaches the finish | COMPLETE, 0 deaths, 671 ticks, 9 jumps, **coin 1** |
 
-Added later with the spring trap and coin (CHANGE-BRIEF R5):
+### The relocated finish, and the corridor that leads to it
 
 | ID | Asserts | Observed |
 |---|---|---|
-| `trap-not-armed-by-walking` | walking past never arms the trap | phase `down` at x=1551 |
-| `spring-trap-bait-then-walk-under` | bait from the safe side, then walk under | reached x=1641, still PLAYING |
-| `spring-trap-actually-rises` | the spike reaches `raised_y` | top reached **240.0** |
-| `spring-trap-punishes-the-jump` | jumping across is fatal | DYING at (1566.6, 265.5), reason "It goes up when you do" |
-| `coin-not-collectable-on-foot` | the coin is above standing height | walked D end to end, `coins_taken 0` |
-| `coin-collected-by-jumping` | a jump from ledge D takes it | `coins_taken 1` |
-| `retry-rearms-trap-and-coin` | a death restores both | `coins_taken 0`, phase `down`, spike y 304 |
+| `low-corridor-walkable-no-jump` | the roofed corridor is traversable end to end with no headroom to jump | reached `x=1388.3`, `jumps=0`, still PLAYING |
+| `old-finish-position-no-longer-wins` | x=916 no longer completes the level | state stayed PLAYING |
+| `relocated-finish-triggers` | the winning position moved to the door — locked first, then open | `was_locked_first: true`, then COMPLETE at `finish_x 1696` |
+| `hud-progress-tracks-relocated-finish` | progress bar derives from level data, not the literal 852 | `0.522` at the old finish x, `1.0` at the new one |
 
-The two route checks were also tightened to assert the coin split: `complete-real-route`
-requires `coins_taken == 0` (the low road cannot reach it) and `complete-high-road-route`
-requires `coins_taken == 1`.
+### The spring trap
+
+| ID | Asserts | Observed |
+|---|---|---|
+| `trap-not-armed-by-walking` | walking past never arms it | phase `down` at x=1551.3 |
+| `spring-trap-actually-rises` | the spike reaches `raised_y` | top reached **240.0** |
+| `spring-trap-punishes-the-jump` | jumping across is fatal | DYING at (1572.0, 264.2), reason "It goes up when you do" |
+| `spring-trap-bait-then-walk-under` | bait from the safe side, then walk under it | reached x=1641.2, still PLAYING |
+
+### The key and the door
+
+| ID | Asserts | Observed |
+|---|---|---|
+| `key-not-collectable-on-foot` | the key sits above standing height | walked ledge D end to end, phase stayed `idle`, stopped at x=1341.3 |
+| `barrier-dead-ends-ledge-d` | the barrier stops the walk on the ledge | halted at x=1341.3, y=247.9 (still on D) |
+| `key-collected-by-jumping` | a jump from ledge D takes it | phase `carried` |
+| `key-follows-the-player` | it trails the courier rather than staying put | moved 41.4 px, 62.8 px behind, above the player |
+| `door-locked-without-key` | standing in the doorway without it does nothing | `door_open false`, state stayed PLAYING |
+| `key-docks-and-opens-the-door` | past the dock line it flies to the lock and fits | phase `docked` at (1708.0, 294.8), `door_open true` |
+| `open-door-finishes` | walking into the open door completes the level | state COMPLETE |
+| `retry-rearms-trap-and-key` | a death restores the key and re-locks the door | key `idle`, `door_open false`, trap `down`, spike y 304 |
 
 ### Fixture changes, and why they are not weakening
 
-- `route_driver.gd` gained a `branch` argument and extra jump marks. `Route.new()`
-  with no argument still yields the original five marks, so the starter's
-  `complete-real-route` keeps its meaning; it now simply runs further.
-- **The 900-tick budget was deliberately left alone.** CHANGE-BRIEF P4 predicted an
-  overrun and I briefly raised it to 1200. Measurement showed both branches finish in
-  **618 ticks**, so I reverted to the starter's 900. No ceiling was loosened.
-- No assertion was deleted or softened anywhere.
+- `route_driver.gd` was rewritten from a forward-only jump-mark list into a
+  seven-phase machine, because the route now reverses direction to fetch the key. The
+  starter's `complete-real-route` keeps its name and its assertion (COMPLETE, zero
+  deaths); it now also requires `door_open`.
+- **The 900-tick budget was held for as long as it fitted, then raised once.** Through
+  R1–R6 the measured cost stayed under it (325 → 618 ticks) and I reverted two attempts
+  to raise it. The key detour doubles the route back on itself and costs **865 ticks**,
+  which genuinely does not fit, so the ceiling is now 1400 with the measured number
+  printed in the check's own observation.
+- `relocated-finish-triggers` changed meaning because the finish became a locked door.
+  It now asserts the locked state *first*, then opens the door and confirms the winning
+  position really did move from 916 to 1696 — strictly more than it asserted before.
+- No assertion was deleted or softened.
 
 ---
 
@@ -106,9 +127,9 @@ real physics. These are measurements, not arithmetic.
 | floor → ledge B | +48 | **70 px** |
 | B → C | flat, 64 px gap | 56 px |
 | C → D | +24, 48 px gap | 58 px |
-| D → merge platform | −72 | 54 px |
-| low road → merge (56 px gap) | flat | 38 px |
-| low corridor walk-through | — | clear, 0 jumps |
+| D → merge platform | −72 | **UNREACHABLE — the barrier, working** |
+| corridor → merge (56 px gap) | flat | 38 px |
+| roofed corridor walk-through | — | clear, 0 jumps |
 | **spring-trap bait from standing** | — | **10 px (x 1550–1558)** |
 
 Standing at x ≥ 1560 already touches the grounded spike, so 1558 is the last safe
@@ -164,6 +185,12 @@ Godot 4.7.2 on this machine, normal keyboard input via `./walker-jumpman.command
 retries; the fork read as two roads; worked out the spring-trap bait unaided and did not
 find it hard. Session 2 (2026-09-21): **replay works, both branches were played, and pause,
 resume and manual R were each exercised and all worked.**
+
+> Both sessions predate the key-and-door change of 2026-09-22 (R7), so "both branches"
+> refers to the high/low fork that existed then. The route they played is not the route
+> that ships now. What still transfers is the trap, the retry loop, the controls and
+> the character; what does **not** is the fork. **The shipped route has not been played
+> by hand** — that is stated again in §9.
 
 | Question | Observation | Verdict |
 |---|---|---|
@@ -367,4 +394,9 @@ it. Reverted in favour of the one-line change above.
    behaviour in the new section — odd approach speeds, backtracking, jumping into
    ledge corners, taking the key and then dawdling past the trap's hold window — is
    unverified.
-7. **No export.** Source-only. No Web build, no standalone application.
+7. **The shipped route has never been played by hand.** Both playtests happened on
+   2026-09-21, before the key-and-door change (R7) replaced the fork with a mandatory
+   detour. Their findings about the trap, the retry loop and the controls still hold;
+   their findings about routing do not describe what ships. The key detour is verified
+   only by `complete-real-route`.
+8. **No export.** Source-only. No Web build, no standalone application.

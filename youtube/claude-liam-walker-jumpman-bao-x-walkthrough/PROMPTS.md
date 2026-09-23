@@ -1,17 +1,18 @@
-# PROMPTS — Pick a Line: Extending walker-jumpman
+# PROMPTS — The Key and the Door: Extending walker-jumpman
 
 Exactly what produced each visual. Gameplay beats have **no prompt**: they are engine
 capture, not generation. No paid generation service was used anywhere in this reel.
 
-## Gameplay beats (B02–B07) — captured, not prompted
+## Gameplay beats (B02–B08) — captured, not prompted
 
 ```bash
 godot --path /tmp/wjbx-capture res://capture_main.tscn \
-  --write-movie "$REEL/capture/run-01.avi" --fixed-fps 60 -- take1
+  --write-movie "$REEL/capture/run-01.avi" --fixed-fps 60
 ```
 
 Driver: `capture_driver.gd`, real `InputEventKey` via `Input.parse_input_event`.
-No teleporting, no forced completion, no test-only gameplay shortcuts. See `CAPTURE.md`.
+No teleporting, no forced completion, no key awarded, no door opened by fiat, and no
+test-only gameplay shortcuts. See `CAPTURE.md`.
 
 ## Remotion beats — pattern + props
 
@@ -21,16 +22,16 @@ No teleporting, no forced completion, no test-only gameplay shortcuts. See `CAPT
 {
   "greeting": "Annyeong, Liam",
   "topic": "WALKER · GAME EXTENSION",
-  "segment": "Pick a Line — illustrative reconstruction",
-  "command": "Please use Walker to convert my game design document about a small, readable 2D platformer — one fixed-height jump, forgiving input windows, unlimited retries — into a playable Godot project. Then extend it: a new main character, and a new section that makes the player choose a route instead of just surviving one.",
+  "segment": "The Key and the Door — illustrative reconstruction",
+  "command": "Please use Walker to convert my game design document about a small, readable 2D platformer — one fixed-height jump, forgiving input windows, unlimited retries — into a playable Godot project. Then extend it: a new main character, and a new section built around a locked door and the key that opens it.",
   "runningText": "reconstructing the ask — not a transcript of the original session…",
   "folderLabel": "walker-jumpman-bao-x",
   "modelLabel": "Claude",
   "effortLabel": "High",
   "output": [
     "Starter: two gaps, a spike, a flag.",
-    "Added: a courier, and a fork.",
-    "49 checks, 0 failures."
+    "Added: a courier, a key, a door.",
+    "53 checks, 0 failures."
   ],
   "durationSeconds": 17.344
 }
@@ -41,10 +42,10 @@ No teleporting, no forced completion, no test-only gameplay shortcuts. See `CAPT
 ```json
 {
   "contextTitle": "WHAT WAS ACTUALLY BUILT",
-  "text": "Bao built a new game.\nThe starter is untouched below x=960.\nTwo additions: a courier, and a fork.",
+  "text": "Bao built a new game.\nThe starter is untouched below x=960.\nAdded: a courier, a key, a locked door.",
   "triggerWords": "a new game",
   "replacementWords": "an extension",
-  "fontSize": 78,
+  "fontSize": 74,
   "lineSpacing": 2.7,
   "align": "center",
   "seed": "7270",
@@ -52,14 +53,14 @@ No teleporting, no forced completion, no test-only gameplay shortcuts. See `CAPT
   "hesitateWithin": 0,
   "hesitateBetween": 1,
   "charMs": 8,
-  "durationSeconds": 19.243,
+  "durationSeconds": 19.733,
   "ink": "#3D3929",
   "accent": "#D97757",
   "bg": "#FAF9F5"
 }
 ```
 
-### B08 · `WalkerGodotSetup`
+### B09 · `WalkerGodotSetup`
 
 ```json
 {
@@ -92,48 +93,48 @@ No teleporting, no forced completion, no test-only gameplay shortcuts. See `CAPT
 }
 ```
 
-### B09 · `WalkerGodotSetup`
+### B10 · `WalkerGodotSetup`
 
 ```json
 {
   "mode": "terminal",
-  "title": "The probe rejected the first level.",
+  "title": "Every landing chosen by measurement.",
   "sparkLine": "Change the geometry, not the jump.",
   "source": "godot/tests/probe_reach.gd · real output, Godot 4.7.2.stable.official.ed1daf0bf",
   "command": "godot --headless --path godot --script res://tests/probe_reach.gd",
   "lines": [
     "floor -> B  (+48 rise)      takeoff window 70 px",
-    "L1 -> over HZ1             UNREACHABLE",
-    "L1 -> over HZ2             UNREACHABLE",
-    "L1 -> M (56px gap)         UNREACHABLE",
-    "walk-under B and C         BLOCKED at 1116.6",
-    "cause: jumping head reaches y=236; ledges sat at y=272",
-    "fix: re-cut geometry — tuning-unchanged still PASS"
+    "B -> C      (flat 64px)     takeoff window 56 px",
+    "C -> D      (+24, 48px)     takeoff window 58 px",
+    "D -> M      (barrier)       UNREACHABLE   <- by design",
+    "L1 -> M     (56px gap)      takeoff window 38 px",
+    "bait-from-standing          bait window 10 px",
+    "walk-under B and C          clear, 0 jumps"
   ],
-  "selected": 4,
-  "durationSeconds": 22.528
+  "selected": 3,
+  "durationSeconds": 21.419
 }
 ```
 
-### B10 · `ClaudeVerdictArtifact`
+### B11 · `ClaudeVerdictArtifact`
 
 ```json
 {
   "artifactTitle": "Verdict",
-  "artifactHeading": "Pick a Line — extending walker-jumpman.",
+  "artifactHeading": "The Key and the Door — extending walker-jumpman.",
   "brandLabel": "CSYE 7270 · Bao Xing",
   "artifactLines": [
-    "Observed: both routes finish; trap punishes the jump, spares the walk.",
-    "Observed: 49 checks pass — the starter's 25 unaltered.",
-    "Untested: the only playtester designed the level.",
-    "Honest: the high road pays a coin, not time — both cost 671 ticks.",
-    "Next: put it in front of someone who has never seen it."
+    "Observed: trap punishes the jump, spares the walk; the key needs a jump.",
+    "Observed: the door will not open without the key. 53 checks pass.",
+    "Tested cold: a second player died to the trap, then solved it unaided.",
+    "By design: key mandatory, ledges dead-end — a there-and-back errand.",
+    "Thin: n = 2, no counts, no timings. Next: log where deaths happen."
   ],
-  "durationSeconds": 28.523
+  "durationSeconds": 33.835
 }
 ```
 
-### B11 · `ClaudeComposerAsk`
+### B12 · `ClaudeComposerAsk`
 
 ```json
 {
@@ -146,29 +147,28 @@ No teleporting, no forced completion, no test-only gameplay shortcuts. See `CAPT
   "modelLabel": "Claude",
   "effortLabel": "High",
   "output": [
-    "It rejected a layout I believed.",
-    "The fix was geometry.",
-    "Never the jump."
+    "Human: the courier, the key-and-door call, the geometry re-cut.",
+    "Claude Code: the drawing, the probe, the state machines, the checks.",
+    "Narration is AI. Build shown: commit fb75763 · Godot 4.7.2."
   ],
-  "durationSeconds": 26.347
+  "durationSeconds": 46.933
 }
 ```
 
-### B12 · `ClaudeTitleOutro`
+### B13 · `ClaudeTitleOutro`
 
 ```json
 {
-  "title": "Pick a Line — Extending walker-jumpman",
+  "title": "The Key and the Door — Extending walker-jumpman",
   "slug": "claude-liam-walker-jumpman-bao-x-walkthrough"
 }
 ```
 
 ## Narration
 
-Engine: **Kokoro** (`kokoro-onnx`), local, free, no API key. Voice `am_onyx` (Liam, in for Bear).
-One mp3 per beat in `mp3/`; measured durations are the master clock and are recorded as
-`actual_duration_s` in `beat_sheet.json`. B12 is intentionally silent under the stock jingle
-per `OUTRO-LOCK.md`.
+Engine: **Kokoro** (`kokoro-onnx`), local, free, no API key. Voice `am_onyx` (Liam, in
+for Bear). One mp3 per beat in `mp3/`; measured durations are the master clock and are
+recorded as `actual_duration_s` in `beat_sheet.json`. B13 is intentionally silent.
 
 ## What was NOT used
 
